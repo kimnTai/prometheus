@@ -7,6 +7,7 @@ export default defineConfig({
     ...VitePluginNode({
       adapter: "express",
       appPath: "./src/app/index.ts",
+      exportName: "app",
     }),
   ],
   resolve: {
@@ -15,6 +16,7 @@ export default defineConfig({
     },
   },
   server: {
+    port: 3005,
     host: "0.0.0.0",
     open: "/",
   },

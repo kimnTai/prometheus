@@ -1,49 +1,66 @@
 import UsersModel from "@/models/user";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 import type { Request, Response } from "express";
-
-// 新增使用者
-export const createUser = async (req: Request, res: Response) => {
-  const newUser = await UsersModel.create(req.body);
-  res.status(201).json({ success: true, data: newUser });
-};
 
 // 取得所有使用者
 export const getAllUsers = async (_req: Request, res: Response) => {
   const users = await UsersModel.find();
-  res.status(200).json({ success: true, data: users });
+  res.status(200).json({ status: "success", result: users });
 };
 
-// 取得單一使用者
-export const getUserById = async (req: Request, res: Response) => {
-  const user = await UsersModel.findById(req.params.id);
+// 帳號註冊
+export const register = async (req: Request, res: Response) => {
+  const { name, email, password } = req.body;
+
+  if (await UsersModel.findOne({ email })) {
+    throw new Error("此 Email 已被註冊!");
+  }
+
+  const hashPassword = await bcrypt.hash(password, 12);
+
+  const _result = await UsersModel.create({
+    name,
+    email,
+    password: hashPassword,
+  });
+  const { password: _, ...result } = _result.toObject();
+
+  res.send({ status: "success", result });
+};
+
+// 登入
+export const login = async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+
+  const user = await UsersModel.findOne({ email }).select("+password");
   if (!user) {
-    res.status(404).json({ success: false, error: "找不到使用者" });
-  } else {
-    res.status(200).json({ success: true, data: user });
+    throw new Error("此 Email 不存在!");
   }
+
+  if (!(await bcrypt.compare(password, user.password))) {
+    throw new Error("密碼錯誤!");
+  }
+
+  const token = (() => {
+    if (!process.env.JWT_SECRET) {
+      throw new Error("JWT_SECRET 未設定!");
+    }
+    return jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRES_DAY,
+    });
+  })();
+
+  const { password: _, ...result } = user.toObject();
+  res.send({ status: "success", token, result });
 };
 
-// 更新使用者資訊
-export const updateUserById = async (req: Request, res: Response) => {
-  const updatedUser = await UsersModel.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    { new: true }
-  );
-  if (!updatedUser) {
-    res.status(404).json({ success: false, error: "找不到使用者" });
-  } else {
-    res.status(200).json({ success: true, data: updatedUser });
+// 重設密碼
+export const resetPassword = async (req: Request, res: Response) => {
+  const password = await bcrypt.hash(req.body.password, 12);
+  if (!(await UsersModel.findByIdAndUpdate(req.body.userId, { password }))) {
+    throw new Error("此 id 不存在");
   }
-};
-
-// 刪除使用者
-export const deleteUserById = async (req: Request, res: Response) => {
-  const deletedUser = await UsersModel.findByIdAndDelete(req.params.id);
-  if (!deletedUser) {
-    res.status(404).json({ success: false, error: "找不到使用者" });
-  } else {
-    res.status(200).json({ success: true, data: deletedUser });
-  }
+  res.send({ status: "success", message: "密碼重設成功" });
 };

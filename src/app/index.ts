@@ -4,24 +4,28 @@ import morgan from "morgan";
 import "@/app/env";
 import "@/connection";
 import "@/models";
-import { apiRouter } from "@/routes";
+import * as Routes from "@/routes";
+import * as Exception from "@/exception";
 
-const app = express();
+export const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-app.use(morgan("tiny"));
+app.use(morgan("dev"));
 
-app.use("/api", apiRouter);
-
+app.use("/api", Routes.api);
 app.get("/", (_, res) => {
   res.send("Hello Prometheus!");
 });
+app.get("/favicon.ico", (_, res) => {
+  res.end();
+});
+
+app.use(Exception.sendNotFoundError);
+app.use(Exception.catchCustomError);
 
 if (import.meta.env.PROD) {
   app.listen(process.env.PORT);
   console.log(`listening on http://localhost:${process.env.PORT}`);
 }
-
-export const viteNodeApp = app;
