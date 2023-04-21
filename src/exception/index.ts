@@ -27,7 +27,7 @@ export const catchCustomError = (
     return res.status(400).send({ status: "error", message: err.type });
   }
   // 開發模式回傳錯誤訊息
-  if (process.env?.NODE_ENV === "development") {
+  if (!import.meta.env.PROD) {
     return res.status(400).json({ status: "error", message: err.message, err });
   }
   return res.status(400).json({ status: "error", message: err.message });
