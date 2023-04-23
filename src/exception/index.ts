@@ -2,6 +2,9 @@ import type { Request, Response, NextFunction } from "express";
 
 // 初始化，捕捉全域錯誤
 (() => {
+  if (!process.env.JWT_SECRET) {
+    throw new Error("JWT_SECRET 未設定!");
+  }
   process.on("uncaughtException", (error) => {
     console.error("未捕獲的異常！");
     console.error(error);
