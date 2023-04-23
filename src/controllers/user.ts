@@ -43,14 +43,9 @@ export const login = async (req: Request, res: Response) => {
     throw new Error("密碼錯誤!");
   }
 
-  const token = (() => {
-    if (!process.env.JWT_SECRET) {
-      throw new Error("JWT_SECRET 未設定!");
-    }
-    return jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: process.env.JWT_EXPIRES_DAY,
-    });
-  })();
+  const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET!, {
+    expiresIn: process.env.JWT_EXPIRES_DAY,
+  });
 
   const { password: _, ...result } = user.toObject();
   res.send({ status: "success", token, result });
