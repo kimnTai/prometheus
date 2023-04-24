@@ -4,7 +4,7 @@ import morgan from "morgan";
 import "@/app/env";
 import "@/connection";
 import "@/models";
-import * as Routes from "@/routes";
+import Routes from "@/routes";
 import * as Exception from "@/exception";
 
 export const app = express();
@@ -14,13 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(morgan("dev"));
 
-app.use("/api", Routes.api);
-app.get("/", (_, res) => {
-  res.send("Hello Prometheus!");
-});
-app.get("/favicon.ico", (_, res) => {
-  res.end();
-});
+app.use(Routes);
 
 app.use(Exception.sendNotFoundError);
 app.use(Exception.catchCustomError);
