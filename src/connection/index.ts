@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 
   try {
     mongoose.set("strictQuery", false);
-    await mongoose.connect(uri || "");
+    await mongoose.connect(uri);
     console.log("[mongodb 連線成功]");
   } catch (error) {
     if (error instanceof Error) {

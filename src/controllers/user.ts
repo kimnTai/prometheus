@@ -43,7 +43,7 @@ export const login = async (req: Request, res: Response) => {
     throw new Error("密碼錯誤!");
   }
 
-  const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET!, {
+  const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_DAY,
   });
 
