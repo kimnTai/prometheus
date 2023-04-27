@@ -1,6 +1,6 @@
 import { createRouter } from "@/shared";
 import * as UserController from "@/controllers/user";
-import { checkRegister, checkLogin, checkResetPassword } from "@/middlewares";
+import { checkRegister, checkLogin, isAuth } from "@/middlewares";
 
 import passport from "passport";
 import { loginCallback } from "@/controllers/auth";
@@ -15,7 +15,7 @@ router.post("/register", checkRegister, UserController.register);
 
 router.post("/login", checkLogin, UserController.login);
 
-router.post("/resetPassword", checkResetPassword, UserController.resetPassword);
+router.post("/resetPassword", isAuth, UserController.resetPassword);
 
 router.get(
   "/google",

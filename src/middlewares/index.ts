@@ -53,19 +53,6 @@ export const checkLogin = (
   next();
 };
 
-// 使用者修改密碼檢查
-export const checkResetPassword = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const { userId, password } = req.body;
-
-  checkValidator({ userId, password });
-
-  isAuth(req, res, next);
-};
-
 // 檢查組織是否存在
 export const checkOrgExist = async (
   req: Request,
