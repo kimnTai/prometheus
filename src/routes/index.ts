@@ -1,11 +1,11 @@
 import { createRouter } from "@/shared";
-import hello from "./hello";
+import healthCheck from "./healthCheck";
 
 import type express from "express";
 
 const Routes = createRouter();
 
-Routes.use(hello);
+Routes.use(healthCheck);
 
 Routes.use(
   "/api",
