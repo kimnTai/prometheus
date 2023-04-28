@@ -3,6 +3,7 @@ import { Schema, model, type Document } from "mongoose";
 interface IUser extends Document {
   name: string;
   email: string;
+  isEmailVerification: boolean;
   password: string;
   avatar: string;
   googleId?: string;
@@ -17,6 +18,10 @@ const userSchema = new Schema<IUser>(
   {
     name: { type: String, required: [true, "name 未填寫"] },
     email: { type: String, required: [true, "email 未填寫"] },
+    isEmailVerification: {
+      type: Boolean,
+      default: false,
+    },
     password: {
       type: String,
       required: [true, "password 未填寫"],
