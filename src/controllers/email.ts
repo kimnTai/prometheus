@@ -48,6 +48,7 @@ export const sendResetPasswordEmail = async (req: Request, res: Response) => {
 
 // 發送註冊成功 email
 export const sendEmailVerification = async (req: Request, _res: Response) => {
+  return;
   const email = req.body.email;
 
   const token = jwt.sign({ email }, process.env.JWT_SECRET, {
