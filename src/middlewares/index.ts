@@ -14,17 +14,9 @@ export const isAuth = (req: Request, _res: Response, next: NextFunction) => {
     throw new Error("token 錯誤");
   }
 
-  if (req.method === "GET") {
-    req.body.userId = result.userId;
-    return next();
-  }
+  req.user ??= { userId: result.userId };
 
-  const { userId, ...args } = req.body;
-  if (userId !== result.userId) {
-    throw new Error("token 錯誤 userId 不一致");
-  }
-
-  checkValidator({ userId, ...args });
+  checkValidator({ ...req.body });
 
   next();
 };
