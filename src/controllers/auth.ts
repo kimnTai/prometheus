@@ -3,6 +3,8 @@ import passport from "passport";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import UsersModel from "@/models/user";
+import { OAuth2Client, TokenPayload } from "google-auth-library";
+import { getJwtToken } from "./user";
 
 import type { Request, Response } from "express";
 
@@ -63,4 +65,48 @@ export const loginCallback = async (req: Request, res: Response) => {
   // TODO:前端跳轉邏輯
   // const url = "";
   // res.redirect(`${url}?${params}`);
+};
+
+// Verify the JWT token sent from the client
+export const verifyToken = async (req: Request, res: Response) => {
+  const token = req.body.token;
+  const CLIENT_ID_GOOGLE = process.env.GOOGLE_CLIENT_ID;
+  try {
+    const client = new OAuth2Client(CLIENT_ID_GOOGLE);
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: CLIENT_ID_GOOGLE,
+    });
+    const {
+      sub: googleId,
+      email,
+      name,
+      picture,
+    } = ticket.getPayload() as TokenPayload;
+
+    const user = await UsersModel.findOne({ googleId });
+    console.log(user);
+    if (!user) {
+      const password = await bcrypt.hash(googleId, 12);
+      const result = await UsersModel.create({
+        name,
+        email,
+        password,
+        googleId,
+        avatar: picture,
+      });
+      return res.send({
+        status: "success",
+        token: getJwtToken(result._id),
+        result,
+      });
+    }
+    return res.send({
+      status: "success",
+      token: getJwtToken(user._id),
+      result: user,
+    });
+  } catch (error) {
+    throw new Error(JSON.stringify(error));
+  }
 };

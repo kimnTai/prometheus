@@ -5,6 +5,12 @@ import jwt from "jsonwebtoken";
 import type { Request, Response } from "express";
 import { sendEmailVerification } from "./email";
 
+export const getJwtToken = (userId: string) =>
+  jwt.sign({ userId }, process.env.JWT_SECRET, {
+    algorithm: "HS256",
+    expiresIn: process.env.JWT_EXPIRES_DAY,
+  });
+
 // 取得所有使用者
 export const getAllUsers = async (_req: Request, res: Response) => {
   const users = await UsersModel.find();
@@ -26,7 +32,7 @@ export const register = async (req: Request, res: Response) => {
   });
   const { password: _, ...result } = _result.toObject();
 
-  res.send({ status: "success", result });
+  res.send({ status: "success", token: getJwtToken(result._id), result });
 };
 
 // 登入
@@ -42,12 +48,8 @@ export const login = async (req: Request, res: Response) => {
     throw new Error("密碼錯誤!");
   }
 
-  const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_DAY,
-  });
-
   const { password: _, ...result } = user.toObject();
-  res.send({ status: "success", token, result });
+  res.send({ status: "success", token: getJwtToken(user._id), result });
 };
 
 // 重設密碼
@@ -58,3 +60,28 @@ export const resetPassword = async (req: Request, res: Response) => {
   }
   res.send({ status: "success", message: "密碼重設成功" });
 };
+
+//驗證登入
+export const verifyAuth = async (req: Request, res: Response) => {
+  //get token
+  const authorization = req.headers.authorization;
+  if (!authorization) {
+    res.send({ status: "error", message: "未登入" });
+  } else {
+    const token = authorization.replace("Bearer ", "");
+    jwt.verify(
+      token,
+      process.env.JWT_SECRET,
+      async (err: any, decoded: any) => {
+        if (err) {
+          res.send({ status: "error", message: "驗證失敗" });
+        } else {
+          // decoded {  userId,  iat,  exp }
+          const user = await UsersModel.findOne({ _id: decoded.userId });
+          res.send({ status: "success", token, result: user });
+        }
+      }
+    );
+  }
+};
+

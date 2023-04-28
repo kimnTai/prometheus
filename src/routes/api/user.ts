@@ -3,7 +3,7 @@ import * as UserController from "@/controllers/user";
 import { checkRegister, checkLogin, isAuth } from "@/middlewares";
 
 import passport from "passport";
-import { loginCallback } from "@/controllers/auth";
+import { loginCallback, verifyToken } from "@/controllers/auth";
 
 export const path = "/user";
 
@@ -27,3 +27,7 @@ router.get(
   passport.authenticate("google", { session: false }),
   loginCallback
 );
+
+router.post("/google/verifyToken", verifyToken);
+
+router.get("/verifyJwt", UserController.verifyAuth);
