@@ -10,8 +10,14 @@ interface INotification extends Document {
 
 const notificationSchema = new Schema<INotification>(
   {
-    text: { type: String, required: [true, "event 未填寫"] },
-    isRead: { type: Boolean, default: false },
+    text: {
+      type: String,
+      required: [true, "event 未填寫"],
+    },
+    isRead: {
+      type: Boolean,
+      default: false,
+    },
 
     userId: {
       type: Schema.Types.ObjectId,
@@ -24,7 +30,10 @@ const notificationSchema = new Schema<INotification>(
       required: [true, "actionId 未填寫"],
     },
   },
-  { versionKey: false, timestamps: true }
+  {
+    versionKey: false,
+    timestamps: true,
+  }
 );
 
 export default model("notification", notificationSchema);

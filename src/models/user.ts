@@ -16,8 +16,14 @@ export interface IMember extends Document {
 
 const userSchema = new Schema<IUser>(
   {
-    name: { type: String, required: [true, "name 未填寫"] },
-    email: { type: String, required: [true, "email 未填寫"] },
+    name: {
+      type: String,
+      required: [true, "name 未填寫"],
+    },
+    email: {
+      type: String,
+      required: [true, "email 未填寫"],
+    },
     isEmailVerification: {
       type: Boolean,
       default: false,
@@ -27,10 +33,16 @@ const userSchema = new Schema<IUser>(
       required: [true, "password 未填寫"],
       select: false,
     },
-    avatar: { type: String, default: "https://i.imgur.com/tPmUQVM.png" },
+    avatar: {
+      type: String,
+      default: "https://i.imgur.com/tPmUQVM.png",
+    },
     googleId: String,
   },
-  { versionKey: false, timestamps: true }
+  {
+    versionKey: false,
+    timestamps: true,
+  }
 );
 
 export default model("user", userSchema);

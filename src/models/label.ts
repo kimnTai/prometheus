@@ -9,15 +9,24 @@ interface ILabel extends Document {
 
 const labelSchema = new Schema<ILabel>(
   {
-    name: { type: String, required: [true, "name 未填寫"] },
-    color: { type: String, default: "#ffffff" },
+    name: {
+      type: String,
+      required: [true, "name 未填寫"],
+    },
+    color: {
+      type: String,
+      default: "#ffffff",
+    },
     boardId: {
       type: Schema.Types.ObjectId,
       ref: "board",
       required: [true, "boardId 未填寫"],
     },
   },
-  { versionKey: false, timestamps: true }
+  {
+    versionKey: false,
+    timestamps: true,
+  }
 );
 
 export default model("label", labelSchema);

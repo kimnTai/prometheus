@@ -18,9 +18,18 @@ interface ICard extends Document {
 
 const cardSchema = new Schema<ICard>(
   {
-    name: { type: String, required: [true, "name 未填寫"] },
-    closed: { type: Boolean, default: false },
-    position: { type: Number, default: 0 },
+    name: {
+      type: String,
+      required: [true, "name 未填寫"],
+    },
+    closed: {
+      type: Boolean,
+      default: false,
+    },
+    position: {
+      type: Number,
+      default: 0,
+    },
     listId: {
       type: Schema.Types.ObjectId,
       ref: "list",
@@ -29,8 +38,14 @@ const cardSchema = new Schema<ICard>(
     member: [
       {
         _id: false,
-        userId: { type: Schema.Types.ObjectId, ref: "user" },
-        role: { type: String, default: "viewer" },
+        userId: {
+          type: Schema.Types.ObjectId,
+          ref: "user",
+        },
+        role: {
+          type: String,
+          default: "viewer",
+        },
       },
     ],
     label: [
@@ -58,7 +73,10 @@ const cardSchema = new Schema<ICard>(
       },
     ],
   },
-  { versionKey: false, timestamps: true }
+  {
+    versionKey: false,
+    timestamps: true,
+  }
 );
 
 export default model("card", cardSchema);

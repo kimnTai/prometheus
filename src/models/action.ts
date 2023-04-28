@@ -10,8 +10,14 @@ interface IAction extends Document {
 
 const actionSchema = new Schema<IAction>(
   {
-    event: { type: String, required: [true, "event 未填寫"] },
-    data: { type: String, required: [true, "data 未填寫"] },
+    event: {
+      type: String,
+      required: [true, "event 未填寫"],
+    },
+    data: {
+      type: String,
+      required: [true, "data 未填寫"],
+    },
 
     cardId: {
       type: Schema.Types.ObjectId,
@@ -24,7 +30,10 @@ const actionSchema = new Schema<IAction>(
       required: [true, "userId 未填寫"],
     },
   },
-  { versionKey: false, timestamps: true }
+  {
+    versionKey: false,
+    timestamps: true,
+  }
 );
 
 export default model("action", actionSchema);

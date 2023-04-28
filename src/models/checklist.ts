@@ -11,8 +11,14 @@ interface IChecklist extends Document {
 
 const checklistSchema = new Schema<IChecklist>(
   {
-    name: { type: String, required: [true, "name 未填寫"] },
-    position: { type: Number, default: 0 },
+    name: {
+      type: String,
+      required: [true, "name 未填寫"],
+    },
+    position: {
+      type: Number,
+      default: 0,
+    },
 
     cardId: {
       type: Schema.Types.ObjectId,
@@ -26,7 +32,10 @@ const checklistSchema = new Schema<IChecklist>(
       },
     ],
   },
-  { versionKey: false, timestamps: true }
+  {
+    versionKey: false,
+    timestamps: true,
+  }
 );
 
 export default model("checklist", checklistSchema);

@@ -11,13 +11,25 @@ interface IOrganization extends Document {
 
 const organizationSchema = new Schema<IOrganization>(
   {
-    name: { type: String, required: [true, "組織 name 未填寫"] },
-    permission: { type: String, default: "private" },
+    name: {
+      type: String,
+      required: [true, "組織 name 未填寫"],
+    },
+    permission: {
+      type: String,
+      default: "private",
+    },
     member: [
       {
         _id: false,
-        userId: { type: Schema.Types.ObjectId, ref: "user" },
-        role: { type: String, default: "viewer" },
+        userId: {
+          type: Schema.Types.ObjectId,
+          ref: "user",
+        },
+        role: {
+          type: String,
+          default: "viewer",
+        },
       },
     ],
     board: [
@@ -27,7 +39,10 @@ const organizationSchema = new Schema<IOrganization>(
       },
     ],
   },
-  { versionKey: false, timestamps: true }
+  {
+    versionKey: false,
+    timestamps: true,
+  }
 );
 
 export default model("organization", organizationSchema);
