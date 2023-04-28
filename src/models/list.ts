@@ -11,9 +11,18 @@ interface IList extends Document {
 
 const listSchema = new Schema<IList>(
   {
-    name: { type: String, required: [true, "name 未填寫"] },
-    closed: { type: Boolean, default: false },
-    position: { type: Number, default: 0 },
+    name: {
+      type: String,
+      required: [true, "name 未填寫"],
+    },
+    closed: {
+      type: Boolean,
+      default: false,
+    },
+    position: {
+      type: Number,
+      default: 0,
+    },
     boardId: {
       type: Schema.Types.ObjectId,
       ref: "board",
@@ -26,7 +35,10 @@ const listSchema = new Schema<IList>(
       },
     ],
   },
-  { versionKey: false, timestamps: true }
+  {
+    versionKey: false,
+    timestamps: true,
+  }
 );
 
 export default model("list", listSchema);

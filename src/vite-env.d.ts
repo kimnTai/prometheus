@@ -16,5 +16,8 @@ declare namespace NodeJS {
     GOOGLE_CLIENT_ID: string;
     GOOGLE_CLIENT_SECRET: string;
     GOOGLE_LOGIN_CALL_BACK_URL: string;
+
+    MAILER_ACCOUNT: string;
+    MAILER_PASSWORD: string;
   }
 }

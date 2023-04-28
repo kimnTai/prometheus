@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 import type { Request, Response } from "express";
+import { sendEmailVerification } from "./email";
 
 // 取得所有使用者
 export const getAllUsers = async (_req: Request, res: Response) => {
@@ -14,11 +15,9 @@ export const getAllUsers = async (_req: Request, res: Response) => {
 export const register = async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
 
-  if (await UsersModel.findOne({ email })) {
-    throw new Error("此 Email 已被註冊!");
-  }
-
   const hashPassword = await bcrypt.hash(password, 12);
+
+  sendEmailVerification(req, res);
 
   const _result = await UsersModel.create({
     name,

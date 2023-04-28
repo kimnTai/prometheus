@@ -14,14 +14,29 @@ interface IBoard extends Document {
 
 const boardSchema = new Schema<IBoard>(
   {
-    name: { type: String, required: [true, "name 未填寫"] },
-    permission: { type: String, default: "private" },
-    closed: { type: Boolean, default: false },
+    name: {
+      type: String,
+      required: [true, "name 未填寫"],
+    },
+    permission: {
+      type: String,
+      default: "private",
+    },
+    closed: {
+      type: Boolean,
+      default: false,
+    },
     member: [
       {
         _id: false,
-        userId: { type: Schema.Types.ObjectId, ref: "user" },
-        role: { type: String, default: "viewer" },
+        userId: {
+          type: Schema.Types.ObjectId,
+          ref: "user",
+        },
+        role: {
+          type: String,
+          default: "viewer",
+        },
       },
     ],
     organizationId: {
@@ -42,7 +57,10 @@ const boardSchema = new Schema<IBoard>(
       },
     ],
   },
-  { versionKey: false, timestamps: true }
+  {
+    versionKey: false,
+    timestamps: true,
+  }
 );
 
 export default model("board", boardSchema);

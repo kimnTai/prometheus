@@ -9,7 +9,7 @@ export const path = "/user";
 
 export const router = createRouter();
 
-router.get("/", UserController.getAllUsers);
+router.get("/", isAuth, UserController.getAllUsers);
 
 router.post("/register", checkRegister, UserController.register);
 

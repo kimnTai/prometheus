@@ -10,8 +10,14 @@ interface IAttachment extends Document {
 
 const attachmentSchema = new Schema<IAttachment>(
   {
-    dirname: { type: String, required: [true, "dirname 未填寫"] },
-    filename: { type: String, required: [true, "filename 未填寫"] },
+    dirname: {
+      type: String,
+      required: [true, "dirname 未填寫"],
+    },
+    filename: {
+      type: String,
+      required: [true, "filename 未填寫"],
+    },
 
     cardId: {
       type: Schema.Types.ObjectId,
@@ -24,7 +30,10 @@ const attachmentSchema = new Schema<IAttachment>(
       required: [true, "userId 未填寫"],
     },
   },
-  { versionKey: false, timestamps: true }
+  {
+    versionKey: false,
+    timestamps: true,
+  }
 );
 
 export default model("attachment", attachmentSchema);

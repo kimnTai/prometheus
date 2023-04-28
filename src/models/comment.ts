@@ -9,7 +9,10 @@ interface IComment extends Document {
 
 const commentSchema = new Schema<IComment>(
   {
-    comment: { type: String, required: [true, "comment 未填寫"] },
+    comment: {
+      type: String,
+      required: [true, "comment 未填寫"],
+    },
 
     cardId: {
       type: Schema.Types.ObjectId,
@@ -22,7 +25,10 @@ const commentSchema = new Schema<IComment>(
       required: [true, "userId 未填寫"],
     },
   },
-  { versionKey: false, timestamps: true }
+  {
+    versionKey: false,
+    timestamps: true,
+  }
 );
 
 export default model("comment", commentSchema);
