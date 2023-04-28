@@ -2,12 +2,13 @@ import { createRouter } from "@/shared";
 
 const router = createRouter();
 
-router.get("/", (_, res) => {
+router.get("/", (req, res) => {
   const healthCheck = {
     status: "success",
     message: "OK",
     uptime: process.uptime(),
     timestamp: Date.now(),
+    host: req.headers.host,
   };
   res.send(healthCheck);
 });
