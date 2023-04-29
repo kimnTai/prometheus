@@ -1,7 +1,8 @@
-import { checkValidator } from "@/shared";
-import jwt, { type JwtPayload } from "jsonwebtoken";
 import OrganizationModel from "@/models/organization";
 import UsersModel from "@/models/user";
+import { checkValidator } from "@/shared";
+import jwt, { type JwtPayload } from "jsonwebtoken";
+import multer from "multer";
 
 import type { Request, Response, NextFunction } from "express";
 
@@ -47,4 +48,24 @@ export const checkOrgExist = async (
   }
 
   return next();
+};
+
+export const handleUploadFile = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  return multer({
+    limits: {
+      fileSize: 2 * 1024 * 1024,
+    },
+    fileFilter: (_req, file, callback) => {
+      // 只接受三種圖片格式
+      if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+        callback(new Error("圖片格式只接受 jpg、jpeg、png"));
+        return;
+      }
+      callback(null, true);
+    },
+  }).single("image")(req, res, next);
 };
