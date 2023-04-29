@@ -6,7 +6,6 @@ interface IChecklist extends Document {
   position: number;
 
   cardId: Schema.Types.ObjectId;
-  checkItem: Schema.Types.ObjectId[];
 }
 
 const checklistSchema = new Schema<IChecklist>(
@@ -25,17 +24,19 @@ const checklistSchema = new Schema<IChecklist>(
       ref: "card",
       required: [true, "cardId 未填寫"],
     },
-    checkItem: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "checkItem",
-      },
-    ],
   },
   {
     versionKey: false,
     timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
+
+checklistSchema.virtual("checkItem", {
+  ref: "checkItem",
+  foreignField: "checklistId",
+  localField: "_id",
+});
 
 export default model("checklist", checklistSchema);

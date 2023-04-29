@@ -8,8 +8,6 @@ interface IBoard extends Document {
 
   member: IMember[];
   organizationId: Schema.Types.ObjectId;
-  list: Schema.Types.ObjectId[];
-  label: Schema.Types.ObjectId[];
 }
 
 const boardSchema = new Schema<IBoard>(
@@ -44,23 +42,25 @@ const boardSchema = new Schema<IBoard>(
       ref: "organization",
       required: [true, "organizationId 未填寫"],
     },
-    list: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "list",
-      },
-    ],
-    label: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "label",
-      },
-    ],
   },
   {
     versionKey: false,
     timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
+
+boardSchema.virtual("list", {
+  ref: "list",
+  foreignField: "boardId",
+  localField: "_id",
+});
+
+boardSchema.virtual("label", {
+  ref: "label",
+  foreignField: "boardId",
+  localField: "_id",
+});
 
 export default model("board", boardSchema);

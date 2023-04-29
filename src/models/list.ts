@@ -6,7 +6,6 @@ interface IList extends Document {
   position: number;
 
   boardId: Schema.Types.ObjectId;
-  card: Schema.Types.ObjectId[];
 }
 
 const listSchema = new Schema<IList>(
@@ -28,17 +27,19 @@ const listSchema = new Schema<IList>(
       ref: "board",
       required: [true, "boardId 未填寫"],
     },
-    card: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "card",
-      },
-    ],
   },
   {
     versionKey: false,
     timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
+
+listSchema.virtual("card", {
+  ref: "card",
+  foreignField: "listId",
+  localField: "_id",
+});
 
 export default model("list", listSchema);

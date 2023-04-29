@@ -6,7 +6,6 @@ interface IOrganization extends Document {
   permission: "private" | "public";
 
   member: IMember[];
-  board: Schema.Types.ObjectId[];
 }
 
 const organizationSchema = new Schema<IOrganization>(
@@ -32,17 +31,19 @@ const organizationSchema = new Schema<IOrganization>(
         },
       },
     ],
-    board: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "board",
-      },
-    ],
   },
   {
     versionKey: false,
     timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
+
+organizationSchema.virtual("board", {
+  ref: "board",
+  foreignField: "organizationId",
+  localField: "_id",
+});
 
 export default model("organization", organizationSchema);

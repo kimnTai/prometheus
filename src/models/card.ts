@@ -11,9 +11,6 @@ interface ICard extends Document {
   listId: Schema.Types.ObjectId;
   member: IMember[];
   label: Schema.Types.ObjectId[];
-  checklist: Schema.Types.ObjectId[];
-  comment: Schema.Types.ObjectId[];
-  attachment: Schema.Types.ObjectId[];
 }
 
 const cardSchema = new Schema<ICard>(
@@ -54,29 +51,31 @@ const cardSchema = new Schema<ICard>(
         ref: "label",
       },
     ],
-    checklist: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "checklist",
-      },
-    ],
-    comment: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "comment",
-      },
-    ],
-    attachment: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "attachment",
-      },
-    ],
   },
   {
     versionKey: false,
     timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
+
+cardSchema.virtual("checklist", {
+  ref: "checklist",
+  foreignField: "cardId",
+  localField: "_id",
+});
+
+cardSchema.virtual("comment", {
+  ref: "comment",
+  foreignField: "cardId",
+  localField: "_id",
+});
+
+cardSchema.virtual("attachment", {
+  ref: "attachment",
+  foreignField: "cardId",
+  localField: "_id",
+});
 
 export default model("card", cardSchema);
