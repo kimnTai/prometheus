@@ -19,5 +19,7 @@ declare namespace NodeJS {
 
     MAILER_ACCOUNT: string;
     MAILER_PASSWORD: string;
+
+    CLIENT_LOGIN_CALLBACK_URL: string;
   }
 }

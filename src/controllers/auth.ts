@@ -60,11 +60,7 @@ export const loginCallback = async (req: Request, res: Response) => {
     name,
   });
 
-  res.send({ params, user: req.user });
-
-  // TODO:前端跳轉邏輯
-  // const url = "";
-  // res.redirect(`${url}?${params}`);
+  res.redirect(`${process.env.CLIENT_LOGIN_CALLBACK_URL}?${params}`);
 };
 
 // Verify the JWT token sent from the client
