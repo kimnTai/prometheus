@@ -5,50 +5,32 @@ import UsersModel from "@/models/user";
 
 import type { Request, Response, NextFunction } from "express";
 
-// token 身分驗證
-export const isAuth = (req: Request, _res: Response, next: NextFunction) => {
+// token 驗證
+export const isAuth = async (
+  req: Request,
+  _res: Response,
+  next: NextFunction
+) => {
   const token = `${req.headers.authorization?.replace("Bearer ", "")}`;
   const result = jwt.verify(token, process.env.JWT_SECRET) as JwtPayload;
 
-  if (!result.userId) {
+  const user = await UsersModel.findById(result.userId);
+  if (!user) {
     throw new Error("token 錯誤");
   }
+  req.user ??= user;
 
-  req.user ??= { userId: result.userId };
+  next();
+};
 
+export const checkRequestBodyValidator = (
+  req: Request,
+  _res: Response,
+  next: NextFunction
+) => {
   checkValidator({ ...req.body });
 
-  next();
-};
-
-// 使用者註冊檢查
-export const checkRegister = async (
-  req: Request,
-  _res: Response,
-  next: NextFunction
-) => {
-  const { name, email, password } = req.body;
-
-  checkValidator({ name, email, password });
-
-  if (await UsersModel.findOne({ email })) {
-    throw new Error("此 Email 已被註冊!");
-  }
-
-  next();
-};
-
-// 使用者登入檢查
-export const checkLogin = (
-  req: Request,
-  _res: Response,
-  next: NextFunction
-) => {
-  const { email, password } = req.body;
-
-  checkValidator({ email, password });
-
-  next();
+  return next();
 };
 
 // 檢查組織是否存在

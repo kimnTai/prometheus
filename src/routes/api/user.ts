@@ -1,19 +1,21 @@
 import { createRouter } from "@/shared";
 import * as UserController from "@/controllers/user";
-import { checkRegister, checkLogin, isAuth } from "@/middlewares";
+import { loginCallback, verifyToken } from "@/controllers/auth";
+import { isAuth, checkRequestBodyValidator } from "@/middlewares";
 
 import passport from "passport";
-import { loginCallback, verifyToken } from "@/controllers/auth";
 
 export const path = "/user";
 
 export const router = createRouter();
 
-router.get("/", isAuth, UserController.getAllUsers);
+router.use(checkRequestBodyValidator);
 
-router.post("/register", checkRegister, UserController.register);
+router.get("/", isAuth,UserController.getAllUsers);
 
-router.post("/login", checkLogin, UserController.login);
+router.post("/register", UserController.register);
+
+router.post("/login", UserController.login);
 
 router.post("/resetPassword", isAuth, UserController.resetPassword);
 
