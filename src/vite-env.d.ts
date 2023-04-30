@@ -1,28 +1,36 @@
 /// <reference types="vite/client" />
 
-declare namespace NodeJS {
-  export interface ProcessEnv {
-    NODE_ENV: string;
+import { IUser } from "@/models/user";
 
-    HOST: string;
-    PORT: number;
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      NODE_ENV: string;
 
-    DATABASE: string;
-    DATABASE_PASSWORD: string;
+      HOST: string;
+      PORT: number;
 
-    JWT_EXPIRES_DAY: string;
-    JWT_SECRET: string;
+      DATABASE: string;
+      DATABASE_PASSWORD: string;
 
-    IMGUR_REFRESH_TOKEN: string;
-    IMGUR_ALBUM_ID: string;
+      JWT_EXPIRES_DAY: string;
+      JWT_SECRET: string;
 
-    GOOGLE_CLIENT_ID: string;
-    GOOGLE_CLIENT_SECRET: string;
-    GOOGLE_LOGIN_CALL_BACK_URL: string;
+      IMGUR_REFRESH_TOKEN: string;
+      IMGUR_ALBUM_ID: string;
 
-    MAILER_ACCOUNT: string;
-    MAILER_PASSWORD: string;
+      GOOGLE_CLIENT_ID: string;
+      GOOGLE_CLIENT_SECRET: string;
+      GOOGLE_LOGIN_CALL_BACK_URL: string;
 
-    CLIENT_LOGIN_CALLBACK_URL: string;
+      MAILER_ACCOUNT: string;
+      MAILER_PASSWORD: string;
+
+      CLIENT_LOGIN_CALLBACK_URL: string;
+    }
+  }
+
+  namespace Express {
+    interface User extends IUser {}
   }
 }

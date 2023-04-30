@@ -49,15 +49,17 @@ import type { Request, Response } from "express";
 })();
 
 export const loginCallback = async (req: Request, res: Response) => {
-  const { _id, name } = req.user as any;
+  if (!req.user) {
+    throw new Error("loginCallback 錯誤!");
+  }
 
-  const token = jwt.sign({ userId: _id }, process.env.JWT_SECRET, {
+  const token = jwt.sign({ userId: req.user._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_DAY,
   });
 
   const params = new URLSearchParams({
     token,
-    name,
+    name: req.user.name,
   });
 
   res.redirect(`${process.env.CLIENT_LOGIN_CALLBACK_URL}?${params}`);
