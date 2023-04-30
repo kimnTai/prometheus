@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChatRoom</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div id="app" class="container my-3">
+      <div class="row justify-content-center">
+        <h1 class="fs-3 text-center my-3">Vue + WebSocket 線上即時聊天室</h1>
+        <div class="col-md-6">
+          <div class="card rounded-3 chatroom">
+            <div class="card-body pt-0">
+              <!--------- 文字區塊 -------->
+              <div
+                class="message-block"
+                type="textarea"
+                style="max-height: 70vh; overflow: scroll; overflow-x: hidden"
+              >
+                <div
+                  class="row gx-2 mb-3"
+                  v-for="(item, key) in chatroom"
+                  :key="key"
+                  :class="{ 'text-end flex-row-reverse': item.username === username }"
+                >
+                  <div class="col-1 d-flex justify-content-center">
+                    <div class="avator mt-1">
+                      {{ item.username.slice(0, 1) }}
+                    </div>
+                  </div>
+                  <div class="col-8">
+                    <div>
+                      <strong>{{ item.username }}</strong>
+                      <small class="text-muted ms-2">
+                        {{ new Date(item.time).toLocaleDateString() }} {{ new
+                        Date(item.time).toLocaleTimeString() }}</small
+                      >
+                    </div>
+                    <div
+                      class="message-content p-2 mt-2 rounded-3"
+                      :class="{ 'bg-info text-white': item.username === username,
+                        'bg-light': item.username !== username
+                        }"
+                    >
+                      <p class="mb-0">{{ item.message }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--------- 輸入區塊 -------->
+              <div class="input-group py-3 sticky-top bg-white">
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="message"
+                  :disabled="!username"
+                  @keyup.enter="addMessage"
+                  placeholder="請勿人生攻擊，所有內容將被保存在數據"
+                />
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  :disabled="!username"
+                  @click="addMessage"
+                >
+                  送出
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="mb-3">
+                <label for="username" class="form-label">輸入使用者名稱</label>
+                <input
+                  id="username"
+                  type="text"
+                  class="form-control"
+                  v-model="tempUsername"
+                  :disabled="username.length"
+                  autofocus
+                  @keyup.enter="addUsername"
+                />
+                <small class="form-text text-muted"
+                  >請輸入個人姓名開始使用聊天室</small
+                >
+              </div>
+              <button
+                type="button"
+                class="btn btn-info"
+                @click="addUsername"
+                :disabled="username.length"
+              >
+                開始使用
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module">
+      import {
+        createApp,
+        ref,
+        onMounted,
+      } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.esm-browser.min.js";
+
+      createApp({ setup }).mount("#app");
+
+      function setup() {
+        const url = window.location.host.includes("localhost")
+          ? "ws://localhost:3006"
+          : "wss://prometheus-pmcy.onrender.com";
+
+        const ws = new WebSocket(url);
+
+        const username = ref("");
+        const tempUsername = ref("");
+        const addUsername = () => {
+          username.value = tempUsername.value;
+        };
+
+        const message = ref("");
+        const addMessage = () => {
+          ws.send(
+            JSON.stringify({
+              message: message.value,
+              username: username.value,
+              time: Date.now(),
+            })
+          );
+        };
+
+        const chatroom = ref([]);
+        onMounted(() => {
+          ws.onopen = () => console.log(`WebSocket 服務已連接`);
+          ws.onclose = () => console.log(`WebSocket 伺服器關閉`);
+
+          ws.onmessage = (message) => {
+            if (typeof message.data === "string") {
+              try {
+                const date = JSON.parse(message.data);
+                if (Array.isArray(date)) {
+                  date.forEach((v) => chatroom.value.push(JSON.parse(v)));
+                } else {
+                  chatroom.value.push(date);
+                }
+              } catch (error) {}
+            }
+
+            if (typeof message.data === "object") {
+              const reader = new FileReader();
+              reader.readAsText(message.data, "utf-8");
+              reader.onload = () => {
+                const date = JSON.parse(reader.result);
+                chatroom.value.push(date);
+                console.log(`來自服務器端的資料 : ${date}`);
+              };
+            }
+          };
+        });
+
+        return {
+          message,
+          username,
+          tempUsername,
+          chatroom,
+          addMessage,
+          addUsername,
+        };
+      }
+    </script>
+  </body>
+</html>
