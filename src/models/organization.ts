@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, type Document } from "mongoose";
 import { IMember } from "@/models/user";
 
 interface IOrganization extends Document {

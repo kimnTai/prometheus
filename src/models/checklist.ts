@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, type Document } from "mongoose";
 
 interface IChecklist extends Document {
   name: string;
