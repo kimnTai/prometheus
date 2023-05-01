@@ -1,16 +1,10 @@
 import mongoose from "mongoose";
 
-(async () => {
-  const { DATABASE, DATABASE_PASSWORD } = process.env;
-  const uri = DATABASE?.replace("<password>", `${DATABASE_PASSWORD}`);
+const { DATABASE, DATABASE_PASSWORD } = process.env;
 
-  try {
-    mongoose.set("strictQuery", false);
-    await mongoose.connect(uri);
-    console.log("[mongodb 連線成功]");
-  } catch (error) {
-    if (error instanceof Error) {
-      console.log("[mongodb 連線錯誤]", error.message);
-    }
-  }
-})();
+mongoose.set("strictQuery", false);
+
+mongoose
+  .connect(DATABASE?.replace("<password>", `${DATABASE_PASSWORD}`))
+  .then(() => console.log("[mongodb 連線成功]"))
+  .catch((error) => console.log("[mongodb 連線錯誤]", error.message));
