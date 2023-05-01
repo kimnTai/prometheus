@@ -31,4 +31,12 @@ const commentSchema = new Schema<IComment>(
   }
 );
 
+commentSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "userId",
+    select: "name avatar",
+  });
+  next();
+});
+
 export default model("comment", commentSchema);
