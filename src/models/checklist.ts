@@ -39,4 +39,12 @@ checklistSchema.virtual("checkItem", {
   localField: "_id",
 });
 
+checklistSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "checkItem",
+    select: "name completed position",
+  });
+  next();
+});
+
 export default model("checklist", checklistSchema);

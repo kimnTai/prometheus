@@ -78,4 +78,29 @@ cardSchema.virtual("attachment", {
   localField: "_id",
 });
 
+// 前置查詢
+cardSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "label",
+    select: "name color",
+  })
+    .populate({
+      path: "member.userId",
+      select: "name avatar",
+    })
+    .populate({
+      path: "comment",
+      select: "comment userId",
+    })
+    .populate({
+      path: "checklist",
+      select: "name completed position",
+    })
+    .populate({
+      path: "attachment",
+      select: "dirname filename userId",
+    });
+  next();
+});
+
 export default model("card", cardSchema);
