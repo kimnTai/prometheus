@@ -1,8 +1,8 @@
 import nodemailer from "nodemailer";
 import bcrypt from "bcryptjs";
+import jwt, { type JwtPayload } from "jsonwebtoken";
 import { checkValidator } from "@/shared";
 import UsersModel from "@/models/user";
-import jwt, { type JwtPayload } from "jsonwebtoken";
 
 import type { Request, Response } from "express";
 

@@ -2,8 +2,8 @@ import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import passport from "passport";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import UsersModel from "@/models/user";
 import { OAuth2Client, TokenPayload } from "google-auth-library";
+import UsersModel from "@/models/user";
 import { getJwtToken } from "./user";
 
 import type { Request, Response } from "express";

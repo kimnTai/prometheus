@@ -1,8 +1,8 @@
+import jwt, { type JwtPayload } from "jsonwebtoken";
+import multer from "multer";
 import OrganizationModel from "@/models/organization";
 import UsersModel from "@/models/user";
 import { checkValidator } from "@/shared";
-import jwt, { type JwtPayload } from "jsonwebtoken";
-import multer from "multer";
 
 import type { Request, Response, NextFunction } from "express";
 

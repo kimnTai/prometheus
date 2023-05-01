@@ -1,9 +1,9 @@
-import UsersModel from "@/models/user";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import UsersModel from "@/models/user";
+import { sendEmailVerification } from "./email";
 
 import type { Request, Response } from "express";
-import { sendEmailVerification } from "./email";
 
 export const getJwtToken = (userId: string) =>
   jwt.sign({ userId }, process.env.JWT_SECRET, {

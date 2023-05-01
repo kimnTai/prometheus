@@ -1,5 +1,5 @@
-import * as EmailController from "@/controllers/email";
 import { createRouter } from "@/shared";
+import * as EmailController from "@/controllers/email";
 
 export const path = "/email";
 

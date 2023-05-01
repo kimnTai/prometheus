@@ -3,11 +3,11 @@ import healthCheck from "./healthCheck";
 
 import type express from "express";
 
-const Routes = createRouter();
+export const routes = createRouter();
 
-Routes.use(healthCheck);
+routes.use(healthCheck);
 
-Routes.use(
+routes.use(
   "/api",
   Object.values<{
     path: string;
@@ -17,5 +17,3 @@ Routes.use(
     createRouter()
   )
 );
-
-export default Routes;

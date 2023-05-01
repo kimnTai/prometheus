@@ -1,6 +1,6 @@
-import OrganizationModel from "@/models/organization";
 import jwt from "jsonwebtoken";
 import type { Request, Response } from "express";
+import OrganizationModel from "@/models/organization";
 
 // 取得當前使用者ID
 const getUserIdFromToken = (req: Request) => {

@@ -1,6 +1,7 @@
-import { Request, Response } from "express";
 import ListModel from "@/models/list";
 import CardModel from "@/models/card";
+
+import type { Request, Response } from "express";
 
 export const createList = async (req: Request, res: Response) => {
   const { name, boardId, position } = req.body;
@@ -38,7 +39,6 @@ export const deleteList = async (req: Request, res: Response) => {
       listId: req.params.listId,
     },
     {
-      listId: "",
       closed: true,
     }
   );
@@ -56,7 +56,6 @@ export const archiveAllCards = async (req: Request, res: Response) => {
       listId: req.params.listId,
     },
     {
-      listId: "",
       closed: true,
     }
   );

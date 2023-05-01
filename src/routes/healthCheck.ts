@@ -1,5 +1,5 @@
-import { createRouter } from "@/shared";
 import path from "path";
+import { createRouter } from "@/shared";
 
 const router = createRouter();
 
