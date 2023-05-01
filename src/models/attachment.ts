@@ -26,7 +26,7 @@ const attachmentSchema = new Schema<IAttachment>(
     },
     userId: {
       type: Schema.Types.ObjectId,
-      ref: "card",
+      ref: "user",
       required: [true, "userId 未填寫"],
     },
   },

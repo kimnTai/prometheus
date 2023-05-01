@@ -21,7 +21,7 @@ const commentSchema = new Schema<IComment>(
     },
     userId: {
       type: Schema.Types.ObjectId,
-      ref: "card",
+      ref: "user",
       required: [true, "userId 未填寫"],
     },
   },
