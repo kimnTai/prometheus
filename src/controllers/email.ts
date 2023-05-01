@@ -1,7 +1,6 @@
 import nodemailer from "nodemailer";
 import bcrypt from "bcryptjs";
 import jwt, { type JwtPayload } from "jsonwebtoken";
-import { checkValidator } from "@/shared";
 import UsersModel from "@/models/user";
 
 import type { Request, Response } from "express";
@@ -17,8 +16,6 @@ const transporter = nodemailer.createTransport({
 // 重設密碼
 export const sendResetPasswordEmail = async (req: Request, res: Response) => {
   const email = req.body.email;
-
-  checkValidator({ email });
 
   const newPassword = Date.now();
 
@@ -86,4 +83,30 @@ export const emailVerification = async (req: Request, res: Response) => {
   );
 
   res.send({ status: "success", message: "email 驗證成功!", result, userInfo });
+};
+
+export const resendEmailVerification = async (req: Request, _res: Response) => {
+  return;
+  const result = await UsersModel.findById(req.params.userId);
+
+  if (!result) {
+    throw new Error("無此使用者 id");
+  }
+
+  const token = jwt.sign({ email: result?.email }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_DAY,
+  });
+
+  const href = `${req.headers.host}/api/email/emailVerification/${token}`;
+
+  await transporter.sendMail({
+    from: "test@gmail.com",
+    to: result?.email,
+    subject: "驗證 Email",
+    html: `<p>
+            您要求進行電子郵件驗證，請使用此
+            <a href="${href}">鏈接</a>
+            驗證您的電子郵件地址
+          </p>`,
+  });
 };
