@@ -174,3 +174,14 @@ export const updateMemberRole = async (req: Request, res: Response) => {
 
   return res.status(200).send({ message: "Member role updated successfully" });
 };
+
+// 取得會員所有組織
+export const getMemberOrganization = async (req: Request, res: Response) => {
+  const userId = req.body.userId;
+
+  const organizations = await OrganizationModel.find({
+    member: { $elemMatch: { userId: userId } },
+  });
+
+  return res.status(200).send({ status: "success", result: organizations });
+};
