@@ -1,5 +1,6 @@
 import { createRouter } from "@/shared";
 import healthCheck from "./healthCheck";
+import swagger from "./swagger";
 import user from "./api/user";
 import card from "./api/card";
 import email from "./api/email";
@@ -12,6 +13,8 @@ const routes = createRouter();
 export default routes;
 
 routes.use(healthCheck);
+
+routes.use(swagger);
 
 routes.use("/api/user", user);
 

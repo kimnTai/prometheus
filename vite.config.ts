@@ -13,6 +13,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": join(__dirname, "src"),
+      "@develop": join(__dirname, "develop"),
     },
   },
   server: {
@@ -21,4 +22,7 @@ export default defineConfig({
     open: "/",
   },
   publicDir: false,
+  build: {
+    minify: true,
+  },
 });
