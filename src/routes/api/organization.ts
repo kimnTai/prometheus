@@ -30,3 +30,5 @@ router.put(
   "/:orgID/members/:memberID",
   OrganizationController.updateMemberRole
 );
+
+router.get("/", OrganizationController.getMemberOrganization);
