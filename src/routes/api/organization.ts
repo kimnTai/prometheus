@@ -2,9 +2,9 @@ import { createRouter } from "@/shared";
 import * as OrganizationController from "@/controllers/organization";
 import { checkOrgExist, isAuth } from "@/middlewares";
 
-export const path = "/organizations";
+const router = createRouter();
 
-export const router = createRouter();
+export default router;
 
 router.post("/", isAuth, OrganizationController.addOrganization);
 

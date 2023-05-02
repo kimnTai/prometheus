@@ -1,19 +1,29 @@
 import { createRouter } from "@/shared";
 import healthCheck from "./healthCheck";
+import swagger from "./swagger";
+import user from "./api/user";
+import card from "./api/card";
+import email from "./api/email";
+import list from "./api/list";
+import organization from "./api/organization";
+import upload from "./api/upload";
 
-import type express from "express";
+const routes = createRouter();
 
-export const routes = createRouter();
+export default routes;
 
 routes.use(healthCheck);
 
-routes.use(
-  "/api",
-  Object.values<{
-    path: string;
-    router: express.Router;
-  }>(import.meta.glob(`./api/*.ts`, { eager: true })).reduce(
-    (previousValue, { path, router }) => previousValue.use(path, router),
-    createRouter()
-  )
-);
+routes.use(swagger);
+
+routes.use("/api/user", user);
+
+routes.use("/api/cards", card);
+
+routes.use("/api/email", email);
+
+routes.use("/api/lists", list);
+
+routes.use("/api/organizations", organization);
+
+routes.use("/api/upload", upload);

@@ -2,8 +2,8 @@ import { createRouter } from "@/shared";
 import { getImageUrl } from "@/controllers/upload";
 import { handleUploadFile } from "@/middlewares";
 
-export const path = "/upload";
+const router = createRouter();
 
-export const router = createRouter();
+export default router;
 
 router.post("/", handleUploadFile, getImageUrl);

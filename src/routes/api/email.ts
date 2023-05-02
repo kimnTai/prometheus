@@ -2,9 +2,9 @@ import { createRouter } from "@/shared";
 import * as EmailController from "@/controllers/email";
 import { checkRequestBodyValidator } from "@/middlewares";
 
-export const path = "/email";
+const router = createRouter();
 
-export const router = createRouter();
+export default router;
 
 router.use(checkRequestBodyValidator);
 
