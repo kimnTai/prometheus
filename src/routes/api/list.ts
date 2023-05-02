@@ -1,9 +1,9 @@
 import { createRouter } from "@/shared";
 import * as ListController from "@/controllers/list";
 
-export const path = "/lists";
+const router = createRouter();
 
-export const router = createRouter();
+export default router;
 
 router.post("/", ListController.createList);
 

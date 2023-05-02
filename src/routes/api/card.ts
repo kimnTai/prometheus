@@ -6,9 +6,9 @@ import * as ChecklistController from "@/controllers/card/checklist";
 import * as CheckItemController from "@/controllers/card/checkItem";
 import * as CommentController from "@/controllers/card/comment";
 
-export const path = "/cards";
+const router = createRouter();
 
-export const router = createRouter();
+export default router;
 
 router.post("/", CardController.createCard);
 

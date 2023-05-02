@@ -5,13 +5,13 @@ import { isAuth, checkRequestBodyValidator } from "@/middlewares";
 
 import passport from "passport";
 
-export const path = "/user";
+const router = createRouter();
 
-export const router = createRouter();
+export default router;
 
 router.use(checkRequestBodyValidator);
 
-router.get("/", isAuth,UserController.getAllUsers);
+router.get("/", isAuth, UserController.getAllUsers);
 
 router.post("/register", UserController.register);
 
