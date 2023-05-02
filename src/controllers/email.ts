@@ -6,7 +6,8 @@ import UsersModel from "@/models/user";
 import type { Request, Response } from "express";
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.mailgun.org",
+  port: 587,
   auth: {
     user: process.env.MAILER_ACCOUNT,
     pass: process.env.MAILER_PASSWORD,
@@ -26,7 +27,7 @@ export const sendResetPasswordEmail = async (req: Request, res: Response) => {
 
   if (userInfo) {
     await transporter.sendMail({
-      from: "test@gmail.com",
+      from: "Lunar@Lunar.mailgun.org",
       to: email,
       subject: "Register Success",
       html: `
@@ -45,7 +46,6 @@ export const sendResetPasswordEmail = async (req: Request, res: Response) => {
 
 // 發送註冊成功 email
 export const sendEmailVerification = async (req: Request, _res: Response) => {
-  return;
   const email = req.body.email;
 
   const token = jwt.sign({ email }, process.env.JWT_SECRET, {
@@ -55,7 +55,7 @@ export const sendEmailVerification = async (req: Request, _res: Response) => {
   const href = `${req.headers.host}/api/email/emailVerification/${token}`;
 
   await transporter.sendMail({
-    from: "test@gmail.com",
+    from: "Lunar@Lunar.mailgun.org",
     to: email,
     subject: "註冊成功",
     html: `<p>
@@ -85,8 +85,7 @@ export const emailVerification = async (req: Request, res: Response) => {
   res.send({ status: "success", message: "email 驗證成功!", result, userInfo });
 };
 
-export const resendEmailVerification = async (req: Request, _res: Response) => {
-  return;
+export const resendEmailVerification = async (req: Request, res: Response) => {
   const result = await UsersModel.findById(req.params.userId);
 
   if (!result) {
@@ -100,7 +99,7 @@ export const resendEmailVerification = async (req: Request, _res: Response) => {
   const href = `${req.headers.host}/api/email/emailVerification/${token}`;
 
   await transporter.sendMail({
-    from: "test@gmail.com",
+    from: "Lunar@Lunar.mailgun.org",
     to: result?.email,
     subject: "驗證 Email",
     html: `<p>
@@ -109,4 +108,6 @@ export const resendEmailVerification = async (req: Request, _res: Response) => {
             驗證您的電子郵件地址
           </p>`,
   });
+
+  res.send({ status: "success", message: "已發送驗證 Email" });
 };
