@@ -12,6 +12,10 @@ router.use(
   (req: Request, res: Response, next: NextFunction) => {
     swaggerSpec.host = `${req.headers.host}`;
 
+    if (import.meta.env.PROD) {
+      swaggerSpec.schemes = ["https"];
+    }
+
     swaggerUi.setup(swaggerSpec)(req, res, next);
   }
 );
