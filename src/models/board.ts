@@ -70,4 +70,21 @@ boardSchema.virtual("label", {
   localField: "_id",
 });
 
+boardSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "member.userId",
+    select: "name avatar",
+  });
+  this.populate({
+    path: "list",
+    select: "name position",
+  });
+  this.populate({
+    path: "label",
+    select: "name color",
+  });
+
+  next();
+});
+
 export default model("board", boardSchema);

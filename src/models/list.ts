@@ -42,4 +42,11 @@ listSchema.virtual("card", {
   localField: "_id",
 });
 
+listSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "card",
+  });
+  next();
+});
+
 export default model("list", listSchema);

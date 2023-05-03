@@ -2,30 +2,37 @@ import { createRouter } from "@/shared";
 import * as BoardController from "@/controllers/board";
 import { isAuth } from "@/middlewares";
 
-export const router = createRouter();
+const router = createRouter();
 
 export default router;
 
-router.get("/", isAuth, BoardController.getBoards);
+router.get("/", BoardController.getAllBoards);
 
 router.post("/", isAuth, BoardController.createBoard);
 
-router.put("/:boardID", isAuth, BoardController.updateBoard);
+router.put("/:boardId", BoardController.updateBoard);
 
-router.delete("/:boardID", isAuth, BoardController.deleteBoard);
+router.delete("/:boardId", isAuth, BoardController.deleteBoard);
 
-router.post("/:boardID/invite", isAuth, BoardController.inviteToBoard);
+router.get("/:boardId/invitationSecret", BoardController.getInvitationUrl);
 
-router.get("/:boardID/labels", isAuth, BoardController.getLabels);
+router.post("/:boardId/invitationSecret", BoardController.createInvitationUrl);
 
-router.post("/:boardID/labels", isAuth, BoardController.createLabel);
+router.delete(
+  "/:boardId/invitationSecret",
+  BoardController.deleteInvitationUrl
+);
 
-router.put("/:boardID/labels/:labelID", isAuth, BoardController.updateLabel);
+router.get("/:boardId/labels", BoardController.getBoardLabels);
 
-router.delete("/:boardID/labels/:labelID", isAuth, BoardController.deleteLabel);
+router.post("/:boardId/labels", BoardController.createLabel);
 
-router.get("/:boardID/members", isAuth, BoardController.getBoardUsers);
+router.put("/:boardId/labels/:labelId", BoardController.updateLabel);
 
-router.post("/:boardID/quit", isAuth, BoardController.quitBoard);
+router.delete("/:boardId/labels/:labelId", BoardController.deleteLabel);
 
-router.get("/:boardID/archive", isAuth, BoardController.getArchives);
+router.post("/:boardId/addBoardMember", isAuth, BoardController.addBoardMember);
+
+router.delete("/:boardId/quit", isAuth, BoardController.quitBoard);
+
+router.get("/:boardId/archive", BoardController.getArchives);
