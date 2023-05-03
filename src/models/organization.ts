@@ -16,6 +16,7 @@ const organizationSchema = new Schema<IOrganization>(
     },
     permission: {
       type: String,
+      enum: ["private", "public"],
       default: "private",
     },
     member: [
@@ -27,6 +28,7 @@ const organizationSchema = new Schema<IOrganization>(
         },
         role: {
           type: String,
+          enum: ["editor", "viewer", "manager"],
           default: "viewer",
         },
       },

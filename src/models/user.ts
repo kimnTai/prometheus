@@ -11,7 +11,7 @@ export interface IUser extends Document {
 
 export interface IMember extends Document {
   userId: IUser["id"];
-  role: "editor " | "viewer" | "manager";
+  role: "editor" | "viewer" | "manager";
 }
 
 const userSchema = new Schema<IUser>(

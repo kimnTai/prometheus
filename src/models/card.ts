@@ -41,6 +41,7 @@ const cardSchema = new Schema<ICard>(
         },
         role: {
           type: String,
+          enum: ["editor", "viewer", "manager"],
           default: "viewer",
         },
       },

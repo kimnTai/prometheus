@@ -18,6 +18,7 @@ const boardSchema = new Schema<IBoard>(
     },
     permission: {
       type: String,
+      enum: ["private", "public"],
       default: "private",
     },
     closed: {
@@ -33,6 +34,7 @@ const boardSchema = new Schema<IBoard>(
         },
         role: {
           type: String,
+          enum: ["editor", "viewer", "manager"],
           default: "viewer",
         },
       },
