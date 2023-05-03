@@ -30,13 +30,6 @@ export const createBoard = async (req: Request, res: Response) => {
   // 把當前使用者設為管理員
   const member = [{ userId: loginUserId, role: "manager" }];
 
-  if (await BoardsModel.findOne({
-    name: title,
-    organizationId: orgID
-  })) {
-    throw new Error("看板名稱重複");
-  }
-
   await BoardsModel.create({
     name: title,
     organizationId: orgID,
@@ -80,7 +73,7 @@ export const deleteBoard = async (req: Request, res: Response) => {
 
 // F5. 邀請看板成員 (POST)
 export const inviteToBoard = async (req: Request, res: Response) => {
-  const { type, userIDs } = req.body;
+  const { type } = req.body;
 
   switch (type) {
     case 'email':
@@ -185,9 +178,12 @@ export const quitBoard = async (req: Request, res: Response) => {
 
 // F12. 取得已封存列表/卡片 (GET)
 export const getArchives = async (req: Request, res: Response) => {
-  const rchiveLists = await BoardsModel.findById(req.params.boardID).populate({
+  const archiveLists = await BoardsModel.findById(req.params.boardID).populate({
     path: "list",
-    match: { boardId: req.params.boardID, colsed: true}
+    match: { boardId: req.params.boardID, closed: true},
+    populate: [{
+      path: "card"
+    }]
   });
-  res.status(200).json({ status: "success", lists: rchiveLists});
+  res.status(200).json({ status: "success", lists: archiveLists});
 };
