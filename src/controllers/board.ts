@@ -16,13 +16,13 @@ const getUserIdFromToken = (req: Request) => {
   return userId;
 };
 
-// F1. 取得全部看板 (GET)
+// 取得全部看板
 export const getBoards = async (_req: Request, res: Response) => {
   const boards = await BoardsModel.find();
   res.status(200).json({ status: "success", result: boards });
 };
 
-// F2. 建立看板 (POST)
+// 建立看板
 export const createBoard = async (req: Request, res: Response) => {
   const { title, orgID, permission } = req.body;
   const loginUserId = getUserIdFromToken(req);
@@ -40,7 +40,7 @@ export const createBoard = async (req: Request, res: Response) => {
   res.send({ status: "success", message: "看板建立成功" });
 };
 
-// F3. 修改看板 (PUT)
+// 修改看板
 export const updateBoard = async (req: Request, res: Response) => {
   const { title, newOrgID, permission, closed = false } = req.body;
 
@@ -57,7 +57,7 @@ export const updateBoard = async (req: Request, res: Response) => {
   res.send({ status: "success", message: "看板修改成功" });
 };
 
-// F4. 刪除看板 (DELETE)
+// 刪除看板
 export const deleteBoard = async (req: Request, res: Response) => {
   const board = await BoardsModel.findById(req.params.boardID);
   const loginUserId = getUserIdFromToken(req);
@@ -76,7 +76,7 @@ export const deleteBoard = async (req: Request, res: Response) => {
   res.send({ status: "success", message: "看板刪除成功" });
 };
 
-// F5. 邀請看板成員 (POST)
+// 邀請看板成員
 export const inviteToBoard = async (req: Request, res: Response) => {
   const { type } = req.body;
 
@@ -108,13 +108,13 @@ export const inviteToBoard = async (req: Request, res: Response) => {
   }
 };
 
-// F6. 取得標籤 (GET)
+// 取得標籤
 export const getLabels = async (req: Request, res: Response) => {
   const labels = await LabelsModel.find({ boardId: req.params.boardID });
   res.status(200).json({ status: "success", result: labels });
 };
 
-// F7. 新增標籤 (POST)
+// 新增標籤
 export const createLabel = async (req: Request, res: Response) => {
   const { title, color } = req.body;
 
@@ -136,7 +136,7 @@ export const createLabel = async (req: Request, res: Response) => {
   res.send({ status: "success", message: "標籤建立成功" });
 };
 
-// F8. 修改標籤 (PUT)
+// 修改標籤
 export const updateLabel = async (req: Request, res: Response) => {
   const { title, color } = req.body;
 
@@ -151,7 +151,7 @@ export const updateLabel = async (req: Request, res: Response) => {
   res.send({ status: "success", message: "標籤修改成功" });
 };
 
-// F9. 刪除標籤 (DELETE)
+// 刪除標籤
 export const deleteLabel = async (req: Request, res: Response) => {
   if (!(await LabelsModel.findByIdAndDelete(req.params.labelID))) {
     throw new Error("此標籤不存在");
@@ -160,7 +160,7 @@ export const deleteLabel = async (req: Request, res: Response) => {
   res.send({ status: "success", message: "標籤刪除成功" });
 };
 
-// F10. 取得看板內所有成員 (GET)
+// 取得看板內所有成員
 export const getBoardUsers = async (req: Request, res: Response) => {
   const boardUsers = await BoardsModel.findById(req.params.boardID).populate(
     "member.userId"
@@ -169,7 +169,7 @@ export const getBoardUsers = async (req: Request, res: Response) => {
   res.status(200).json({ status: "success", result: boardUsers?.member });
 };
 
-// F11. 移除/退出看板 (POST)
+// 移除/退出看板
 export const quitBoard = async (req: Request, res: Response) => {
   const { userId } = req.body;
   const board = await BoardsModel.findById(req.params.boardID);
@@ -194,7 +194,7 @@ export const quitBoard = async (req: Request, res: Response) => {
   res.send({ status: "success", message: "退出看板成功" });
 };
 
-// F12. 取得已封存列表/卡片 (GET)
+// 取得已封存列表/卡片
 export const getArchives = async (req: Request, res: Response) => {
   const archiveLists = await BoardsModel.findById(req.params.boardID).populate({
     path: "list",

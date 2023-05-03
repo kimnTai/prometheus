@@ -7,6 +7,7 @@ import email from "./api/email";
 import list from "./api/list";
 import organization from "./api/organization";
 import upload from "./api/upload";
+import board from "./api/board";
 
 const routes = createRouter();
 
@@ -18,12 +19,14 @@ routes.use(swagger);
 
 routes.use("/api/user", user);
 
-routes.use("/api/cards", card);
+routes.use("/api/organizations", organization);
 
-routes.use("/api/email", email);
+routes.use("/api/boards", board);
 
 routes.use("/api/lists", list);
 
-routes.use("/api/organizations", organization);
+routes.use("/api/cards", card);
+
+routes.use("/api/email", email);
 
 routes.use("/api/upload", upload);
