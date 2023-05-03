@@ -5,6 +5,7 @@ interface IBoard extends Document {
   name: string;
   permission: "private" | "public";
   closed: boolean;
+  inviteLink: string;
 
   member: IMember[];
   organizationId: Schema.Types.ObjectId;
@@ -24,6 +25,10 @@ const boardSchema = new Schema<IBoard>(
     closed: {
       type: Boolean,
       default: false,
+    },
+    inviteLink: {
+      type: String,
+      default: "",
     },
     member: [
       {
