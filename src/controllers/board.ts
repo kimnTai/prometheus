@@ -24,6 +24,16 @@ export const createBoard = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
+export const getBoardById = async (req: Request, res: Response) => {
+  const result = await BoardsModel.findById(req.params.boardId);
+
+  if (!result) {
+    throw new Error("無此看板 id");
+  }
+
+  res.send({ status: "success", result });
+};
+
 // 修改看板
 export const updateBoard = async (req: Request, res: Response) => {
   const { name, organizationId, permission, closed } = req.body;
