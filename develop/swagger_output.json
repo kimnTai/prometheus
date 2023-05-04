@@ -211,9 +211,6 @@
                 },
                 "permission": {
                   "example": "any"
-                },
-                "board": {
-                  "example": "any"
                 }
               }
             }
@@ -224,7 +221,9 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/api/organizations/user": {
       "get": {
         "description": "",
         "parameters": [],
@@ -235,12 +234,12 @@
         }
       }
     },
-    "/api/organizations/{orgID}": {
+    "/api/organizations/{organizationId}": {
       "get": {
         "description": "",
         "parameters": [
           {
-            "name": "orgID",
+            "name": "organizationId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -249,9 +248,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
           }
         }
       },
@@ -259,7 +255,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "orgID",
+            "name": "organizationId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -290,7 +286,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "orgID",
+            "name": "organizationId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -299,33 +295,16 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
           }
         }
       }
     },
-    "/api/organizations/{orgID}/invitationSecret": {
+    "/api/organizations/{organizationId}/invitationSecret": {
       "post": {
         "description": "",
         "parameters": [
           {
-            "name": "orgID",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/api/organizations/{orgID}/members": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "orgID",
+            "name": "organizationId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -338,18 +317,18 @@
         }
       }
     },
-    "/api/organizations/{orgID}/members/{memberID}": {
+    "/api/organizations/{organizationId}/members/{memberId}": {
       "delete": {
         "description": "",
         "parameters": [
           {
-            "name": "orgID",
+            "name": "organizationId",
             "in": "path",
             "required": true,
             "type": "string"
           },
           {
-            "name": "memberID",
+            "name": "memberId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -365,13 +344,13 @@
         "description": "",
         "parameters": [
           {
-            "name": "orgID",
+            "name": "organizationId",
             "in": "path",
             "required": true,
             "type": "string"
           },
           {
-            "name": "memberID",
+            "name": "memberId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -382,9 +361,6 @@
             "schema": {
               "type": "object",
               "properties": {
-                "memberId": {
-                  "example": "any"
-                },
                 "role": {
                   "example": "any"
                 }
@@ -395,12 +371,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
           }
         }
       }
@@ -445,6 +415,22 @@
       }
     },
     "/api/boards/{boardId}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "boardId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "put": {
         "description": "",
         "parameters": [

@@ -48,4 +48,11 @@ organizationSchema.virtual("board", {
   localField: "_id",
 });
 
+organizationSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "board",
+  });
+  next();
+});
+
 export default model("organization", organizationSchema);
