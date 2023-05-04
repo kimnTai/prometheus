@@ -1,34 +1,38 @@
 import { createRouter } from "@/shared";
 import * as OrganizationController from "@/controllers/organization";
-import { checkOrgExist, isAuth } from "@/middlewares";
+import { isAuth } from "@/middlewares";
 
 const router = createRouter();
 
 export default router;
 
-router.post("/", isAuth, OrganizationController.addOrganization);
+router.post("/", isAuth, OrganizationController.createOrganization);
 
-router.get("/:orgID", checkOrgExist, OrganizationController.getOneOrganization);
+router.get("/user", isAuth, OrganizationController.getMemberOrganization);
 
-router.put("/:orgID", OrganizationController.updateOrganization);
+router.get("/:organizationId", OrganizationController.getOneOrganizationById);
 
-router.delete("/:orgID", OrganizationController.deleteOrganization);
+router.put("/:organizationId", OrganizationController.updateOrganization);
+
+router.delete(
+  "/:organizationId",
+  isAuth,
+  OrganizationController.deleteOrganization
+);
 
 router.post(
-  "/:orgID/invitationSecret",
+  "/:organizationId/invitationSecret",
   OrganizationController.inviteOrganizationMember
 );
 
-router.get("/:orgID/members", OrganizationController.getAllMembers);
-
 router.delete(
-  "/:orgID/members/:memberID",
-  OrganizationController.quitOrganization
+  "/:organizationId/members/:memberId",
+  isAuth,
+  OrganizationController.deleteOrganizationMember
 );
 
 router.put(
-  "/:orgID/members/:memberID",
+  "/:organizationId/members/:memberId",
+  isAuth,
   OrganizationController.updateMemberRole
 );
-
-router.get("/", OrganizationController.getMemberOrganization);
