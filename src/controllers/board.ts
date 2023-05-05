@@ -3,9 +3,10 @@ import LabelsModel from "@/models/label";
 
 import type { Request, Response } from "express";
 
-// 取得全部看板
-export const getAllBoards = async (_req: Request, res: Response) => {
-  const result = await BoardsModel.find();
+// 取得選定 OrganizationId 全部看板
+export const getAllBoards = async (req: Request, res: Response) => {
+  const { organizationId } = req.query;
+  const result = await BoardsModel.find({ organizationId });
   res.send({ status: "success", result });
 };
 
