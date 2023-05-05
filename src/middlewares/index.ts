@@ -1,7 +1,6 @@
-import jwt, { type JwtPayload } from "jsonwebtoken";
 import multer from "multer";
 import UsersModel from "@/models/user";
-import { checkValidator } from "@/shared";
+import { checkValidator, verifyToken } from "@/shared";
 
 import type { Request, Response, NextFunction } from "express";
 
@@ -12,7 +11,7 @@ export const isAuth = async (
   next: NextFunction
 ) => {
   const token = `${req.headers.authorization?.replace("Bearer ", "")}`;
-  const result = jwt.verify(token, process.env.JWT_SECRET) as JwtPayload;
+  const result = verifyToken(token);
 
   const user = await UsersModel.findById(result.userId);
   if (!user) {

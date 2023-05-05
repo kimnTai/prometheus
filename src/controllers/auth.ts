@@ -1,10 +1,9 @@
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import passport from "passport";
-import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import { OAuth2Client, TokenPayload } from "google-auth-library";
+import { OAuth2Client, type TokenPayload } from "google-auth-library";
+import { generateToken } from "@/shared";
 import UsersModel from "@/models/user";
-import { getJwtToken } from "./user";
 
 import type { Request, Response } from "express";
 
@@ -53,9 +52,7 @@ export const loginCallback = async (req: Request, res: Response) => {
     throw new Error("loginCallback 錯誤!");
   }
 
-  const token = jwt.sign({ userId: req.user._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_DAY,
-  });
+  const token = generateToken({ userId: req.user._id });
 
   const params = new URLSearchParams({
     token,
@@ -83,7 +80,7 @@ export const verifyToken = async (req: Request, res: Response) => {
     } = ticket.getPayload() as TokenPayload;
 
     const user = await UsersModel.findOne({ googleId });
-    console.log(user);
+
     if (!user) {
       const password = await bcrypt.hash(googleId, 12);
       const result = await UsersModel.create({
@@ -95,13 +92,13 @@ export const verifyToken = async (req: Request, res: Response) => {
       });
       return res.send({
         status: "success",
-        token: getJwtToken(result._id),
+        token: generateToken({ userId: result._id }),
         result,
       });
     }
     return res.send({
       status: "success",
-      token: getJwtToken(user._id),
+      token: generateToken({ userId: user._id }),
       result: user,
     });
   } catch (error) {

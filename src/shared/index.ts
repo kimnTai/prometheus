@@ -1,5 +1,6 @@
 import { Router } from "express";
 import validator from "validator";
+import jsonWebToken, { type JwtPayload } from "jsonwebtoken";
 
 import type { Request, Response, NextFunction, RequestHandler } from "express";
 
@@ -81,5 +82,19 @@ export const checkValidator = (param: {
       default:
         break;
     }
+  }
+};
+
+export const generateToken = (payload: { userId?: string; email?: string }) => {
+  return jsonWebToken.sign(payload, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_DAY,
+  });
+};
+
+export const verifyToken = (token: string) => {
+  try {
+    return jsonWebToken.verify(token, process.env.JWT_SECRET) as JwtPayload;
+  } catch (error) {
+    throw new Error("驗證失敗!");
   }
 };

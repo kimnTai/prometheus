@@ -1,15 +1,9 @@
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 import UsersModel from "@/models/user";
 import { sendEmailVerification } from "./email";
 
 import type { Request, Response } from "express";
-
-export const getJwtToken = (userId: string) =>
-  jwt.sign({ userId }, process.env.JWT_SECRET, {
-    algorithm: "HS256",
-    expiresIn: process.env.JWT_EXPIRES_DAY,
-  });
+import { generateToken, verifyToken } from "@/shared";
 
 // 取得所有使用者
 export const getAllUsers = async (_req: Request, res: Response) => {
@@ -36,7 +30,11 @@ export const register = async (req: Request, res: Response) => {
   });
   const { password: _, ...result } = _result.toObject();
 
-  res.send({ status: "success", token: getJwtToken(result._id), result });
+  res.send({
+    status: "success",
+    token: generateToken({ userId: result._id }),
+    result,
+  });
 };
 
 // 登入
@@ -53,7 +51,11 @@ export const login = async (req: Request, res: Response) => {
   }
 
   const { password: _, ...result } = user.toObject();
-  res.send({ status: "success", token: getJwtToken(user._id), result });
+  res.send({
+    status: "success",
+    token: generateToken({ userId: user._id }),
+    result,
+  });
 };
 
 // 重設密碼
@@ -73,18 +75,9 @@ export const verifyAuth = async (req: Request, res: Response) => {
     res.send({ status: "error", message: "未登入" });
   } else {
     const token = authorization.replace("Bearer ", "");
-    jwt.verify(
-      token,
-      process.env.JWT_SECRET,
-      async (err: any, decoded: any) => {
-        if (err) {
-          res.send({ status: "error", message: "驗證失敗" });
-        } else {
-          // decoded {  userId,  iat,  exp }
-          const user = await UsersModel.findOne({ _id: decoded.userId });
-          res.send({ status: "success", token, result: user });
-        }
-      }
-    );
+
+    const decoded = verifyToken(token);
+    const user = await UsersModel.findOne({ _id: decoded.userId });
+    res.send({ status: "success", token, result: user });
   }
 };

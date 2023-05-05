@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 import bcrypt from "bcryptjs";
-import jwt, { type JwtPayload } from "jsonwebtoken";
+import { generateToken, verifyToken } from "@/shared";
 import UsersModel from "@/models/user";
 
 import type { Request, Response } from "express";
@@ -48,9 +48,7 @@ export const sendResetPasswordEmail = async (req: Request, res: Response) => {
 export const sendEmailVerification = async (req: Request, _res: Response) => {
   const email = req.body.email;
 
-  const token = jwt.sign({ email }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_DAY,
-  });
+  const token = generateToken({ email });
 
   const href = `${req.headers.host}/api/email/emailVerification/${token}`;
 
@@ -68,10 +66,7 @@ export const sendEmailVerification = async (req: Request, _res: Response) => {
 
 // email 驗證連結
 export const emailVerification = async (req: Request, res: Response) => {
-  const result = jwt.verify(
-    req.params.token,
-    process.env.JWT_SECRET
-  ) as JwtPayload;
+  const result = verifyToken(req.params.token);
 
   if (!result.email) {
     throw new Error("token 錯誤");
@@ -92,9 +87,7 @@ export const resendEmailVerification = async (req: Request, res: Response) => {
     throw new Error("無此使用者 id");
   }
 
-  const token = jwt.sign({ email: result?.email }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_DAY,
-  });
+  const token = generateToken({ email: result?.email });
 
   const href = `${req.headers.host}/api/email/emailVerification/${token}`;
 
