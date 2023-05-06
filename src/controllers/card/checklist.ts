@@ -3,6 +3,10 @@ import ChecklistModel from "@/models/checklist";
 import type { Request, Response } from "express";
 
 export const createChecklist = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Cards - 卡片待辦"]
+   * #swagger.description  = "創建待辦清單"
+   */
   const { name, position } = req.body;
 
   const result = await ChecklistModel.create({
@@ -15,6 +19,10 @@ export const createChecklist = async (req: Request, res: Response) => {
 };
 
 export const updateChecklist = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Cards - 卡片待辦"]
+   * #swagger.description  = "修改待辦清單"
+   */
   const { name, position } = req.body;
 
   const result = await ChecklistModel.findByIdAndUpdate(
@@ -30,6 +38,10 @@ export const updateChecklist = async (req: Request, res: Response) => {
 };
 
 export const deleteChecklist = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Cards - 卡片待辦"]
+   * #swagger.description  = "刪除待辦清單"
+   */
   const result = await ChecklistModel.findByIdAndDelete(req.params.checklistId);
 
   res.send({ status: "success", result });

@@ -48,6 +48,9 @@ import type { Request, Response } from "express";
 })();
 
 export const loginCallback = async (req: Request, res: Response) => {
+  /**
+   * #swagger.ignore
+   */
   if (!req.user) {
     throw new Error("loginCallback 錯誤!");
   }
@@ -62,8 +65,11 @@ export const loginCallback = async (req: Request, res: Response) => {
   res.redirect(`${process.env.CLIENT_LOGIN_CALLBACK_URL}?${params}`);
 };
 
-// Verify the JWT token sent from the client
 export const verifyToken = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Auth"]
+   * #swagger.description  = "Verify the JWT token sent from the client"
+   */
   const CLIENT_ID_GOOGLE = process.env.GOOGLE_CLIENT_ID;
   const client = new OAuth2Client(CLIENT_ID_GOOGLE);
   const ticket = await client.verifyIdToken({

@@ -10,6 +10,9 @@ export const isAuth = async (
   _res: Response,
   next: NextFunction
 ) => {
+  /**
+   * #swagger.security = [{ "bearerAuth": [] }]
+   */
   const token = `${req.headers.authorization?.replace("Bearer ", "")}`;
   const result = verifyToken(token);
 
