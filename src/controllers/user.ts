@@ -1,14 +1,14 @@
 import bcrypt from "bcryptjs";
+import { generateToken } from "@/shared";
 import UsersModel from "@/models/user";
 import { sendEmailVerification } from "./email";
 
 import type { Request, Response } from "express";
-import { generateToken, verifyToken } from "@/shared";
 
 // 取得所有使用者
 export const getAllUsers = async (_req: Request, res: Response) => {
   const users = await UsersModel.find();
-  res.status(200).json({ status: "success", result: users });
+  res.send({ status: "success", result: users });
 };
 
 // 帳號註冊
@@ -68,16 +68,8 @@ export const resetPassword = async (req: Request, res: Response) => {
 };
 
 //驗證登入
-export const verifyAuth = async (req: Request, res: Response) => {
-  //get token
-  const authorization = req.headers.authorization;
-  if (!authorization) {
-    res.send({ status: "error", message: "未登入" });
-  } else {
-    const token = authorization.replace("Bearer ", "");
-
-    const decoded = verifyToken(token);
-    const user = await UsersModel.findOne({ _id: decoded.userId });
-    res.send({ status: "success", token, result: user });
-  }
+export const verifyJwt = async (req: Request, res: Response) => {
+  const result = await UsersModel.findOne({ _id: req.user?._id });
+  const token = `${req.headers.authorization?.replace("Bearer ", "")}`;
+  res.send({ status: "success", token, result });
 };
