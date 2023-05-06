@@ -10,6 +10,8 @@ const router = createRouter();
 
 export default router;
 
+router.use(isAuth);
+
 router.post("/", CardController.createCard);
 
 router.get("/:cardId", CardController.getCardById);
@@ -71,7 +73,7 @@ router.delete(
   CheckItemController.deleteCheckItem
 );
 
-router.post("/:cardId/comments", isAuth, CommentController.createComment);
+router.post("/:cardId/comments", CommentController.createComment);
 
 router.put("/:cardId/comments/:commentId", CommentController.updateComment);
 

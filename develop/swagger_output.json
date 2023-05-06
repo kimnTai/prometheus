@@ -10,6 +10,14 @@
   "schemes": [
     "http"
   ],
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "authorization",
+      "description": "請加上 API Token"
+    }
+  },
   "paths": {
     "/": {
       "get": {
@@ -48,18 +56,29 @@
     },
     "/api/user/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Users - 使用者"
+        ],
+        "description": "取得所有使用者",
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/user/register": {
       "post": {
-        "description": "",
+        "tags": [
+          "Users - 使用者"
+        ],
+        "description": "帳號註冊",
         "parameters": [
           {
             "name": "body",
@@ -89,7 +108,10 @@
     },
     "/api/user/login": {
       "post": {
-        "description": "",
+        "tags": [
+          "Users - 使用者"
+        ],
+        "description": "登入",
         "parameters": [
           {
             "name": "body",
@@ -116,7 +138,10 @@
     },
     "/api/user/resetPassword": {
       "post": {
-        "description": "",
+        "tags": [
+          "Users - 使用者"
+        ],
+        "description": "重設密碼",
         "parameters": [
           {
             "name": "body",
@@ -138,11 +163,19 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/user/google": {
       "get": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -157,7 +190,10 @@
     },
     "/api/user/google/verifyToken": {
       "post": {
-        "description": "",
+        "tags": [
+          "Auth"
+        ],
+        "description": "Verify the JWT token sent from the client",
         "parameters": [
           {
             "name": "body",
@@ -181,24 +217,29 @@
     },
     "/api/user/verifyJwt": {
       "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
+        "tags": [
+          "Users - 使用者"
         ],
+        "description": "驗證登入",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/organizations/": {
       "post": {
-        "description": "",
+        "tags": [
+          "Organization - 組織"
+        ],
+        "description": "新增組織",
         "parameters": [
           {
             "name": "body",
@@ -220,23 +261,39 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/organizations/user": {
       "get": {
-        "description": "",
+        "tags": [
+          "Organization - 組織"
+        ],
+        "description": "取得會員所有組織",
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/organizations/{organizationId}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Organization - 組織"
+        ],
+        "description": "取得單一組織",
         "parameters": [
           {
             "name": "organizationId",
@@ -249,10 +306,18 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Organization - 組織"
+        ],
+        "description": "修改組織",
         "parameters": [
           {
             "name": "organizationId",
@@ -280,10 +345,18 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Organization - 組織"
+        ],
+        "description": "刪除組織",
         "parameters": [
           {
             "name": "organizationId",
@@ -296,12 +369,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/organizations/{organizationId}/invitationSecret": {
       "post": {
-        "description": "",
+        "tags": [
+          "Organization - 組織"
+        ],
+        "description": "邀請組織成員/產生邀請連結",
         "parameters": [
           {
             "name": "organizationId",
@@ -314,12 +395,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/organizations/{organizationId}/members/{memberId}": {
       "delete": {
-        "description": "",
+        "tags": [
+          "Organization - 組織"
+        ],
+        "description": "退出組織成員",
         "parameters": [
           {
             "name": "organizationId",
@@ -338,10 +427,18 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Organization - 組織"
+        ],
+        "description": "修改成員權限",
         "parameters": [
           {
             "name": "organizationId",
@@ -372,21 +469,43 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/boards/": {
       "get": {
-        "description": "",
-        "parameters": [],
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "取得所有看板",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "建立看板",
         "parameters": [
           {
             "name": "body",
@@ -411,12 +530,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/boards/{boardId}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "取得單一看板",
         "parameters": [
           {
             "name": "boardId",
@@ -429,10 +556,18 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "修改看板",
         "parameters": [
           {
             "name": "boardId",
@@ -466,10 +601,18 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "刪除看板",
         "parameters": [
           {
             "name": "boardId",
@@ -482,12 +625,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/boards/{boardId}/invitationSecret": {
       "get": {
-        "description": "",
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "取得看板邀請連結",
         "parameters": [
           {
             "name": "boardId",
@@ -500,10 +651,18 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "建立看板邀請連結",
         "parameters": [
           {
             "name": "boardId",
@@ -516,10 +675,18 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "移除看板邀請連結",
         "parameters": [
           {
             "name": "boardId",
@@ -532,12 +699,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/boards/{boardId}/labels": {
       "get": {
-        "description": "",
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "取得標籤",
         "parameters": [
           {
             "name": "boardId",
@@ -550,10 +725,18 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "新增標籤",
         "parameters": [
           {
             "name": "boardId",
@@ -581,12 +764,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/boards/{boardId}/labels/{labelId}": {
       "put": {
-        "description": "",
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "修改標籤",
         "parameters": [
           {
             "name": "boardId",
@@ -620,10 +811,18 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "刪除標籤",
         "parameters": [
           {
             "name": "boardId",
@@ -642,12 +841,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/boards/{boardId}/addBoardMember": {
       "post": {
-        "description": "",
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "新增看板成員",
         "parameters": [
           {
             "name": "boardId",
@@ -660,12 +867,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/boards/{boardId}/quit": {
       "delete": {
-        "description": "",
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "移除/退出看板",
         "parameters": [
           {
             "name": "boardId",
@@ -678,12 +893,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/boards/{boardId}/archive": {
       "get": {
-        "description": "",
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "取得已封存列表/卡片",
         "parameters": [
           {
             "name": "boardId",
@@ -696,11 +919,19 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/lists/": {
       "post": {
+        "tags": [
+          "List - 列表"
+        ],
         "description": "",
         "parameters": [
           {
@@ -726,11 +957,19 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/lists/{listId}": {
       "put": {
+        "tags": [
+          "List - 列表"
+        ],
         "description": "",
         "parameters": [
           {
@@ -765,9 +1004,17 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "delete": {
+        "tags": [
+          "List - 列表"
+        ],
         "description": "",
         "parameters": [
           {
@@ -781,11 +1028,19 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/lists/{listId}/archiveAllCards": {
       "put": {
+        "tags": [
+          "List - 列表"
+        ],
         "description": "",
         "parameters": [
           {
@@ -799,12 +1054,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/cards/": {
       "post": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片"
+        ],
+        "description": "創建卡片",
         "parameters": [
           {
             "name": "body",
@@ -829,12 +1092,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/cards/{cardId}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片"
+        ],
+        "description": "取得單一卡片",
         "parameters": [
           {
             "name": "cardId",
@@ -847,10 +1118,18 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片"
+        ],
+        "description": "修改卡片",
         "parameters": [
           {
             "name": "cardId",
@@ -884,10 +1163,18 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片"
+        ],
+        "description": "刪除卡片",
         "parameters": [
           {
             "name": "cardId",
@@ -900,12 +1187,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/cards/{cardId}/closed": {
       "post": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片"
+        ],
+        "description": "封存卡片",
         "parameters": [
           {
             "name": "cardId",
@@ -918,12 +1213,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/cards/{cardId}/members": {
       "post": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片"
+        ],
+        "description": "新增卡片成員",
         "parameters": [
           {
             "name": "cardId",
@@ -948,12 +1251,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/cards/{cardId}/members/{memberId}": {
       "delete": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片"
+        ],
+        "description": "移除卡片成員",
         "parameters": [
           {
             "name": "cardId",
@@ -972,12 +1283,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/cards/{cardId}/labels/{labelId}": {
       "post": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片"
+        ],
+        "description": "增加卡片標籤",
         "parameters": [
           {
             "name": "cardId",
@@ -996,10 +1315,18 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片"
+        ],
+        "description": "移除卡片標籤",
         "parameters": [
           {
             "name": "cardId",
@@ -1018,12 +1345,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/cards/{cardId}/attachments": {
       "post": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片附件"
+        ],
+        "description": "創建卡片附件",
         "parameters": [
           {
             "name": "cardId",
@@ -1051,12 +1386,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/cards/{cardId}/attachments/{attId}": {
       "put": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片附件"
+        ],
+        "description": "修改卡片附件",
         "parameters": [
           {
             "name": "cardId",
@@ -1090,10 +1433,18 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片附件"
+        ],
+        "description": "刪除卡片附件",
         "parameters": [
           {
             "name": "cardId",
@@ -1112,12 +1463,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/cards/{cardId}/checklist": {
       "post": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片待辦"
+        ],
+        "description": "創建待辦清單",
         "parameters": [
           {
             "name": "cardId",
@@ -1145,12 +1504,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/cards/{cardId}/checklist/{checklistId}": {
       "put": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片待辦"
+        ],
+        "description": "修改待辦清單",
         "parameters": [
           {
             "name": "cardId",
@@ -1184,10 +1551,18 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片待辦"
+        ],
+        "description": "刪除待辦清單",
         "parameters": [
           {
             "name": "cardId",
@@ -1206,12 +1581,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/cards/{cardId}/checklist/{checklistId}/checkItem": {
       "post": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片待辦"
+        ],
+        "description": "創建待辦事項",
         "parameters": [
           {
             "name": "cardId",
@@ -1245,12 +1628,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/cards/{cardId}/checklist/{checklistId}/checkItem/{checkItemId}": {
       "put": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片待辦"
+        ],
+        "description": "修改待辦事項",
         "parameters": [
           {
             "name": "cardId",
@@ -1293,10 +1684,18 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片待辦"
+        ],
+        "description": "刪除待辦事項",
         "parameters": [
           {
             "name": "cardId",
@@ -1321,12 +1720,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/cards/{cardId}/comments": {
       "post": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片留言"
+        ],
+        "description": "創建卡片留言",
         "parameters": [
           {
             "name": "cardId",
@@ -1351,12 +1758,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/cards/{cardId}/comments/{commentId}": {
       "put": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片留言"
+        ],
+        "description": "修改卡片留言",
         "parameters": [
           {
             "name": "cardId",
@@ -1387,10 +1802,18 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Cards - 卡片留言"
+        ],
+        "description": "刪除卡片留言",
         "parameters": [
           {
             "name": "cardId",
@@ -1409,12 +1832,20 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/email/resetPassword": {
       "post": {
-        "description": "",
+        "tags": [
+          "Email"
+        ],
+        "description": "重設密碼",
         "parameters": [
           {
             "name": "body",
@@ -1438,7 +1869,10 @@
     },
     "/api/email/emailVerification/{token}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Email"
+        ],
+        "description": "email 驗證連結",
         "parameters": [
           {
             "name": "token",
@@ -1456,7 +1890,10 @@
     },
     "/api/email/resendEmailVerification/{userId}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Email"
+        ],
+        "description": "重新發送 email 驗證",
         "parameters": [
           {
             "name": "userId",
@@ -1474,13 +1911,31 @@
     },
     "/api/upload/": {
       "post": {
-        "description": "",
-        "parameters": [],
+        "tags": [
+          "Other - 其它"
+        ],
+        "description": "上傳圖片",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "image",
+            "in": "formData",
+            "type": "file",
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     }
   }
