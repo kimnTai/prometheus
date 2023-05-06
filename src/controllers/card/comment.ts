@@ -3,6 +3,10 @@ import CommentModel from "@/models/comment";
 import type { Request, Response } from "express";
 
 export const createComment = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Cards - 卡片留言"]
+   * #swagger.description  = "創建卡片留言"
+   */
   const result = await CommentModel.create({
     comment: req.body.comment,
     cardId: req.params.cardId,
@@ -13,6 +17,10 @@ export const createComment = async (req: Request, res: Response) => {
 };
 
 export const updateComment = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Cards - 卡片留言"]
+   * #swagger.description  = "修改卡片留言"
+   */
   const result = await CommentModel.findByIdAndUpdate(
     req.params.commentId,
     {
@@ -25,6 +33,10 @@ export const updateComment = async (req: Request, res: Response) => {
 };
 
 export const deleteComment = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Cards - 卡片留言"]
+   * #swagger.description  = "刪除卡片留言"
+   */
   const result = await CommentModel.findByIdAndDelete(req.params.commentId);
 
   res.send({ status: "success", result });

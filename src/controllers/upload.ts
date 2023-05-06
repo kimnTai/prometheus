@@ -1,6 +1,16 @@
 import type { Request, Response } from "express";
 
 export const getImageUrl = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Other - 其它"]
+   * #swagger.description  = "上傳圖片"
+   * #swagger.consumes = ['multipart/form-data']  
+     #swagger.parameters["image"] = {
+        in: 'formData',
+        type: 'file',
+        required: 'true',
+      } 
+   */
   if (!req.file) {
     throw new Error("未上傳檔案");
   }

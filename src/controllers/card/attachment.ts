@@ -3,6 +3,10 @@ import AttachmentModel from "@/models/attachment";
 import type { Request, Response } from "express";
 
 export const createAttachment = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Cards - 卡片附件"]
+   * #swagger.description  = "創建卡片附件"
+   */
   const { dirname, filename } = req.body;
 
   const result = await AttachmentModel.create({
@@ -16,6 +20,10 @@ export const createAttachment = async (req: Request, res: Response) => {
 };
 
 export const updateAttachment = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Cards - 卡片附件"]
+   * #swagger.description  = "修改卡片附件"
+   */
   const { dirname, filename } = req.body;
 
   const result = await AttachmentModel.findByIdAndUpdate(
@@ -31,6 +39,10 @@ export const updateAttachment = async (req: Request, res: Response) => {
 };
 
 export const deleteAttachment = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Cards - 卡片附件"]
+   * #swagger.description  = "刪除卡片附件"
+   */
   const result = await AttachmentModel.findByIdAndDelete(req.params.attId);
 
   res.send({ status: "success", result });
