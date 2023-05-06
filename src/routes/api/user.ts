@@ -32,4 +32,4 @@ router.get(
 
 router.post("/google/verifyToken", verifyToken);
 
-router.get("/verifyJwt", UserController.verifyAuth);
+router.get("/verifyJwt", isAuth, UserController.verifyJwt);
