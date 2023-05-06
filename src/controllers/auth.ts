@@ -55,11 +55,12 @@ export const loginCallback = async (req: Request, res: Response) => {
     throw new Error("loginCallback 錯誤!");
   }
 
-  const token = generateToken({ userId: req.user._id });
-
   const params = new URLSearchParams({
-    token,
+    token: generateToken({ userId: req.user._id }),
+    _id: req.user._id,
     name: req.user.name,
+    email: req.user.email,
+    avatar: req.user.avatar,
   });
 
   res.redirect(`${process.env.CLIENT_LOGIN_CALLBACK_URL}?${params}`);
