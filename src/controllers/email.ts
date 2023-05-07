@@ -29,19 +29,19 @@ export const sendResetPasswordEmail = async (req: Request, res: Response) => {
   );
 
   if (userInfo) {
-    await transporter.sendMail({
-      from: "Lunar@Lunar.mailgun.org",
-      to: email,
-      subject: "Register Success",
-      html: `
-            Congratulations on your successful registration.
-            <br>
-            <h1>password: ${newPassword}</h1>
-            <br>
-            <br>
-            Website: <a href="https://www.google.com/">PROMETHEUS</a>
-          `,
-    });
+    // await transporter.sendMail({
+    //   from: "Lunar@Lunar.mailgun.org",
+    //   to: email,
+    //   subject: "Register Success",
+    //   html: `
+    //         Congratulations on your successful registration.
+    //         <br>
+    //         <h1>password: ${newPassword}</h1>
+    //         <br>
+    //         <br>
+    //         Website: <a href="https://www.google.com/">PROMETHEUS</a>
+    //       `,
+    // });
   }
 
   res.send({ status: "success", message: "密碼重設成功" });
@@ -49,6 +49,7 @@ export const sendResetPasswordEmail = async (req: Request, res: Response) => {
 
 // 發送註冊成功 email
 export const sendEmailVerification = async (req: Request, _res: Response) => {
+  return;
   const email = req.body.email;
 
   const token = generateToken({ email });
@@ -97,20 +98,20 @@ export const resendEmailVerification = async (req: Request, res: Response) => {
     throw new Error("無此使用者 id");
   }
 
-  const token = generateToken({ email: result?.email });
+  // const token = generateToken({ email: result?.email });
 
-  const href = `${req.headers.host}/api/email/emailVerification/${token}`;
+  // const href = `${req.headers.host}/api/email/emailVerification/${token}`;
 
-  await transporter.sendMail({
-    from: "Lunar@Lunar.mailgun.org",
-    to: result?.email,
-    subject: "驗證 Email",
-    html: `<p>
-            您要求進行電子郵件驗證，請使用此
-            <a href="${href}">鏈接</a>
-            驗證您的電子郵件地址
-          </p>`,
-  });
+  // await transporter.sendMail({
+  //   from: "Lunar@Lunar.mailgun.org",
+  //   to: result?.email,
+  //   subject: "驗證 Email",
+  //   html: `<p>
+  //           您要求進行電子郵件驗證，請使用此
+  //           <a href="${href}">鏈接</a>
+  //           驗證您的電子郵件地址
+  //         </p>`,
+  // });
 
   res.send({ status: "success", message: "已發送驗證 Email" });
 };
