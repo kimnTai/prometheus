@@ -6,15 +6,17 @@ const router = createRouter();
 
 export default router;
 
+router.use(isAuth);
+
 router.get("/", BoardController.getAllBoards);
 
-router.post("/", isAuth, BoardController.createBoard);
+router.post("/", BoardController.createBoard);
 
 router.get("/:boardId", BoardController.getBoardById);
 
 router.put("/:boardId", BoardController.updateBoard);
 
-router.delete("/:boardId", isAuth, BoardController.deleteBoard);
+router.delete("/:boardId", BoardController.deleteBoard);
 
 router.get("/:boardId/invitationSecret", BoardController.getInvitationUrl);
 
@@ -33,8 +35,8 @@ router.put("/:boardId/labels/:labelId", BoardController.updateLabel);
 
 router.delete("/:boardId/labels/:labelId", BoardController.deleteLabel);
 
-router.post("/:boardId/addBoardMember", isAuth, BoardController.addBoardMember);
+router.post("/:boardId/addBoardMember", BoardController.addBoardMember);
 
-router.delete("/:boardId/quit", isAuth, BoardController.quitBoard);
+router.delete("/:boardId/quit", BoardController.quitBoard);
 
 router.get("/:boardId/archive", BoardController.getArchives);

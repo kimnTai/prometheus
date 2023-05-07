@@ -1,7 +1,7 @@
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import passport from "passport";
 import bcrypt from "bcryptjs";
-import { OAuth2Client, type TokenPayload } from "google-auth-library";
+import { OAuth2Client } from "google-auth-library";
 import { generateToken } from "@/shared";
 import UsersModel from "@/models/user";
 
@@ -48,6 +48,9 @@ import type { Request, Response } from "express";
 })();
 
 export const loginCallback = async (req: Request, res: Response) => {
+  /**
+   * #swagger.ignore
+   */
   if (!req.user) {
     throw new Error("loginCallback 錯誤!");
   }
@@ -62,46 +65,43 @@ export const loginCallback = async (req: Request, res: Response) => {
   res.redirect(`${process.env.CLIENT_LOGIN_CALLBACK_URL}?${params}`);
 };
 
-// Verify the JWT token sent from the client
 export const verifyToken = async (req: Request, res: Response) => {
-  const token = req.body.token;
+  /**
+   * #swagger.tags = ["Auth"]
+   * #swagger.description  = "Verify the JWT token sent from the client"
+   */
   const CLIENT_ID_GOOGLE = process.env.GOOGLE_CLIENT_ID;
-  try {
-    const client = new OAuth2Client(CLIENT_ID_GOOGLE);
-    const ticket = await client.verifyIdToken({
-      idToken: token,
-      audience: CLIENT_ID_GOOGLE,
-    });
-    const {
-      sub: googleId,
-      email,
-      name,
-      picture,
-    } = ticket.getPayload() as TokenPayload;
+  const client = new OAuth2Client(CLIENT_ID_GOOGLE);
+  const ticket = await client.verifyIdToken({
+    idToken: req.body.token,
+    audience: CLIENT_ID_GOOGLE,
+  });
+  const tokenPayload = ticket.getPayload();
 
-    const user = await UsersModel.findOne({ googleId });
-
-    if (!user) {
-      const password = await bcrypt.hash(googleId, 12);
-      const result = await UsersModel.create({
-        name,
-        email,
-        password,
-        googleId,
-        avatar: picture,
-      });
-      return res.send({
-        status: "success",
-        token: generateToken({ userId: result._id }),
-        result,
-      });
-    }
-    return res.send({
-      status: "success",
-      token: generateToken({ userId: user._id }),
-      result: user,
-    });
-  } catch (error) {
-    throw new Error(JSON.stringify(error));
+  if (!tokenPayload) {
+    throw new Error("tokenPayload 錯誤");
   }
+
+  const result = await UsersModel.findOneAndUpdate(
+    { googleId: tokenPayload.sub },
+    {
+      $setOnInsert: {
+        name: tokenPayload.name,
+        email: tokenPayload.email,
+        password: await bcrypt.hash(tokenPayload.sub, 12),
+        googleId: tokenPayload.sub,
+        avatar: tokenPayload.picture,
+      },
+    },
+    {
+      upsert: true,
+      new: true,
+    }
+  );
+
+  res.send({
+    status: "success",
+    token: generateToken({ userId: result._id }),
+    result,
+  });
 };

@@ -19,10 +19,12 @@ router.post("/login", UserController.login);
 
 router.post("/resetPassword", isAuth, UserController.resetPassword);
 
-router.get(
-  "/google",
-  passport.authenticate("google", { scope: ["email", "profile"] })
-);
+router.get("/google", (...arg) => {
+  /**
+   * #swagger.tags = ["Auth"]
+   */
+  passport.authenticate("google", { scope: ["email", "profile"] })(...arg);
+});
 
 router.get(
   "/google/callback",
@@ -32,4 +34,4 @@ router.get(
 
 router.post("/google/verifyToken", verifyToken);
 
-router.get("/verifyJwt", UserController.verifyAuth);
+router.get("/verifyJwt", isAuth, UserController.verifyJwt);

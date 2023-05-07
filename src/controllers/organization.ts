@@ -1,8 +1,11 @@
 import type { Request, Response } from "express";
 import OrganizationModel from "@/models/organization";
 
-// 取得會員所有組織
 export const getMemberOrganization = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Organization - 組織"]
+   * #swagger.description  = "取得會員所有組織"
+   */
   const result = await OrganizationModel.find({
     member: {
       $elemMatch: {
@@ -14,8 +17,11 @@ export const getMemberOrganization = async (req: Request, res: Response) => {
   return res.send({ status: "success", result });
 };
 
-// 新增組織
 export const createOrganization = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Organization - 組織"]
+   * #swagger.description  = "新增組織"
+   */
   const { name, permission } = req.body;
 
   const result = await OrganizationModel.create({
@@ -36,15 +42,21 @@ export const createOrganization = async (req: Request, res: Response) => {
   });
 };
 
-// 取得單一組織
 export const getOneOrganizationById = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Organization - 組織"]
+   * #swagger.description  = "取得單一組織"
+   */
   const result = await OrganizationModel.findById(req.params.organizationId);
 
   res.send({ status: "success", result });
 };
 
-// 修改組織
 export const updateOrganization = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Organization - 組織"]
+   * #swagger.description  = "修改組織"
+   */
   const { name, permission } = req.body;
 
   const result = await OrganizationModel.findByIdAndUpdate(
@@ -56,8 +68,11 @@ export const updateOrganization = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-// 刪除組織
 export const deleteOrganization = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Organization - 組織"]
+   * #swagger.description  = "刪除組織"
+   */
   const result = await OrganizationModel.findOneAndDelete({
     $and: [
       { _id: req.params.organizationId },
@@ -73,16 +88,22 @@ export const deleteOrganization = async (req: Request, res: Response) => {
   res.send({ status: "success", message: "刪除組織成功" });
 };
 
-// 邀請組織成員/產生邀請連結
 export const inviteOrganizationMember = async (
   _req: Request,
   res: Response
 ) => {
+  /**
+   * #swagger.tags = ["Organization - 組織"]
+   * #swagger.description  = "邀請組織成員/產生邀請連結"
+   */
   res.send({ status: "success", result: "https://www.google.com/" });
 };
 
-// 退出組織成員
 export const deleteOrganizationMember = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Organization - 組織"]
+   * #swagger.description  = "退出組織成員"
+   */
   const result = await OrganizationModel.findOneAndUpdate(
     {
       _id: req.params.boardId,
@@ -100,8 +121,11 @@ export const deleteOrganizationMember = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-// 修改成員權限
 export const updateMemberRole = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Organization - 組織"]
+   * #swagger.description  = "修改成員權限"
+   */
   const organization = await OrganizationModel.findOne({
     $and: [
       { _id: req.params.organizationId },

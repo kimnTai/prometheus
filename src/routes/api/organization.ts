@@ -6,9 +6,11 @@ const router = createRouter();
 
 export default router;
 
-router.post("/", isAuth, OrganizationController.createOrganization);
+router.use(isAuth);
 
-router.get("/user", isAuth, OrganizationController.getMemberOrganization);
+router.post("/", OrganizationController.createOrganization);
+
+router.get("/user", OrganizationController.getMemberOrganization);
 
 router.get("/:organizationId", OrganizationController.getOneOrganizationById);
 
@@ -16,7 +18,6 @@ router.put("/:organizationId", OrganizationController.updateOrganization);
 
 router.delete(
   "/:organizationId",
-  isAuth,
   OrganizationController.deleteOrganization
 );
 
@@ -27,12 +28,10 @@ router.post(
 
 router.delete(
   "/:organizationId/members/:memberId",
-  isAuth,
   OrganizationController.deleteOrganizationMember
 );
 
 router.put(
   "/:organizationId/members/:memberId",
-  isAuth,
   OrganizationController.updateMemberRole
 );
