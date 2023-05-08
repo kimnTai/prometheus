@@ -8,6 +8,7 @@ import list from "./api/list";
 import organization from "./api/organization";
 import upload from "./api/upload";
 import board from "./api/board";
+import search from "./api/search";
 
 const routes = createRouter();
 
@@ -30,3 +31,5 @@ routes.use("/api/cards", card);
 routes.use("/api/email", email);
 
 routes.use("/api/upload", upload);
+
+routes.use("/api/search", search);

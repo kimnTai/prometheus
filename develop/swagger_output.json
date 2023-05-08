@@ -54,25 +54,6 @@
         }
       }
     },
-    "/api/user/": {
-      "get": {
-        "tags": [
-          "Users - 使用者"
-        ],
-        "description": "取得所有使用者",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      }
-    },
     "/api/user/register": {
       "post": {
         "tags": [
@@ -176,13 +157,6 @@
         "tags": [
           "Auth"
         ],
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/api/user/google/callback": {
-      "get": {
         "description": "",
         "parameters": [],
         "responses": {}
@@ -1936,6 +1910,31 @@
             "bearerAuth": []
           }
         ]
+      }
+    },
+    "/api/search/members": {
+      "get": {
+        "tags": [
+          "Other - 其它"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     }
   }
