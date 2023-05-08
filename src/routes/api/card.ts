@@ -32,7 +32,6 @@ router.delete("/:cardId/labels/:labelId", CardController.deleteCardLabel);
 
 router.post(
   "/:cardId/attachments",
-  isAuth,
   AttachmentController.createAttachment
 );
 

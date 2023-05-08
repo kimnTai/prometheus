@@ -9,6 +9,7 @@ export const getAllUsers = async (_req: Request, res: Response) => {
   /**
    * #swagger.tags = ["Users - 使用者"]
    * #swagger.description  = "取得所有使用者"
+   * #swagger.ignore = true
    */
   const users = await UsersModel.find();
   res.send({ status: "success", result: users });
@@ -84,7 +85,6 @@ export const verifyJwt = async (req: Request, res: Response) => {
    * #swagger.tags = ["Users - 使用者"]
    * #swagger.description  = "驗證登入"
    */
-  const result = await UsersModel.findOne({ _id: req.user?._id });
   const token = `${req.headers.authorization?.replace("Bearer ", "")}`;
-  res.send({ status: "success", token, result });
+  res.send({ status: "success", token, result: req.user });
 };

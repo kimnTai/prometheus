@@ -49,7 +49,7 @@ import type { Request, Response } from "express";
 
 export const loginCallback = async (req: Request, res: Response) => {
   /**
-   * #swagger.ignore
+   * #swagger.ignore = true
    */
   if (!req.user) {
     throw new Error("loginCallback 錯誤!");
