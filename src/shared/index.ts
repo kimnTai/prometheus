@@ -16,16 +16,18 @@ function catchAsyncRouter(router: Router) {
       key === "get" ||
       key === "post" ||
       key === "delete" ||
-      key === "patch"
+      key === "patch" ||
+      key === "put" ||
+      key === "use"
     ) {
       const method = router[key];
 
-      router[key] = (path: any, ...callbacks: any) => {
-        return method.call<any, any, any>(
-          router,
-          path,
-          ...callbacks.map((cb: any) => catchAsync(cb))
-        );
+      router[key] = (...args: any[]) => {
+        const newArgs = args.map((value) => {
+          return typeof value === "function" ? catchAsync(value) : value;
+        });
+
+        return method.call<any, any, any>(router, ...newArgs);
       };
     }
   }
@@ -37,9 +39,7 @@ export function createRouter() {
   return catchAsyncRouter(Router());
 }
 
-export const checkValidator = (param: {
-  [key: string]: string | undefined;
-}) => {
+export function checkValidator(param: { [key: string]: string | undefined }) {
   for (const [key, value] of Object.entries(param)) {
     if (!value) {
       throw new Error("欄位未填寫正確");
@@ -83,18 +83,18 @@ export const checkValidator = (param: {
         break;
     }
   }
-};
+}
 
-export const generateToken = (payload: { userId?: string; email?: string }) => {
+export function generateToken(payload: { userId?: string; email?: string }) {
   return jsonWebToken.sign(payload, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_DAY,
   });
-};
+}
 
-export const verifyToken = (token: string) => {
+export function verifyToken(token: string) {
   try {
     return jsonWebToken.verify(token, process.env.JWT_SECRET) as JwtPayload;
   } catch (error) {
     throw new Error("驗證失敗!");
   }
-};
+}

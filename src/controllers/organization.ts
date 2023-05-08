@@ -1,5 +1,6 @@
-import type { Request, Response } from "express";
 import OrganizationModel from "@/models/organization";
+
+import type { Request, Response } from "express";
 
 export const getMemberOrganization = async (req: Request, res: Response) => {
   /**
