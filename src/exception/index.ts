@@ -21,17 +21,23 @@ export const sendNotFoundError = (_req: Request, res: Response) => {
 };
 
 export const catchCustomError = (
-  err: Error,
+  err: Error | string,
   _req: Request,
   res: Response,
   _next: NextFunction
 ) => {
+  if (typeof err === "string") {
+    return res.status(400).send({ status: "error", message: err });
+  }
+
   if ("type" in err && err.type === "entity.parse.failed") {
     return res.status(400).send({ status: "error", message: err.type });
   }
+
   // 開發模式回傳錯誤訊息
   if (!import.meta.env.PROD) {
-    return res.status(400).json({ status: "error", message: err.message, err });
+    return res.status(400).send({ status: "error", message: err.message, err });
   }
-  return res.status(400).json({ status: "error", message: err.message });
+
+  return res.status(400).send({ status: "error", message: err.message });
 };
