@@ -7,6 +7,7 @@ export interface IUser extends Document {
   password: string;
   avatar: string;
   googleId?: string;
+  githubId?: string;
 }
 
 export interface IMember extends Document {
@@ -38,6 +39,7 @@ const userSchema = new Schema<IUser>(
       default: "https://i.imgur.com/tPmUQVM.png",
     },
     googleId: String,
+    githubId: String,
   },
   {
     versionKey: false,

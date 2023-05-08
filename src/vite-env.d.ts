@@ -23,6 +23,10 @@ declare global {
       GOOGLE_CLIENT_SECRET: string;
       GOOGLE_LOGIN_CALL_BACK_URL: string;
 
+      GITHUB_CLIENT_ID: string;
+      GITHUB_CLIENT_SECRET: string;
+      GITHUB_LOGIN_CALL_BACK_URL: string;
+
       MAILER_ACCOUNT: string;
       MAILER_PASSWORD: string;
 

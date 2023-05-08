@@ -1,6 +1,6 @@
 import { createRouter } from "@/shared";
 import * as UserController from "@/controllers/user";
-import { loginCallback, verifyToken } from "@/controllers/auth";
+import { authorizationCallback, verifyToken } from "@/controllers/auth";
 import { isAuth, checkRequestBodyValidator } from "@/middlewares";
 
 import passport from "passport";
@@ -29,7 +29,20 @@ router.get("/google", (...arg) => {
 router.get(
   "/google/callback",
   passport.authenticate("google", { session: false }),
-  loginCallback
+  authorizationCallback
+);
+
+router.get("/github", (...arg) => {
+  /**
+   * #swagger.tags = ["Auth"]
+   */
+  passport.authenticate("github", { scope: ["email", "profile"] })(...arg);
+});
+
+router.get(
+  "/github/callback",
+  passport.authenticate("github", { session: false }),
+  authorizationCallback
 );
 
 router.post("/google/verifyToken", verifyToken);

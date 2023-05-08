@@ -162,6 +162,16 @@
         "responses": {}
       }
     },
+    "/api/user/github": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/api/user/google/verifyToken": {
       "post": {
         "tags": [
