@@ -1,12 +1,14 @@
 import { createRouter } from "@/shared";
 import * as OrganizationController from "@/controllers/organization";
-import { isAuth } from "@/middlewares";
+import { checkRequestBodyValidator, isAuth } from "@/middlewares";
 
 const router = createRouter();
 
 export default router;
 
 router.use(isAuth);
+
+router.use(checkRequestBodyValidator);
 
 router.post("/", OrganizationController.createOrganization);
 
@@ -16,10 +18,7 @@ router.get("/:organizationId", OrganizationController.getOneOrganizationById);
 
 router.put("/:organizationId", OrganizationController.updateOrganization);
 
-router.delete(
-  "/:organizationId",
-  OrganizationController.deleteOrganization
-);
+router.delete("/:organizationId", OrganizationController.deleteOrganization);
 
 router.post(
   "/:organizationId/invitationSecret",

@@ -2,12 +2,12 @@ import { createRouter } from "@/shared";
 import healthCheck from "./healthCheck";
 import swagger from "./swagger";
 import user from "./api/user";
-import card from "./api/card";
+import organizations from "./api/organizations";
+import boards from "./api/boards";
+import lists from "./api/lists";
+import cards from "./api/cards";
 import email from "./api/email";
-import list from "./api/list";
-import organization from "./api/organization";
 import upload from "./api/upload";
-import board from "./api/board";
 import search from "./api/search";
 
 const routes = createRouter();
@@ -20,13 +20,13 @@ routes.use(swagger);
 
 routes.use("/api/user", user);
 
-routes.use("/api/organizations", organization);
+routes.use("/api/organizations", organizations);
 
-routes.use("/api/boards", board);
+routes.use("/api/boards", boards);
 
-routes.use("/api/lists", list);
+routes.use("/api/lists", lists);
 
-routes.use("/api/cards", card);
+routes.use("/api/cards", cards);
 
 routes.use("/api/email", email);
 

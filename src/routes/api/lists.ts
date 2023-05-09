@@ -1,12 +1,14 @@
 import { createRouter } from "@/shared";
 import * as ListController from "@/controllers/list";
-import { isAuth } from "@/middlewares";
+import { checkRequestBodyValidator, isAuth } from "@/middlewares";
 
 const router = createRouter();
 
 export default router;
 
 router.use(isAuth);
+
+router.use(checkRequestBodyValidator);
 
 router.post("/", ListController.createList);
 

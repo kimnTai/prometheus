@@ -1,5 +1,5 @@
 import { createRouter } from "@/shared";
-import { isAuth } from "@/middlewares";
+import { checkRequestBodyValidator, isAuth } from "@/middlewares";
 import * as CardController from "@/controllers/card";
 import * as AttachmentController from "@/controllers/card/attachment";
 import * as ChecklistController from "@/controllers/card/checklist";
@@ -11,6 +11,8 @@ const router = createRouter();
 export default router;
 
 router.use(isAuth);
+
+router.use(checkRequestBodyValidator);
 
 router.post("/", CardController.createCard);
 
@@ -30,10 +32,7 @@ router.post("/:cardId/labels/:labelId", CardController.addCardLabel);
 
 router.delete("/:cardId/labels/:labelId", CardController.deleteCardLabel);
 
-router.post(
-  "/:cardId/attachments",
-  AttachmentController.createAttachment
-);
+router.post("/:cardId/attachments", AttachmentController.createAttachment);
 
 router.put(
   "/:cardId/attachments/:attId",

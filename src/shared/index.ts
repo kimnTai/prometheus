@@ -50,11 +50,6 @@ export function checkValidator(param: { [key: string]: string | undefined }) {
           throw new Error("name 至少 2 個字元以上");
         }
         break;
-      case "sex":
-        if (!["male", "female"].includes(value)) {
-          throw new Error("sex 只能是 male 或 female");
-        }
-        break;
       case "email":
         if (!validator.isEmail(value)) {
           throw new Error("Email 格式不正確");
@@ -77,6 +72,21 @@ export function checkValidator(param: { [key: string]: string | undefined }) {
       case "image":
         if (!validator.isURL(value, { protocols: ["https"] })) {
           throw new Error("image 格式不正確");
+        }
+        break;
+      case "avatar":
+        if (!validator.isURL(value, { protocols: ["https"] })) {
+          throw new Error("avatar 格式不正確");
+        }
+        break;
+      case "position":
+        if (!validator.isNumeric(value) && +value > 0) {
+          throw new Error("position 必須為數字，並且大於 0");
+        }
+        break;
+      case "color":
+        if (validator.isHexColor(value)) {
+          throw new Error("color 必須為十六進制顏色");
         }
         break;
       default:
