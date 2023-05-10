@@ -41,7 +41,7 @@ export function createRouter() {
 
 export function checkValidator(param: { [key: string]: string | undefined }) {
   for (const [key, value] of Object.entries(param)) {
-    if (!value) {
+    if (value === undefined || value === null) {
       throw new Error("欄位未填寫正確");
     }
     switch (key) {
