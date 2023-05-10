@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:ws": "vite build && node ./dist/index.js",
     "build": "tsc && vite build",
     "start": "node ./dist/index.js",
     "swagger-autogen": "node ./develop/swagger.js"

@@ -1,4 +1,3 @@
-import path from "path";
 import { createRouter } from "@/shared";
 
 const router = createRouter();
@@ -16,10 +15,6 @@ router.get("/", (req, res) => {
 
 router.get("/favicon.ico", (_, res) => {
   res.end();
-});
-
-router.get("/chat", (_, res) => {
-  res.sendFile(path.resolve() + "/public/index.html");
 });
 
 export default router;

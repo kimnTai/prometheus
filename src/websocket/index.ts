@@ -1,30 +1,66 @@
-import { WebSocketServer, type ServerOptions } from "ws";
+import {
+  WebSocketServer,
+  type WebSocket,
+  type ServerOptions,
+  type RawData,
+} from "ws";
+
+import type { Request, Response, NextFunction } from "express";
 
 export default class Socket extends WebSocketServer {
-  array: string[] = [];
+  static instance?: Socket;
+  static isRegister = false;
 
-  constructor(options: ServerOptions, callback: () => void) {
-    super(
+  static plugin(_req: Request, res: Response, next: NextFunction) {
+    if (!Socket.isRegister) {
+      Socket.isRegister = true;
+
+      const fn = res.app.emit;
+      res.app.emit = (eventName: string | symbol, ...args: any[]) => {
+        Socket.instance?.clients.forEach((value) => {
+          value.emit(eventName, ...args);
+        });
+        return fn.call(res.app, eventName, ...args);
+      };
+    }
+
+    return next();
+  }
+
+  static build(options: ServerOptions) {
+    Socket.instance = new Socket(
       {
         ...options,
-        port: options.server ? undefined : Number(process.env.PORT) + 1,
+        path: "/socket",
       },
-      callback
+      () => console.log("[socket 開始]")
     );
 
-    this.on("connection", (socket) => {
-      socket.send(JSON.stringify(this.array));
+    Socket.instance.on("connection", (client) => {
+      client.send(JSON.stringify({ type: "success" }));
 
-      socket.on("message", (data) => {
-        const message = data.toString();
-        this.array.push(message);
-        if (this.array.length > 20) {
-          this.array.shift();
-        }
-        this.clients.forEach((value) => {
-          value.send(message);
-        });
+      client.on("message", (data) => {
+        this.handleClientMessage(client, data);
       });
     });
+  }
+
+  static handleClientMessage(client: WebSocket, data: RawData) {
+    const message = JSON.parse(data.toString()) as {
+      type: string;
+      boardIdArray?: string[];
+    };
+
+    if (message.type === "subscribe") {
+      client.send(JSON.stringify({ type: "success" }));
+
+      message.boardIdArray?.forEach((id) => {
+        client.on(`boardId:${id}`, (param) => {
+          const update = { type: "update", result: param };
+
+          client.send(JSON.stringify(update));
+        });
+      });
+    }
   }
 }
