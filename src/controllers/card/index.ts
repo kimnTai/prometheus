@@ -1,4 +1,5 @@
 import CardModel from "@/models/card";
+import ListModel from "@/models/list";
 
 import type { Request, Response } from "express";
 
@@ -15,6 +16,9 @@ export const createCard = async (req: Request, res: Response) => {
     listId,
   });
 
+  const boardId = (await ListModel.findById(listId))?.boardId;
+
+  res.app.emit(`boardId:${boardId}`, result);
   res.send({ status: "success", result });
 };
 
@@ -40,6 +44,9 @@ export const updateCard = async (req: Request, res: Response) => {
     throw new Error("無此卡片 id");
   }
 
+  const boardId = (await ListModel.findById(listId))?.boardId;
+
+  res.app.emit(`boardId:${boardId}`, result);
   res.send({ status: "success", result });
 };
 
@@ -70,6 +77,9 @@ export const deleteCard = async (req: Request, res: Response) => {
     throw new Error("無此卡片 id");
   }
 
+  const boardId = (await ListModel.findById(result.listId))?.boardId;
+
+  res.app.emit(`boardId:${boardId}`, result);
   res.send({ status: "success", result: result });
 };
 
@@ -128,6 +138,9 @@ export const addCardLabel = async (req: Request, res: Response) => {
     { new: true }
   );
 
+  const boardId = (await ListModel.findById(result?.listId))?.boardId;
+
+  res.app.emit(`boardId:${boardId}`, result);
   res.send({ status: "success", result });
 };
 
@@ -146,6 +159,9 @@ export const deleteCardLabel = async (req: Request, res: Response) => {
     { new: true }
   );
 
+  const boardId = (await ListModel.findById(result?.listId))?.boardId;
+
+  res.app.emit(`boardId:${boardId}`, result);
   res.send({ status: "success", result });
 };
 
@@ -166,5 +182,8 @@ export const closeCard = async (req: Request, res: Response) => {
     throw new Error("無此卡片 id");
   }
 
+  const boardId = (await ListModel.findById(result?.listId))?.boardId;
+
+  res.app.emit(`boardId:${boardId}`, result);
   res.send({ status: "success", result });
 };

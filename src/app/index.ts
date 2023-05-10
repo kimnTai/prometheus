@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(morgan("dev"));
 
+app.use(Socket.plugin);
 app.use(Routes);
 
 app.use(express.static("public"));
@@ -29,5 +30,5 @@ if (import.meta.env.PROD) {
   console.log(`listening on http://localhost:${process.env.PORT}`);
 
   //FIXME:dev 時 vite 熱重載機制會讓 ws 產生問題
-  new Socket({ server }, () => console.log("socket 開始"));
+  Socket.build({ server });
 }

@@ -15,6 +15,7 @@ export const createList = async (req: Request, res: Response) => {
     position,
   });
 
+  res.app.emit(`boardId:${result.boardId}`, result);
   res.send({ status: "success", result });
 };
 
@@ -34,6 +35,7 @@ export const updateList = async (req: Request, res: Response) => {
     throw new Error("無此貼文 id");
   }
 
+  res.app.emit(`boardId:${result.boardId}`, result);
   res.send({ status: "success", result });
 };
 
@@ -56,6 +58,7 @@ export const deleteList = async (req: Request, res: Response) => {
     throw new Error("無此貼文 id");
   }
 
+  res.app.emit(`boardId:${result.boardId}`, result);
   res.send({ status: "success", result: { result, cardResult } });
 };
 
