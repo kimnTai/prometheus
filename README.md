@@ -92,8 +92,16 @@ http://localhost:3005/swagger
 
 ## 專案技術
 
-- Node.js v18.12.0
-- Vite v4.3.1
-- vite-plugin-node v3.0.2
+- node.js v18.12.0
+- vite v4.3.1
 - express v4.18.2
 - mongoose v7.0.4
+- jsonwebtoken v9.0.0
+- nodemailer v6.9.1
+
+# Docker
+
+```bash
+docker build -t prometheus:v1 .
+docker run -p 3005:3005 -d prometheus:v1
+```
