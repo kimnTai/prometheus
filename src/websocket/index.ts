@@ -37,13 +37,17 @@ export default class Socket extends WebSocketServer {
     );
 
     Socket.instance.on("connection", (client) => {
-      client.send(`{ type: "success" }`);
+      client.send(JSON.stringify({ type: "success" }));
 
       client.on("message", async (data) => {
+        if (!data.toString()) {
+          client.send("");
+        }
+
         try {
           this.handleClientMessage(client, data);
         } catch (error) {
-          client.send(`{ type: "error" }`);
+          client.send(JSON.stringify({ type: "error" }));
         }
       });
     });
@@ -67,7 +71,7 @@ export default class Socket extends WebSocketServer {
         client.send(JSON.stringify(update));
       });
 
-      client.send(`{ type: "success" }`);
+      client.send(JSON.stringify({ type: "success" }));
     }
   }
 }
