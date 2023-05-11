@@ -37,10 +37,14 @@ export default class Socket extends WebSocketServer {
     );
 
     Socket.instance.on("connection", (client) => {
-      client.send(JSON.stringify({ type: "success" }));
+      client.send(`{ type: "success" }`);
 
-      client.on("message", (data) => {
-        this.handleClientMessage(client, data);
+      client.on("message", async (data) => {
+        try {
+          this.handleClientMessage(client, data);
+        } catch (error) {
+          client.send(`{ type: "error" }`);
+        }
       });
     });
   }
@@ -48,19 +52,22 @@ export default class Socket extends WebSocketServer {
   static handleClientMessage(client: WebSocket, data: RawData) {
     const message = JSON.parse(data.toString()) as {
       type: string;
-      boardIdArray?: string[];
+      boardId?: string;
     };
 
-    if (message.type === "subscribe") {
-      client.send(JSON.stringify({ type: "success" }));
+    if (message.type === "subscribe" && message.boardId) {
+      const eventName = `boardId:${message.boardId}`;
 
-      message.boardIdArray?.forEach((id) => {
-        client.on(`boardId:${id}`, (param) => {
-          const update = { type: "update", result: param };
+      if (client.eventNames().includes(eventName)) {
+        return;
+      }
 
-          client.send(JSON.stringify(update));
-        });
+      client.on(eventName, (param) => {
+        const update = { type: "update", result: param };
+        client.send(JSON.stringify(update));
       });
+
+      client.send(`{ type: "success" }`);
     }
   }
 }

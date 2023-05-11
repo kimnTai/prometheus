@@ -60,10 +60,17 @@ export const login = async (req: Request, res: Response) => {
     throw new Error("密碼錯誤!");
   }
 
+  const websocketUrl = (() => {
+    const host = req.headers.host;
+    return `${host?.includes("localhost") ? "ws" : "wss"}:${host}/socket`;
+  })();
+
   const { password: _, ...result } = user.toObject();
+
   res.send({
     status: "success",
     token: generateToken({ userId: user._id }),
+    websocketUrl,
     result,
   });
 };
