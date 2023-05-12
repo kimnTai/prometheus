@@ -19,6 +19,10 @@ const cardSchema = new Schema<ICard>(
       type: String,
       required: [true, "name 未填寫"],
     },
+    description: {
+      type: String,
+      default: "",
+    },
     closed: {
       type: Boolean,
       default: false,
@@ -79,28 +83,39 @@ cardSchema.virtual("attachment", {
   localField: "_id",
 });
 
+cardSchema.virtual("date", {
+  ref: "date",
+  foreignField: "cardId",
+  localField: "_id",
+  justOne: true,
+});
+
 // 前置查詢
 cardSchema.pre(/^find/, function (next) {
   this.populate({
     path: "label",
     select: "name color",
-  })
-    .populate({
-      path: "member.userId",
-      select: "name avatar",
-    })
-    .populate({
-      path: "comment",
-      select: "comment userId",
-    })
-    .populate({
-      path: "checklist",
-      select: "name completed position",
-    })
-    .populate({
-      path: "attachment",
-      select: "dirname filename userId",
-    });
+  });
+  this.populate({
+    path: "member.userId",
+    select: "name avatar",
+  });
+  this.populate({
+    path: "comment",
+    select: "comment userId",
+  });
+  this.populate({
+    path: "checklist",
+    select: "name completed position",
+  });
+  this.populate({
+    path: "attachment",
+    select: "dirname filename userId",
+  });
+  this.populate({
+    path: "date",
+    select: "startDate dueDate dueComplete dueReminder",
+  });
   next();
 });
 

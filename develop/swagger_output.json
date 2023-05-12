@@ -43,17 +43,6 @@
         "responses": {}
       }
     },
-    "/chat": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/user/register": {
       "post": {
         "tags": [
@@ -94,6 +83,11 @@
         ],
         "description": "登入",
         "parameters": [
+          {
+            "name": "host",
+            "in": "header",
+            "type": "string"
+          },
           {
             "name": "body",
             "in": "body",
@@ -1807,6 +1801,136 @@
           },
           {
             "name": "commentId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/cards/{cardId}/date": {
+      "post": {
+        "tags": [
+          "Cards - 卡片日期"
+        ],
+        "description": "創建卡片日期",
+        "parameters": [
+          {
+            "name": "cardId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "startDate": {
+                  "example": "any"
+                },
+                "dueDate": {
+                  "example": "any"
+                },
+                "dueComplete": {
+                  "example": "any"
+                },
+                "dueReminder": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/cards/{cardId}/date/{dateId}": {
+      "put": {
+        "tags": [
+          "Cards - 卡片日期"
+        ],
+        "description": "修改卡片日期",
+        "parameters": [
+          {
+            "name": "cardId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "dateId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "startDate": {
+                  "example": "any"
+                },
+                "dueDate": {
+                  "example": "any"
+                },
+                "dueComplete": {
+                  "example": "any"
+                },
+                "dueReminder": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Cards - 卡片日期"
+        ],
+        "description": "刪除卡片日期",
+        "parameters": [
+          {
+            "name": "cardId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "dateId",
             "in": "path",
             "required": true,
             "type": "string"
