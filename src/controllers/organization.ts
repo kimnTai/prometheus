@@ -2,7 +2,7 @@ import OrganizationModel from "@/models/organization";
 
 import type { Request, Response } from "express";
 
-export const getMemberOrganization = async (req: Request, res: Response) => {
+export const getUserOrganization = async (req: Request, res: Response) => {
   /**
    * #swagger.tags = ["Organization - 組織"]
    * #swagger.description  = "取得會員所有組織"
@@ -100,10 +100,31 @@ export const inviteOrganizationMember = async (
   res.send({ status: "success", result: "https://www.google.com/" });
 };
 
+export const addOrganizationMember = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Organization - 組織"]
+   * #swagger.description  = "新增組織成員"
+   */
+  const result = await OrganizationModel.findOneAndUpdate(
+    {
+      _id: req.params.organizationId,
+    },
+    {
+      $addToSet: {
+        member: {
+          userId: req.body.userId,
+        },
+      },
+    }
+  );
+
+  res.send({ status: "success", result });
+};
+
 export const deleteOrganizationMember = async (req: Request, res: Response) => {
   /**
    * #swagger.tags = ["Organization - 組織"]
-   * #swagger.description  = "退出組織成員"
+   * #swagger.description  = "移除組織成員"
    */
   const result = await OrganizationModel.findOneAndUpdate(
     {
@@ -122,7 +143,7 @@ export const deleteOrganizationMember = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const updateMemberRole = async (req: Request, res: Response) => {
+export const updateOrganizationMember = async (req: Request, res: Response) => {
   /**
    * #swagger.tags = ["Organization - 組織"]
    * #swagger.description  = "修改成員權限"
@@ -155,8 +176,8 @@ export const updateMemberRole = async (req: Request, res: Response) => {
   );
 
   if (!result) {
-    throw new Error("Member not found");
+    throw new Error("無此成員!");
   }
 
-  return res.send({ message: "Member role updated successfully" });
+  res.send({ status: "success", result });
 };

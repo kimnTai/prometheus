@@ -12,7 +12,7 @@ router.use(checkRequestBodyValidator);
 
 router.post("/", OrganizationController.createOrganization);
 
-router.get("/user", OrganizationController.getMemberOrganization);
+router.get("/user", OrganizationController.getUserOrganization);
 
 router.get("/:organizationId", OrganizationController.getOneOrganizationById);
 
@@ -25,12 +25,17 @@ router.post(
   OrganizationController.inviteOrganizationMember
 );
 
-router.delete(
-  "/:organizationId/members/:memberId",
-  OrganizationController.deleteOrganizationMember
+router.post(
+  "/:organizationId/members",
+  OrganizationController.addOrganizationMember
 );
 
 router.put(
   "/:organizationId/members/:memberId",
-  OrganizationController.updateMemberRole
+  OrganizationController.updateOrganizationMember
+);
+
+router.delete(
+  "/:organizationId/members/:memberId",
+  OrganizationController.deleteOrganizationMember
 );

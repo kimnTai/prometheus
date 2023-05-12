@@ -27,7 +27,7 @@ export const updateCard = async (req: Request, res: Response) => {
    * #swagger.tags = ["Cards - 卡片"]
    * #swagger.description  = "修改卡片"
    */
-  const { name, listId, position, closed } = req.body;
+  const { name, listId, position, closed, description } = req.body;
 
   const result = await CardModel.findByIdAndUpdate(
     req.params.cardId,
@@ -36,6 +36,7 @@ export const updateCard = async (req: Request, res: Response) => {
       listId,
       position,
       closed,
+      description,
     },
     { new: true, runValidators: true }
   );
