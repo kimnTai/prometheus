@@ -107,7 +107,7 @@ export const createInvitationUrl = async (req: Request, res: Response) => {
     },
     { new: true }
   );
-  res.send({ status: "success", result: result?.inviteLink });
+  res.send({ status: "success", result: result });
 };
 
 export const deleteInvitationUrl = async (req: Request, res: Response) => {
@@ -179,7 +179,7 @@ export const deleteLabel = async (req: Request, res: Response) => {
     throw new Error("此標籤不存在");
   }
 
-  res.send({ status: "success", message: "標籤移除成功" });
+  res.send({ status: "success", result });
 };
 
 export const getBoardMembers = async (req: Request, res: Response) => {
@@ -203,34 +203,72 @@ export const addBoardMember = async (req: Request, res: Response) => {
     {
       $addToSet: {
         member: {
-          userId: req.user?._id,
+          userId: req.body.userId,
         },
       },
     }
   );
 
-  res.send({ status: "success", message: result });
+  res.send({ status: "success", result });
 };
 
-export const quitBoard = async (req: Request, res: Response) => {
+export const updateBoardMember = async (req: Request, res: Response) => {
+  /**
+   * #swagger.tags = ["Boards - 看板"]
+   * #swagger.description  = "修改看板成員權限"
+   */
+  const board = await BoardsModel.findOne({
+    $and: [
+      { _id: req.params.boardId },
+      { "member.userId": req.user?._id },
+      { "member.role": "manager" },
+    ],
+  });
+
+  if (!board) {
+    throw new Error("修改錯誤");
+  }
+
+  const result = await BoardsModel.findOneAndUpdate(
+    {
+      "member.userId": req.params.memberId,
+    },
+    {
+      $set: {
+        "member.$.role": req.body.role,
+      },
+    },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  if (!result) {
+    throw new Error("無此成員!");
+  }
+
+  res.send({ status: "success", result });
+};
+
+export const deleteBoardMember = async (req: Request, res: Response) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "移除/退出看板"
    */
-  const result = await BoardsModel.findOneAndUpdate(
-    {
-      _id: req.params.boardId,
-    },
+  const result = await BoardsModel.findByIdAndUpdate(
+    req.params.boardId,
     {
       $pull: {
         member: {
-          userId: req.user?._id,
+          userId: req.params.memberId,
         },
       },
-    }
+    },
+    { new: true }
   );
 
-  res.send({ status: "success", message: result });
+  res.send({ status: "success", result });
 };
 
 export const getArchives = async (_req: Request, res: Response) => {

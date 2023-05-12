@@ -37,8 +37,10 @@ router.put("/:boardId/labels/:labelId", BoardController.updateLabel);
 
 router.delete("/:boardId/labels/:labelId", BoardController.deleteLabel);
 
-router.post("/:boardId/addBoardMember", BoardController.addBoardMember);
+router.post("/:boardId/members", BoardController.addBoardMember);
 
-router.delete("/:boardId/quit", BoardController.quitBoard);
+router.put("/:boardId/members/:memberId", BoardController.updateBoardMember);
+
+router.delete("/:boardId/members/:memberId", BoardController.deleteBoardMember);
 
 router.get("/:boardId/archive", BoardController.getArchives);

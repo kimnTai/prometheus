@@ -381,12 +381,12 @@
         ]
       }
     },
-    "/api/organizations/{organizationId}/members/{memberId}": {
-      "delete": {
+    "/api/organizations/{organizationId}/members": {
+      "post": {
         "tags": [
           "Organization - 組織"
         ],
-        "description": "退出組織成員",
+        "description": "新增組織成員",
         "parameters": [
           {
             "name": "organizationId",
@@ -395,10 +395,16 @@
             "type": "string"
           },
           {
-            "name": "memberId",
-            "in": "path",
-            "required": true,
-            "type": "string"
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -411,7 +417,9 @@
             "bearerAuth": []
           }
         ]
-      },
+      }
+    },
+    "/api/organizations/{organizationId}/members/{memberId}": {
       "put": {
         "tags": [
           "Organization - 組織"
@@ -441,6 +449,36 @@
                 }
               }
             }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Organization - 組織"
+        ],
+        "description": "移除組織成員",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "memberId",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -827,7 +865,7 @@
         ]
       }
     },
-    "/api/boards/{boardId}/addBoardMember": {
+    "/api/boards/{boardId}/members": {
       "post": {
         "tags": [
           "Boards - 看板"
@@ -839,6 +877,18 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -853,7 +903,49 @@
         ]
       }
     },
-    "/api/boards/{boardId}/quit": {
+    "/api/boards/{boardId}/members/{memberId}": {
+      "put": {
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "修改看板成員權限",
+        "parameters": [
+          {
+            "name": "boardId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "memberId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "role": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
       "delete": {
         "tags": [
           "Boards - 看板"
@@ -862,6 +954,12 @@
         "parameters": [
           {
             "name": "boardId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "memberId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -1131,6 +1229,9 @@
                   "example": "any"
                 },
                 "closed": {
+                  "example": "any"
+                },
+                "description": {
                   "example": "any"
                 }
               }
