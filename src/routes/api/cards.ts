@@ -5,6 +5,7 @@ import * as AttachmentController from "@/controllers/card/attachment";
 import * as ChecklistController from "@/controllers/card/checklist";
 import * as CheckItemController from "@/controllers/card/checkItem";
 import * as CommentController from "@/controllers/card/comment";
+import * as DateController from "@/controllers/card/date";
 
 const router = createRouter();
 
@@ -76,3 +77,9 @@ router.post("/:cardId/comments", CommentController.createComment);
 router.put("/:cardId/comments/:commentId", CommentController.updateComment);
 
 router.delete("/:cardId/comments/:commentId", CommentController.deleteComment);
+
+router.post("/:cardId/date", DateController.createDate);
+
+router.put("/:cardId/date/:dateId", DateController.updateDate);
+
+router.delete("/:cardId/date/:dateId", DateController.deleteDate);
