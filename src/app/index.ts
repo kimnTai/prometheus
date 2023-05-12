@@ -3,7 +3,6 @@ import cors from "cors";
 import morgan from "morgan";
 import "@/app/env";
 import "@/connection";
-import "@/models";
 import Routes from "@/routes";
 import * as Exception from "@/exception";
 import Socket from "@/websocket";
