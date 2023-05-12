@@ -39,11 +39,18 @@ export function createRouter() {
   return catchAsyncRouter(Router());
 }
 
-export function checkValidator(param: { [key: string]: string | undefined }) {
-  for (const [key, value] of Object.entries(param)) {
+export function checkValidator(param: {
+  [key: string]: string | number | undefined;
+}) {
+  for (let [key, value] of Object.entries(param)) {
     if (value === undefined || value === null) {
       throw new Error("欄位未填寫正確");
     }
+
+    if (typeof value === "number") {
+      value = `${value}`;
+    }
+
     switch (key) {
       case "name":
         if (!validator.isLength(value, { min: 2 })) {
@@ -80,8 +87,16 @@ export function checkValidator(param: { [key: string]: string | undefined }) {
         }
         break;
       case "color":
-        if (validator.isHexColor(value)) {
+        if (!validator.isHexColor(value)) {
           throw new Error("color 必須為十六進制顏色");
+        }
+        break;
+      case "position":
+        if (!validator.isNumeric(value)) {
+          throw new Error("position 必須為數字");
+        }
+        if (Number(value) <= 0) {
+          throw new Error("position 必須大於 0");
         }
         break;
       default:
