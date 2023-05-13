@@ -52,6 +52,10 @@ organizationSchema.pre(/^find/, function (next) {
   this.populate({
     path: "board",
   });
+  this.populate({
+    path: "member.userId",
+    select: "name avatar",
+  });
   next();
 });
 
