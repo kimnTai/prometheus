@@ -7,7 +7,7 @@ export const createDate = async (req: Request, res: Response) => {
    * #swagger.tags = ["Cards - 卡片日期"]
    * #swagger.description  = "創建卡片日期"
    */
-  const { startDate, dueDate, dueComplete, dueReminder } = req.body;
+  const { startDate, dueDate, dueReminder } = req.body;
 
   const result = await DateModel.findOneAndUpdate(
     {
@@ -16,7 +16,6 @@ export const createDate = async (req: Request, res: Response) => {
     {
       startDate,
       dueDate,
-      dueComplete,
       dueReminder,
       cardId: req.params.cardId,
     },
@@ -38,15 +37,20 @@ export const updateDate = async (req: Request, res: Response) => {
    */
   const { startDate, dueDate, dueComplete, dueReminder } = req.body;
 
-  const result = await DateModel.findByIdAndUpdate(
-    req.params.dateId,
+  const result = await DateModel.findOneAndUpdate(
+    {
+      cardId: req.params.cardId,
+    },
     {
       startDate,
       dueDate,
       dueComplete,
       dueReminder,
     },
-    { new: true, runValidators: true }
+    {
+      new: true,
+      runValidators: true,
+    }
   );
 
   res.send({ status: "success", result });
@@ -57,7 +61,9 @@ export const deleteDate = async (req: Request, res: Response) => {
    * #swagger.tags = ["Cards - 卡片日期"]
    * #swagger.description  = "刪除卡片日期"
    */
-  const result = await DateModel.findByIdAndDelete(req.params.attId);
+  const result = await DateModel.findOneAndDelete({
+    cardId: req.params.cardId,
+  });
 
   res.send({ status: "success", result });
 };

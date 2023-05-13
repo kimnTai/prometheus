@@ -84,11 +84,6 @@
         "description": "登入",
         "parameters": [
           {
-            "name": "host",
-            "in": "header",
-            "type": "string"
-          },
-          {
             "name": "body",
             "in": "body",
             "schema": {
@@ -1944,9 +1939,6 @@
                 "dueDate": {
                   "example": "any"
                 },
-                "dueComplete": {
-                  "example": "any"
-                },
                 "dueReminder": {
                   "example": "any"
                 }
@@ -1964,9 +1956,7 @@
             "bearerAuth": []
           }
         ]
-      }
-    },
-    "/api/cards/{cardId}/date/{dateId}": {
+      },
       "put": {
         "tags": [
           "Cards - 卡片日期"
@@ -1975,12 +1965,6 @@
         "parameters": [
           {
             "name": "cardId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "dateId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -2026,12 +2010,6 @@
         "parameters": [
           {
             "name": "cardId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "dateId",
             "in": "path",
             "required": true,
             "type": "string"

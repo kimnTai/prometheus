@@ -80,6 +80,6 @@ router.delete("/:cardId/comments/:commentId", CommentController.deleteComment);
 
 router.post("/:cardId/date", DateController.createDate);
 
-router.put("/:cardId/date/:dateId", DateController.updateDate);
+router.put("/:cardId/date", DateController.updateDate);
 
-router.delete("/:cardId/date/:dateId", DateController.deleteDate);
+router.delete("/:cardId/date", DateController.deleteDate);
