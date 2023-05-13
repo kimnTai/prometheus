@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { generateToken } from "@/shared";
+import { generateToken, getWebsocketUrl } from "@/shared";
 import UsersModel from "@/models/user";
 import { sendEmailVerification } from "./email";
 
@@ -40,6 +40,7 @@ export const register = async (req: Request, res: Response) => {
   res.send({
     status: "success",
     token: generateToken({ userId: result._id }),
+    websocketUrl: getWebsocketUrl(req),
     result,
   });
 };
@@ -60,17 +61,12 @@ export const login = async (req: Request, res: Response) => {
     throw new Error("密碼錯誤!");
   }
 
-  const websocketUrl = (() => {
-    const host = req.headers.host;
-    return `${host?.includes("localhost") ? "ws" : "wss"}:${host}/socket`;
-  })();
-
   const { password: _, ...result } = user.toObject();
 
   res.send({
     status: "success",
     token: generateToken({ userId: user._id }),
-    websocketUrl,
+    websocketUrl: getWebsocketUrl(req),
     result,
   });
 };
@@ -93,5 +89,10 @@ export const verifyJwt = async (req: Request, res: Response) => {
    * #swagger.description  = "驗證登入"
    */
   const token = `${req.headers.authorization?.replace("Bearer ", "")}`;
-  res.send({ status: "success", token, result: req.user });
+  res.send({
+    status: "success",
+    token,
+    websocketUrl: getWebsocketUrl(req),
+    result: req.user,
+  });
 };

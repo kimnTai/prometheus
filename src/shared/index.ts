@@ -118,3 +118,8 @@ export function verifyToken(token: string) {
     throw new Error("驗證失敗!");
   }
 }
+
+export function getWebsocketUrl(req: Request) {
+  const host = req.headers.host;
+  return `${host?.includes("localhost") ? "ws" : "wss"}:${host}/socket`;
+}
