@@ -1,4 +1,4 @@
-import CommentModel from "@/models/comment";
+import CommentModel from "@/models/card/comment";
 
 import type { Request, Response } from "express";
 

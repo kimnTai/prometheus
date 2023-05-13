@@ -1,4 +1,4 @@
-import DateModel from "@/models/date";
+import DateModel from "@/models/card/date";
 
 import type { Request, Response } from "express";
 

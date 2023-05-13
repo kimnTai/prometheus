@@ -1,4 +1,4 @@
-import AttachmentModel from "@/models/attachment";
+import AttachmentModel from "@/models/card/attachment";
 
 import type { Request, Response } from "express";
 

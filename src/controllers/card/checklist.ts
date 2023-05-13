@@ -1,4 +1,4 @@
-import ChecklistModel from "@/models/checklist";
+import ChecklistModel from "@/models/card/checklist";
 
 import type { Request, Response } from "express";
 
