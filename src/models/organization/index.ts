@@ -54,7 +54,7 @@ organizationSchema.pre(/^find/, function (next) {
   });
   this.populate({
     path: "member.userId",
-    select: "name avatar",
+    select: "name avatar email",
   });
   next();
 });
