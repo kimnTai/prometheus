@@ -125,7 +125,7 @@ export const deleteOrganizationMember: RequestHandler = async (req, res) => {
    */
   const result = await OrganizationModel.findOneAndUpdate(
     {
-      _id: req.params.boardId,
+      _id: req.params.organizationId,
     },
     {
       $pull: {
