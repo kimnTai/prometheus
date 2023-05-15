@@ -1,5 +1,7 @@
 import BoardsModel from "@/models/board";
 import LabelsModel from "@/models/label";
+import ListModel from "@/models/list";
+import CardModel from "@/models/card";
 
 import type { Request, Response } from "express";
 
@@ -206,7 +208,8 @@ export const addBoardMember = async (req: Request, res: Response) => {
           userId: req.body.userId,
         },
       },
-    }
+    },
+    { new: true }
   );
 
   res.send({ status: "success", result });
@@ -271,10 +274,27 @@ export const deleteBoardMember = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const getArchives = async (_req: Request, res: Response) => {
+export const getClosedCardsAndList = async (req: Request, res: Response) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "取得已封存列表/卡片"
+   *
+   * TODO:查了三次組資料，待優化
    */
-  res.send({ status: "success", result: "TODO" });
+  const [closedList, closedCard] = await Promise.all([
+    ListModel.find({
+      boardId: req.params.boardId,
+      closed: true,
+    }),
+    CardModel.find({
+      listId: {
+        $in: await ListModel.find({
+          boardId: req.params.boardId,
+        }),
+      },
+      closed: true,
+    }),
+  ]);
+
+  res.send({ status: "success", result: { closedList, closedCard } });
 };

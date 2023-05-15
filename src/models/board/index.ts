@@ -77,11 +77,11 @@ boardSchema.pre(/^find/, function (next) {
   });
   this.populate({
     path: "list",
-    select: "name position",
+    select: "-createdAt -updatedAt",
   });
   this.populate({
     path: "label",
-    select: "name color",
+    select: "-createdAt -updatedAt",
   });
 
   next();

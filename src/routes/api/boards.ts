@@ -43,4 +43,7 @@ router.put("/:boardId/members/:memberId", BoardController.updateBoardMember);
 
 router.delete("/:boardId/members/:memberId", BoardController.deleteBoardMember);
 
-router.get("/:boardId/archive", BoardController.getArchives);
+router.get(
+  "/:boardId/closedCardsAndList",
+  BoardController.getClosedCardsAndList
+);

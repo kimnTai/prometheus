@@ -51,6 +51,7 @@ organizationSchema.virtual("board", {
 organizationSchema.pre(/^find/, function (next) {
   this.populate({
     path: "board",
+    select: "-createdAt -updatedAt",
   });
   this.populate({
     path: "member.userId",

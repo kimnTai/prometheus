@@ -42,7 +42,7 @@ checklistSchema.virtual("checkItem", {
 checklistSchema.pre(/^find/, function (next) {
   this.populate({
     path: "checkItem",
-    select: "name completed position",
+    select: "-createdAt -updatedAt",
   });
   next();
 });

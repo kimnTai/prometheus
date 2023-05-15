@@ -101,6 +101,9 @@ export const addCardMember = async (req: Request, res: Response) => {
     { new: true }
   );
 
+  const boardId = (await ListModel.findById(result?.listId))?.boardId;
+
+  res.app.emit(`boardId:${boardId}`, result);
   res.send({ status: "success", result });
 };
 
@@ -121,6 +124,9 @@ export const deleteCardMember = async (req: Request, res: Response) => {
     { new: true }
   );
 
+  const boardId = (await ListModel.findById(result?.listId))?.boardId;
+
+  res.app.emit(`boardId:${boardId}`, result);
   res.send({ status: "success", result });
 };
 

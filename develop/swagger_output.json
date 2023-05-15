@@ -972,7 +972,7 @@
         ]
       }
     },
-    "/api/boards/{boardId}/archive": {
+    "/api/boards/{boardId}/closedCardsAndList": {
       "get": {
         "tags": [
           "Boards - 看板"
