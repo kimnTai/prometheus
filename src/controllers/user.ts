@@ -3,9 +3,9 @@ import { generateToken, getWebsocketUrl } from "@/shared";
 import UsersModel from "@/models/user";
 import { sendEmailVerification } from "./email";
 
-import type { Request, Response } from "express";
+import type { RequestHandler } from "express";
 
-export const getAllUsers = async (_req: Request, res: Response) => {
+export const getAllUsers: RequestHandler = async (_req, res) => {
   /**
    * #swagger.tags = ["Users - 使用者"]
    * #swagger.description  = "取得所有使用者"
@@ -15,7 +15,7 @@ export const getAllUsers = async (_req: Request, res: Response) => {
   res.send({ status: "success", result: users });
 };
 
-export const register = async (req: Request, res: Response) => {
+export const register: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Users - 使用者"]
    * #swagger.description  = "帳號註冊"
@@ -45,7 +45,7 @@ export const register = async (req: Request, res: Response) => {
   });
 };
 
-export const login = async (req: Request, res: Response) => {
+export const login: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Users - 使用者"]
    * #swagger.description  = "登入"
@@ -71,7 +71,7 @@ export const login = async (req: Request, res: Response) => {
   });
 };
 
-export const resetPassword = async (req: Request, res: Response) => {
+export const resetPassword: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Users - 使用者"]
    * #swagger.description  = "重設密碼"
@@ -83,7 +83,7 @@ export const resetPassword = async (req: Request, res: Response) => {
   res.send({ status: "success", message: "密碼重設成功" });
 };
 
-export const verifyJwt = async (req: Request, res: Response) => {
+export const verifyJwt: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Users - 使用者"]
    * #swagger.description  = "驗證登入"

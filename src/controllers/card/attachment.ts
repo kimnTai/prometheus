@@ -1,8 +1,8 @@
 import AttachmentModel from "@/models/card/attachment";
 
-import type { Request, Response } from "express";
+import type { RequestHandler } from "express";
 
-export const createAttachment = async (req: Request, res: Response) => {
+export const createAttachment: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片附件"]
    * #swagger.description  = "創建卡片附件"
@@ -19,7 +19,7 @@ export const createAttachment = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const updateAttachment = async (req: Request, res: Response) => {
+export const updateAttachment: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片附件"]
    * #swagger.description  = "修改卡片附件"
@@ -38,7 +38,7 @@ export const updateAttachment = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const deleteAttachment = async (req: Request, res: Response) => {
+export const deleteAttachment: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片附件"]
    * #swagger.description  = "刪除卡片附件"

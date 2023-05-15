@@ -6,7 +6,7 @@ import { OAuth2Client } from "google-auth-library";
 import { generateToken } from "@/shared";
 import UsersModel from "@/models/user";
 
-import type { Request, Response } from "express";
+import type { RequestHandler } from "express";
 
 (() => {
   if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
@@ -88,7 +88,7 @@ import type { Request, Response } from "express";
   );
 })();
 
-export const authorizationCallback = async (req: Request, res: Response) => {
+export const authorizationCallback: RequestHandler = async (req, res) => {
   /**
    * #swagger.ignore = true
    */
@@ -107,7 +107,7 @@ export const authorizationCallback = async (req: Request, res: Response) => {
   res.redirect(`${process.env.CLIENT_LOGIN_CALLBACK_URL}?${params}`);
 };
 
-export const verifyToken = async (req: Request, res: Response) => {
+export const verifyToken: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Auth"]
    * #swagger.description  = "Verify the JWT token sent from the client"

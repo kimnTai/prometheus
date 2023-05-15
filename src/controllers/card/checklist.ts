@@ -1,8 +1,8 @@
 import ChecklistModel from "@/models/card/checklist";
 
-import type { Request, Response } from "express";
+import type { RequestHandler } from "express";
 
-export const createChecklist = async (req: Request, res: Response) => {
+export const createChecklist: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片待辦"]
    * #swagger.description  = "創建待辦清單"
@@ -18,7 +18,7 @@ export const createChecklist = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const updateChecklist = async (req: Request, res: Response) => {
+export const updateChecklist: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片待辦"]
    * #swagger.description  = "修改待辦清單"
@@ -37,7 +37,7 @@ export const updateChecklist = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const deleteChecklist = async (req: Request, res: Response) => {
+export const deleteChecklist: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片待辦"]
    * #swagger.description  = "刪除待辦清單"

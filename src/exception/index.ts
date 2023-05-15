@@ -1,4 +1,4 @@
-import type { Request, Response, NextFunction } from "express";
+import type { ErrorRequestHandler, RequestHandler } from "express";
 
 // 初始化，捕捉全域錯誤
 (() => {
@@ -16,15 +16,15 @@ import type { Request, Response, NextFunction } from "express";
   });
 })();
 
-export const sendNotFoundError = (_req: Request, res: Response) => {
+export const sendNotFoundError: RequestHandler = (_req, res) => {
   res.status(404).send({ status: "error", message: "無此路由資訊" });
 };
 
-export const catchCustomError = (
+export const catchCustomError: ErrorRequestHandler = (
   err: Error | string,
-  _req: Request,
-  res: Response,
-  _next: NextFunction
+  _req,
+  res,
+  _next
 ) => {
   if (typeof err === "string") {
     return res.status(400).send({ status: "error", message: err });

@@ -2,9 +2,9 @@ import validator from "validator";
 import UsersModel from "@/models/user";
 import OrganizationModel from "@/models/organization";
 
-import type { Request, Response } from "express";
+import type { RequestHandler } from "express";
 
-export const searchMember = async (req: Request, res: Response) => {
+export const searchMember: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Other - 其它"]
    */

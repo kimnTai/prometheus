@@ -1,9 +1,9 @@
 import ListModel from "@/models/list";
 import CardModel from "@/models/card";
 
-import type { Request, Response } from "express";
+import type { RequestHandler } from "express";
 
-export const createList = async (req: Request, res: Response) => {
+export const createList: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["List - 列表"]
    */
@@ -19,7 +19,7 @@ export const createList = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const updateList = async (req: Request, res: Response) => {
+export const updateList: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["List - 列表"]
    */
@@ -39,7 +39,7 @@ export const updateList = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const deleteList = async (req: Request, res: Response) => {
+export const deleteList: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["List - 列表"]
    */
@@ -62,7 +62,7 @@ export const deleteList = async (req: Request, res: Response) => {
   res.send({ status: "success", result: { result, cardResult } });
 };
 
-export const archiveAllCards = async (req: Request, res: Response) => {
+export const archiveAllCards: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["List - 列表"]
    */

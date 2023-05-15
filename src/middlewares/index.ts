@@ -2,14 +2,10 @@ import multer from "multer";
 import UsersModel from "@/models/user";
 import { checkValidator, verifyToken } from "@/shared";
 
-import type { Request, Response, NextFunction } from "express";
+import type { RequestHandler } from "express";
 
 // token 驗證
-export const isAuth = async (
-  req: Request,
-  _res: Response,
-  next: NextFunction
-) => {
+export const isAuth: RequestHandler = async (req, _res, next) => {
   /**
    * #swagger.security = [{ "bearerAuth": [] }]
    */
@@ -25,21 +21,13 @@ export const isAuth = async (
   next();
 };
 
-export const checkRequestBodyValidator = (
-  req: Request,
-  _res: Response,
-  next: NextFunction
-) => {
+export const checkRequestBodyValidator: RequestHandler = (req, _res, next) => {
   checkValidator({ ...req.body });
 
   return next();
 };
 
-export const handleUploadFile = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const handleUploadFile: RequestHandler = (req, res, next) => {
   return multer({
     limits: {
       fileSize: 2 * 1024 * 1024,

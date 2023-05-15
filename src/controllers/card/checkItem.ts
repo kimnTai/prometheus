@@ -1,8 +1,8 @@
 import CheckItemModel from "@/models/card/checkItem";
 
-import type { Request, Response } from "express";
+import type { RequestHandler } from "express";
 
-export const createCheckItem = async (req: Request, res: Response) => {
+export const createCheckItem: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片待辦"]
    * #swagger.description  = "創建待辦事項"
@@ -18,7 +18,7 @@ export const createCheckItem = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const updateCheckItem = async (req: Request, res: Response) => {
+export const updateCheckItem: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片待辦"]
    * #swagger.description  = "修改待辦事項"
@@ -38,7 +38,7 @@ export const updateCheckItem = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const deleteCheckItem = async (req: Request, res: Response) => {
+export const deleteCheckItem: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片待辦"]
    * #swagger.description  = "刪除待辦事項"

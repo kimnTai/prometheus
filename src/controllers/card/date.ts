@@ -1,8 +1,8 @@
 import DateModel from "@/models/card/date";
 
-import type { Request, Response } from "express";
+import type { RequestHandler } from "express";
 
-export const createDate = async (req: Request, res: Response) => {
+export const createDate: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片日期"]
    * #swagger.description  = "創建卡片日期"
@@ -30,7 +30,7 @@ export const createDate = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const updateDate = async (req: Request, res: Response) => {
+export const updateDate: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片日期"]
    * #swagger.description  = "修改卡片日期"
@@ -56,7 +56,7 @@ export const updateDate = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const deleteDate = async (req: Request, res: Response) => {
+export const deleteDate: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片日期"]
    * #swagger.description  = "刪除卡片日期"

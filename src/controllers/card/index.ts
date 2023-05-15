@@ -1,9 +1,9 @@
 import CardModel from "@/models/card";
 import ListModel from "@/models/list";
 
-import type { Request, Response } from "express";
+import type { RequestHandler } from "express";
 
-export const createCard = async (req: Request, res: Response) => {
+export const createCard: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片"]
    * #swagger.description  = "創建卡片"
@@ -22,7 +22,7 @@ export const createCard = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const updateCard = async (req: Request, res: Response) => {
+export const updateCard: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片"]
    * #swagger.description  = "修改卡片"
@@ -51,7 +51,7 @@ export const updateCard = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const getCardById = async (req: Request, res: Response) => {
+export const getCardById: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片"]
    * #swagger.description  = "取得單一卡片"
@@ -65,7 +65,7 @@ export const getCardById = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const deleteCard = async (req: Request, res: Response) => {
+export const deleteCard: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片"]
    * #swagger.description  = "刪除卡片"
@@ -84,7 +84,7 @@ export const deleteCard = async (req: Request, res: Response) => {
   res.send({ status: "success", result: result });
 };
 
-export const addCardMember = async (req: Request, res: Response) => {
+export const addCardMember: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片"]
    * #swagger.description  = "新增卡片成員"
@@ -107,7 +107,7 @@ export const addCardMember = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const deleteCardMember = async (req: Request, res: Response) => {
+export const deleteCardMember: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片"]
    * #swagger.description  = "移除卡片成員"
@@ -130,7 +130,7 @@ export const deleteCardMember = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const addCardLabel = async (req: Request, res: Response) => {
+export const addCardLabel: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片"]
    * #swagger.description  = "增加卡片標籤"
@@ -151,7 +151,7 @@ export const addCardLabel = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const deleteCardLabel = async (req: Request, res: Response) => {
+export const deleteCardLabel: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片"]
    * #swagger.description  = "移除卡片標籤"
@@ -172,7 +172,7 @@ export const deleteCardLabel = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const closeCard = async (req: Request, res: Response) => {
+export const closeCard: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片"]
    * #swagger.description  = "封存卡片"

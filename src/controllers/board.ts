@@ -3,9 +3,9 @@ import LabelsModel from "@/models/label";
 import ListModel from "@/models/list";
 import CardModel from "@/models/card";
 
-import type { Request, Response } from "express";
+import type { RequestHandler } from "express";
 
-export const getAllBoards = async (req: Request, res: Response) => {
+export const getAllBoards: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "取得所有看板"
@@ -15,7 +15,7 @@ export const getAllBoards = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const createBoard = async (req: Request, res: Response) => {
+export const createBoard: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "建立看板"
@@ -33,7 +33,7 @@ export const createBoard = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const getBoardById = async (req: Request, res: Response) => {
+export const getBoardById: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "取得單一看板"
@@ -47,7 +47,7 @@ export const getBoardById = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const updateBoard = async (req: Request, res: Response) => {
+export const updateBoard: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "修改看板"
@@ -68,7 +68,7 @@ export const updateBoard = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const deleteBoard = async (req: Request, res: Response) => {
+export const deleteBoard: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "刪除看板"
@@ -88,7 +88,7 @@ export const deleteBoard = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const getInvitationUrl = async (req: Request, res: Response) => {
+export const getInvitationUrl: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "取得看板邀請連結"
@@ -97,7 +97,7 @@ export const getInvitationUrl = async (req: Request, res: Response) => {
   res.send({ status: "success", result: result?.inviteLink });
 };
 
-export const createInvitationUrl = async (req: Request, res: Response) => {
+export const createInvitationUrl: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "建立看板邀請連結"
@@ -112,7 +112,7 @@ export const createInvitationUrl = async (req: Request, res: Response) => {
   res.send({ status: "success", result: result });
 };
 
-export const deleteInvitationUrl = async (req: Request, res: Response) => {
+export const deleteInvitationUrl: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "移除看板邀請連結"
@@ -127,7 +127,7 @@ export const deleteInvitationUrl = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const getBoardLabels = async (req: Request, res: Response) => {
+export const getBoardLabels: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "取得標籤"
@@ -136,7 +136,7 @@ export const getBoardLabels = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const createLabel = async (req: Request, res: Response) => {
+export const createLabel: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "新增標籤"
@@ -150,7 +150,7 @@ export const createLabel = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const updateLabel = async (req: Request, res: Response) => {
+export const updateLabel: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "修改標籤"
@@ -171,7 +171,7 @@ export const updateLabel = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const deleteLabel = async (req: Request, res: Response) => {
+export const deleteLabel: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "刪除標籤"
@@ -184,7 +184,7 @@ export const deleteLabel = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const getBoardMembers = async (req: Request, res: Response) => {
+export const getBoardMembers: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "取得看板內所有成員"
@@ -193,7 +193,7 @@ export const getBoardMembers = async (req: Request, res: Response) => {
   res.send({ status: "success", result: boardUsers?.member });
 };
 
-export const addBoardMember = async (req: Request, res: Response) => {
+export const addBoardMember: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "新增看板成員"
@@ -215,7 +215,7 @@ export const addBoardMember = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const updateBoardMember = async (req: Request, res: Response) => {
+export const updateBoardMember: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "修改看板成員權限"
@@ -254,7 +254,7 @@ export const updateBoardMember = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const deleteBoardMember = async (req: Request, res: Response) => {
+export const deleteBoardMember: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "移除/退出看板"
@@ -274,7 +274,7 @@ export const deleteBoardMember = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const getClosedCardsAndList = async (req: Request, res: Response) => {
+export const getClosedCardsAndList: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "取得已封存列表/卡片"

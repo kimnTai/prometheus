@@ -2,10 +2,10 @@ import { Router } from "express";
 import validator from "validator";
 import jsonWebToken, { type JwtPayload } from "jsonwebtoken";
 
-import type { Request, Response, NextFunction, RequestHandler } from "express";
+import type { Request, RequestHandler } from "express";
 
-function catchAsync(func: RequestHandler) {
-  return (req: Request, res: Response, next: NextFunction) => {
+function catchAsync(func: RequestHandler): RequestHandler {
+  return (req, res, next) => {
     Promise.resolve(func(req, res, next)).catch(next);
   };
 }

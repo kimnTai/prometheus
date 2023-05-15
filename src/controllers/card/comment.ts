@@ -1,8 +1,8 @@
 import CommentModel from "@/models/card/comment";
 
-import type { Request, Response } from "express";
+import type { RequestHandler } from "express";
 
-export const createComment = async (req: Request, res: Response) => {
+export const createComment: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片留言"]
    * #swagger.description  = "創建卡片留言"
@@ -16,7 +16,7 @@ export const createComment = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const updateComment = async (req: Request, res: Response) => {
+export const updateComment: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片留言"]
    * #swagger.description  = "修改卡片留言"
@@ -32,7 +32,7 @@ export const updateComment = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const deleteComment = async (req: Request, res: Response) => {
+export const deleteComment: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片留言"]
    * #swagger.description  = "刪除卡片留言"

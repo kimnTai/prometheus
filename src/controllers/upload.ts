@@ -1,6 +1,6 @@
-import type { Request, Response } from "express";
+import type { RequestHandler } from "express";
 
-export const getImageUrl = async (req: Request, res: Response) => {
+export const getImageUrl: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Other - 其它"]
    * #swagger.description  = "上傳圖片"

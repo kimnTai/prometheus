@@ -1,8 +1,8 @@
 import OrganizationModel from "@/models/organization";
 
-import type { Request, Response } from "express";
+import type { RequestHandler } from "express";
 
-export const getUserOrganization = async (req: Request, res: Response) => {
+export const getUserOrganization: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Organization - 組織"]
    * #swagger.description  = "取得會員所有組織"
@@ -18,7 +18,7 @@ export const getUserOrganization = async (req: Request, res: Response) => {
   return res.send({ status: "success", result });
 };
 
-export const createOrganization = async (req: Request, res: Response) => {
+export const createOrganization: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Organization - 組織"]
    * #swagger.description  = "新增組織"
@@ -43,7 +43,7 @@ export const createOrganization = async (req: Request, res: Response) => {
   });
 };
 
-export const getOneOrganizationById = async (req: Request, res: Response) => {
+export const getOneOrganizationById: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Organization - 組織"]
    * #swagger.description  = "取得單一組織"
@@ -53,7 +53,7 @@ export const getOneOrganizationById = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const updateOrganization = async (req: Request, res: Response) => {
+export const updateOrganization: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Organization - 組織"]
    * #swagger.description  = "修改組織"
@@ -69,7 +69,7 @@ export const updateOrganization = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const deleteOrganization = async (req: Request, res: Response) => {
+export const deleteOrganization: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Organization - 組織"]
    * #swagger.description  = "刪除組織"
@@ -89,10 +89,7 @@ export const deleteOrganization = async (req: Request, res: Response) => {
   res.send({ status: "success", message: "刪除組織成功" });
 };
 
-export const inviteOrganizationMember = async (
-  _req: Request,
-  res: Response
-) => {
+export const inviteOrganizationMember: RequestHandler = async (_req, res) => {
   /**
    * #swagger.tags = ["Organization - 組織"]
    * #swagger.description  = "邀請組織成員/產生邀請連結"
@@ -100,7 +97,7 @@ export const inviteOrganizationMember = async (
   res.send({ status: "success", result: "https://www.google.com/" });
 };
 
-export const addOrganizationMember = async (req: Request, res: Response) => {
+export const addOrganizationMember: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Organization - 組織"]
    * #swagger.description  = "新增組織成員"
@@ -121,7 +118,7 @@ export const addOrganizationMember = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const deleteOrganizationMember = async (req: Request, res: Response) => {
+export const deleteOrganizationMember: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Organization - 組織"]
    * #swagger.description  = "移除組織成員"
@@ -143,7 +140,7 @@ export const deleteOrganizationMember = async (req: Request, res: Response) => {
   res.send({ status: "success", result });
 };
 
-export const updateOrganizationMember = async (req: Request, res: Response) => {
+export const updateOrganizationMember: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Organization - 組織"]
    * #swagger.description  = "修改成員權限"

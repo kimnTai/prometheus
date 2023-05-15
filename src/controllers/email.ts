@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import { generateToken, verifyToken } from "@/shared";
 import UsersModel from "@/models/user";
 
-import type { Request, Response } from "express";
+import type { Request, RequestHandler, Response } from "express";
 
 const transporter = nodemailer.createTransport({
   host: "smtp.mailgun.org",
@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export const sendResetPasswordEmail = async (req: Request, res: Response) => {
+export const sendResetPasswordEmail: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Email"]
    * #swagger.description  = "重設密碼"
@@ -68,7 +68,7 @@ export const sendEmailVerification = async (req: Request, _res: Response) => {
   });
 };
 
-export const emailVerification = async (req: Request, res: Response) => {
+export const emailVerification: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Email"]
    * #swagger.description  = "email 驗證連結"
@@ -87,7 +87,7 @@ export const emailVerification = async (req: Request, res: Response) => {
   res.send({ status: "success", message: "email 驗證成功!", result, userInfo });
 };
 
-export const resendEmailVerification = async (req: Request, res: Response) => {
+export const resendEmailVerification: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Email"]
    * #swagger.description  = "重新發送 email 驗證"
