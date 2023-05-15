@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from "vite";
 import { VitePluginNode } from "vite-plugin-node";
 import { join } from "path";
@@ -19,7 +20,7 @@ export default defineConfig({
   server: {
     port: 3005,
     host: "0.0.0.0",
-    open: "/",
+    open: process.env.VITEST === "true" ? false : "/",
   },
   publicDir: false,
   build: {
