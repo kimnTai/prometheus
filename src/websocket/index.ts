@@ -24,7 +24,7 @@ export default class Socket extends WebSocketServer {
     Socket.instance.on("connection", (client) => {
       client.send(JSON.stringify({ type: "success" }));
 
-      client.on("message", async (data) => {
+      client.on("message", (data) => {
         if (!data.toString()) {
           client.send("");
         }
@@ -32,7 +32,13 @@ export default class Socket extends WebSocketServer {
         try {
           Socket.handleClientMessage(client, data);
         } catch (error) {
-          client.send(JSON.stringify({ type: "error" }));
+          let message = "";
+
+          if (error instanceof Error) {
+            message = error.message;
+          }
+
+          client.send(JSON.stringify({ type: "error", message }));
         }
       });
     });
@@ -48,11 +54,13 @@ export default class Socket extends WebSocketServer {
     });
   }
 
-  static handleClientMessage(client: WebSocket, data: RawData) {
-    const message = JSON.parse(data.toString()) as {
+  private static handleClientMessage(client: WebSocket, data: RawData) {
+    interface ClientMessage {
       type: string;
       boardId?: string;
-    };
+    }
+
+    const message = JSON.parse(data.toString()) as ClientMessage;
 
     if (message.type === "subscribe" && message.boardId) {
       const eventName = `boardId:${message.boardId}`;
@@ -67,6 +75,10 @@ export default class Socket extends WebSocketServer {
       });
 
       client.send(JSON.stringify({ type: "success" }));
+    }
+
+    if (message.type === "ping") {
+      client.send(JSON.stringify({ type: "ping" }));
     }
   }
 }
