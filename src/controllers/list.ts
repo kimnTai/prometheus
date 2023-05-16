@@ -32,7 +32,7 @@ export const updateList: RequestHandler = async (req, res) => {
   );
 
   if (!result) {
-    throw new Error("無此貼文 id");
+    throw new Error("無此列表 id");
   }
 
   res.app.emit(`boardId:${result.boardId}`, result);
@@ -55,7 +55,7 @@ export const deleteList: RequestHandler = async (req, res) => {
   );
 
   if (!result) {
-    throw new Error("無此貼文 id");
+    throw new Error("無此列表 id");
   }
 
   res.app.emit(`boardId:${result.boardId}`, result);
