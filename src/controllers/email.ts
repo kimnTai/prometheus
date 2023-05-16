@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import bcrypt from "bcryptjs";
+import ejs from "ejs";
 import { generateToken, verifyToken } from "@/shared";
 import UsersModel from "@/models/user";
 
@@ -54,17 +55,15 @@ export const sendEmailVerification: RequestHandler = async (req) => {
 
   const token = generateToken({ email });
 
-  const href = `${req.headers.host}/api/email/emailVerification/${token}`;
+  const verificationUrl = `${req.headers.host}/api/email/emailVerification/${token}`;
+
+  const html = await ejs.renderFile("src/views/email.ejs", { verificationUrl });
 
   await transporter.sendMail({
     from: "Lunar@Lunar.mailgun.org",
     to: email,
     subject: "註冊成功",
-    html: `<p>
-            您要求進行電子郵件驗證，請使用此
-            <a href="${href}">鏈接</a>
-            驗證您的電子郵件地址
-          </p>`,
+    html,
   });
 };
 

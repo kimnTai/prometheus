@@ -355,7 +355,7 @@
         "tags": [
           "Organization - 組織"
         ],
-        "description": "邀請組織成員/產生邀請連結",
+        "description": "建立組織邀請連結",
         "parameters": [
           {
             "name": "organizationId",
