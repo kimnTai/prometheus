@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import { generateToken, verifyToken } from "@/shared";
 import UsersModel from "@/models/user";
 
-import type { Request, RequestHandler, Response } from "express";
+import type { RequestHandler } from "express";
 
 const transporter = nodemailer.createTransport({
   host: "smtp.mailgun.org",
@@ -48,7 +48,7 @@ export const sendResetPasswordEmail: RequestHandler = async (req, res) => {
 };
 
 // 發送註冊成功 email
-export const sendEmailVerification = async (req: Request, _res: Response) => {
+export const sendEmailVerification: RequestHandler = async (req) => {
   return;
   const email = req.body.email;
 

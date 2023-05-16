@@ -15,7 +15,7 @@ export const getUserOrganization: RequestHandler = async (req, res) => {
     },
   });
 
-  return res.send({ status: "success", result });
+  res.send({ status: "success", result });
 };
 
 export const createOrganization: RequestHandler = async (req, res) => {
@@ -37,10 +37,7 @@ export const createOrganization: RequestHandler = async (req, res) => {
     ],
   });
 
-  res.send({
-    success: true,
-    result,
-  });
+  res.send({ success: true, result });
 };
 
 export const getOneOrganizationById: RequestHandler = async (req, res) => {

@@ -1,9 +1,9 @@
+import passport from "passport";
 import { createRouter } from "@/shared";
 import * as UserController from "@/controllers/user";
 import { authorizationCallback, verifyToken } from "@/controllers/auth";
 import { isAuth, checkRequestBodyValidator } from "@/middlewares";
-
-import passport from "passport";
+import * as EmailController from "@/controllers/email";
 
 const router = createRouter();
 
@@ -13,7 +13,11 @@ router.use(checkRequestBodyValidator);
 
 router.get("/", isAuth, UserController.getAllUsers);
 
-router.post("/register", UserController.register);
+router.post(
+  "/register",
+  UserController.register,
+  EmailController.sendEmailVerification
+);
 
 router.post("/login", UserController.login);
 

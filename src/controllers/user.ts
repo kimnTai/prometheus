@@ -1,7 +1,6 @@
 import bcrypt from "bcryptjs";
 import { generateToken, getWebsocketUrl } from "@/shared";
 import UsersModel from "@/models/user";
-import { sendEmailVerification } from "./email";
 
 import type { RequestHandler } from "express";
 
@@ -15,7 +14,7 @@ export const getAllUsers: RequestHandler = async (_req, res) => {
   res.send({ status: "success", result: users });
 };
 
-export const register: RequestHandler = async (req, res) => {
+export const register: RequestHandler = async (req, res, next) => {
   /**
    * #swagger.tags = ["Users - 使用者"]
    * #swagger.description  = "帳號註冊"
@@ -26,14 +25,10 @@ export const register: RequestHandler = async (req, res) => {
     throw new Error("此 Email 已被註冊!");
   }
 
-  const hashPassword = await bcrypt.hash(password, 12);
-
-  sendEmailVerification(req, res);
-
   const _result = await UsersModel.create({
     name,
     email,
-    password: hashPassword,
+    password: await bcrypt.hash(password, 12),
   });
   const { password: _, ...result } = _result.toObject();
 
@@ -43,6 +38,8 @@ export const register: RequestHandler = async (req, res) => {
     websocketUrl: getWebsocketUrl(req),
     result,
   });
+
+  next();
 };
 
 export const login: RequestHandler = async (req, res) => {
