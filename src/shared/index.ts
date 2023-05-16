@@ -105,7 +105,12 @@ export function checkValidator(param: {
   }
 }
 
-export function generateToken(payload: { userId?: string; email?: string }) {
+export function generateToken(payload: {
+  userId?: string;
+  email?: string;
+  organizationId?: string;
+  boards?: string;
+}) {
   return jsonWebToken.sign(payload, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_DAY,
   });

@@ -4,6 +4,7 @@ import { IMember } from "@/models/user";
 interface IOrganization extends Document {
   name: string;
   permission: "private" | "public";
+  inviteLink: string;
 
   member: IMember[];
 }
@@ -18,6 +19,10 @@ const organizationSchema = new Schema<IOrganization>(
       type: String,
       enum: ["private", "public"],
       default: "private",
+    },
+    inviteLink: {
+      type: String,
+      default: "",
     },
     member: [
       {

@@ -1,4 +1,5 @@
 import OrganizationModel from "@/models/organization";
+import { generateToken } from "@/shared";
 
 import type { RequestHandler } from "express";
 
@@ -86,12 +87,21 @@ export const deleteOrganization: RequestHandler = async (req, res) => {
   res.send({ status: "success", message: "刪除組織成功" });
 };
 
-export const inviteOrganizationMember: RequestHandler = async (_req, res) => {
+export const createInviteOrganizationUrl: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Organization - 組織"]
-   * #swagger.description  = "邀請組織成員/產生邀請連結"
+   * #swagger.description  = "建立組織邀請連結"
    */
-  res.send({ status: "success", result: "https://www.google.com/" });
+  const token = generateToken({ organizationId: req.params.organizationId });
+  const result = await OrganizationModel.findByIdAndUpdate(
+    req.params.organizationId,
+    {
+      inviteLink: `https://www.google.com/${token}`,
+    },
+    { new: true }
+  );
+
+  res.send({ status: "success", result });
 };
 
 export const addOrganizationMember: RequestHandler = async (req, res) => {

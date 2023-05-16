@@ -22,7 +22,7 @@ router.delete("/:organizationId", OrganizationController.deleteOrganization);
 
 router.post(
   "/:organizationId/invitationSecret",
-  OrganizationController.inviteOrganizationMember
+  OrganizationController.createInviteOrganizationUrl
 );
 
 router.post(
