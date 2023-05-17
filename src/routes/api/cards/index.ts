@@ -28,7 +28,7 @@ router.post("/:cardId/members", CardController.addCardMember);
 
 router.delete("/:cardId/members/:memberId", CardController.deleteCardMember);
 
-router.post("/:cardId/labels/:labelId", CardController.addCardLabel);
+router.post("/:cardId/labels", CardController.addCardLabel);
 
 router.delete("/:cardId/labels/:labelId", CardController.deleteCardLabel);
 

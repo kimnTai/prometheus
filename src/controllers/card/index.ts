@@ -139,7 +139,7 @@ export const addCardLabel: RequestHandler = async (req, res) => {
     req.params.cardId,
     {
       $addToSet: {
-        label: req.params.labelId,
+        label: req.body.labelId,
       },
     },
     { new: true }

@@ -1365,7 +1365,7 @@
         ]
       }
     },
-    "/api/cards/{cardId}/labels/{labelId}": {
+    "/api/cards/{cardId}/labels": {
       "post": {
         "tags": [
           "Cards - 卡片"
@@ -1379,10 +1379,16 @@
             "type": "string"
           },
           {
-            "name": "labelId",
-            "in": "path",
-            "required": true,
-            "type": "string"
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "labelId": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -1395,7 +1401,9 @@
             "bearerAuth": []
           }
         ]
-      },
+      }
+    },
+    "/api/cards/{cardId}/labels/{labelId}": {
       "delete": {
         "tags": [
           "Cards - 卡片"
