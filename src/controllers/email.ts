@@ -26,7 +26,7 @@ export const sendResetPasswordEmail: RequestHandler = async (req, res) => {
 
   const userInfo = await UsersModel.findOneAndUpdate(
     { email },
-    { password: await bcrypt.hash(`${newPassword}`, 12) }
+    { password: await bcrypt.hash(`${newPassword}`, 6) }
   );
 
   if (userInfo) {

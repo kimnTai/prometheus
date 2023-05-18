@@ -28,7 +28,7 @@ export const register: RequestHandler = async (req, res, next) => {
   const _result = await UsersModel.create({
     name,
     email,
-    password: await bcrypt.hash(password, 12),
+    password: await bcrypt.hash(password, 6),
   });
   const { password: _, ...result } = _result.toObject();
 
@@ -73,7 +73,7 @@ export const resetPassword: RequestHandler = async (req, res) => {
    * #swagger.tags = ["Users - 使用者"]
    * #swagger.description  = "重設密碼"
    */
-  const password = await bcrypt.hash(req.body.password, 12);
+  const password = await bcrypt.hash(req.body.password, 6);
   if (!(await UsersModel.findByIdAndUpdate(req.body.userId, { password }))) {
     throw new Error("此 id 不存在");
   }

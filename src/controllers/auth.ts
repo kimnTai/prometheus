@@ -33,7 +33,7 @@ import type { RequestHandler } from "express";
           done(new Error("此 Email 已被註冊!"));
         }
 
-        const password = await bcrypt.hash(googleId, 12);
+        const password = await bcrypt.hash(googleId, 6);
         const result = await UsersModel.create({
           name,
           email,
@@ -73,7 +73,7 @@ import type { RequestHandler } from "express";
           return done(new Error("此 Email 已被註冊!"));
         }
 
-        const password = await bcrypt.hash(githubId, 12);
+        const password = await bcrypt.hash(githubId, 6);
         const result = await UsersModel.create({
           name: login,
           email,
@@ -130,7 +130,7 @@ export const verifyToken: RequestHandler = async (req, res) => {
       $setOnInsert: {
         name: tokenPayload.name,
         email: tokenPayload.email,
-        password: await bcrypt.hash(tokenPayload.sub, 12),
+        password: await bcrypt.hash(tokenPayload.sub, 6),
         googleId: tokenPayload.sub,
         avatar: tokenPayload.picture,
       },
