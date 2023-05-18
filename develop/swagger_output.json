@@ -2157,6 +2157,58 @@
           }
         }
       }
+    },
+    "/api/invitation/boards/{invitationToken}": {
+      "post": {
+        "tags": [
+          "Other - 其它"
+        ],
+        "description": "透過邀請連結新增 - 看板成員",
+        "parameters": [
+          {
+            "name": "invitationToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/invitation/organizations/{invitationToken}": {
+      "post": {
+        "tags": [
+          "Other - 其它"
+        ],
+        "description": "透過邀請連結新增 - 組織成員",
+        "parameters": [
+          {
+            "name": "invitationToken",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
     }
   }
 }

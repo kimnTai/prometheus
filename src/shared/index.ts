@@ -109,7 +109,7 @@ export function generateToken(payload: {
   userId?: string;
   email?: string;
   organizationId?: string;
-  boards?: string;
+  boardId?: string;
 }) {
   return jsonWebToken.sign(payload, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_DAY,

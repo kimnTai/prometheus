@@ -9,6 +9,7 @@ import cards from "./api/cards";
 import email from "./api/email";
 import upload from "./api/upload";
 import search from "./api/search";
+import invitation from "./api/invitation";
 
 const routes = createRouter();
 
@@ -33,3 +34,5 @@ routes.use("/api/email", email);
 routes.use("/api/upload", upload);
 
 routes.use("/api/search", search);
+
+routes.use("/api/invitation", invitation);

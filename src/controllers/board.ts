@@ -4,6 +4,7 @@ import ListModel from "@/models/list";
 import CardModel from "@/models/card";
 
 import type { RequestHandler } from "express";
+import { generateToken } from "@/shared";
 
 export const getAllBoards: RequestHandler = async (req, res) => {
   /**
@@ -102,10 +103,11 @@ export const createInvitationUrl: RequestHandler = async (req, res) => {
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "建立看板邀請連結"
    */
+  const token = generateToken({ boardId: req.params.boardId });
   const result = await BoardsModel.findByIdAndUpdate(
     req.params.boardId,
     {
-      inviteLink: "https://www.google.com/",
+      inviteLink: `https://feijai.github.io/Lunar/#/invitation/boards/${token}`,
     },
     { new: true }
   );
