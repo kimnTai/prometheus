@@ -35,7 +35,7 @@ const cardSchema = new Schema<ICard>(
     boardId: {
       type: Schema.Types.ObjectId,
       ref: "board",
-      //required: [true, "boardId 未填寫"],
+      required: [true, "boardId 未填寫"],
     },
     listId: {
       type: Schema.Types.ObjectId,
