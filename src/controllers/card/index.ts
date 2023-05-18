@@ -8,17 +8,18 @@ export const createCard: RequestHandler = async (req, res) => {
    * #swagger.tags = ["Cards - 卡片"]
    * #swagger.description  = "創建卡片"
    */
-  const { name, listId, position } = req.body;
+  const { name, listId, position, boardId } = req.body;
 
   const result = await CardModel.create({
     name,
     position,
     listId,
+    boardId,
   });
 
-  const boardId = (await ListModel.findById(listId))?.boardId;
+  const _boardId = (await ListModel.findById(listId))?.boardId;
 
-  res.app.emit(`boardId:${boardId}`, result);
+  res.app.emit(`boardId:${_boardId}`, result);
   res.send({ status: "success", result });
 };
 

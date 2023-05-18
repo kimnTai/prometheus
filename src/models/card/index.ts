@@ -8,6 +8,7 @@ interface ICard extends Document {
   position: number;
   color: string;
 
+  boardId: Schema.Types.ObjectId;
   listId: Schema.Types.ObjectId;
   member: IMember[];
   label: Schema.Types.ObjectId[];
@@ -30,6 +31,11 @@ const cardSchema = new Schema<ICard>(
     position: {
       type: Number,
       default: 0,
+    },
+    boardId: {
+      type: Schema.Types.ObjectId,
+      ref: "board",
+      //required: [true, "boardId 未填寫"],
     },
     listId: {
       type: Schema.Types.ObjectId,
