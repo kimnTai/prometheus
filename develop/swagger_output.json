@@ -1154,6 +1154,9 @@
                 },
                 "position": {
                   "example": "any"
+                },
+                "boardId": {
+                  "example": "any"
                 }
               }
             }
