@@ -998,6 +998,44 @@
         ]
       }
     },
+    "/api/boards/cloneById": {
+      "post": {
+        "tags": [
+          "Boards - 看板"
+        ],
+        "description": "複製單一看板",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "sourceBoardId": {
+                  "example": "any"
+                },
+                "organizationId": {
+                  "example": "any"
+                },
+                "name": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/api/lists/": {
       "post": {
         "tags": [

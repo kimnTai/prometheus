@@ -1,5 +1,7 @@
 import { Schema, model, type Document } from "mongoose";
 import { IMember } from "@/models/user";
+import { IList } from "../list";
+import { ILabel } from "../label";
 
 interface IBoard extends Document {
   name: string;
@@ -9,6 +11,8 @@ interface IBoard extends Document {
 
   member: IMember[];
   organizationId: Schema.Types.ObjectId;
+  list: IList[];
+  label: ILabel[];
 }
 
 const boardSchema = new Schema<IBoard>(

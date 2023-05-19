@@ -47,3 +47,5 @@ router.get(
   "/:boardId/closedCardsAndList",
   BoardController.getClosedCardsAndList
 );
+
+router.post("/cloneById", BoardController.cloneBoardById);

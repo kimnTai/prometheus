@@ -1,10 +1,14 @@
+import { generateToken } from "@/shared";
+import OrganizationModel from "@/models/organization";
 import BoardsModel from "@/models/board";
 import LabelsModel from "@/models/label";
 import ListModel from "@/models/list";
 import CardModel from "@/models/card";
+import ChecklistModel from "@/models/card/checklist";
+import CheckItemModel from "@/models/card/checkItem";
+import AttachmentModel from "@/models/card/attachment";
 
 import type { RequestHandler } from "express";
-import { generateToken } from "@/shared";
 
 export const getAllBoards: RequestHandler = async (req, res) => {
   /**
@@ -299,4 +303,114 @@ export const getClosedCardsAndList: RequestHandler = async (req, res) => {
   ]);
 
   res.send({ status: "success", result: { closedList, closedCard } });
+};
+
+export const cloneBoardById: RequestHandler = async (req, res) => {
+  /**
+   * #swagger.tags = ["Boards - 看板"]
+   * #swagger.description  = "複製單一看板"
+   */
+
+  const [originBoard, organization] = await Promise.all([
+    BoardsModel.findById(req.body.sourceBoardId),
+    OrganizationModel.findById(req.body.organizationId),
+  ]);
+
+  if (!originBoard) {
+    throw new Error("無此看板 id");
+  }
+
+  if (!organization) {
+    throw new Error("無此組織 id");
+  }
+
+  // 複製看板
+  const cloneBoard = new BoardsModel({
+    name: req.body.name,
+    organizationId: req.body.organizationId,
+    member: [{ userId: req.user?._id, role: "manager" }],
+  });
+
+  // 複製標籤
+  const cloneLabels = originBoard.label.map(({ name, color }) => {
+    return new LabelsModel({ name, color, boardId: cloneBoard.id });
+  });
+
+  // 標籤映射表
+  const labelsMap = originBoard.label.reduce<{ [key in string]: string }>(
+    (pre, { id }, i) => ({ ...pre, [id]: cloneLabels[i].id }),
+    {}
+  );
+
+  // 複製卡片相關 model
+  const cloneTotal = originBoard.list.flatMap(({ name, position, card }) => {
+    // 複製列表
+    const cloneLists = new ListModel({
+      boardId: cloneBoard.id,
+      name,
+      position,
+    });
+
+    return [
+      cloneLists,
+      ...card.flatMap(
+        ({ name, position, description, checklist, label, attachment }) => {
+          // 從映射表映射標籤
+          const _label = label.map((item) => labelsMap[item._id]);
+          // 複製卡片
+          const cloneCard = new CardModel({
+            listId: cloneLists.id,
+            boardId: cloneBoard.id,
+            name,
+            position,
+            description,
+            label: _label,
+          });
+
+          return [
+            cloneCard,
+            ...attachment.flatMap(({ dirname, filename }) => {
+              // 複製附件
+              return new AttachmentModel({
+                dirname,
+                filename,
+                cardId: cloneCard.id,
+                userId: req.user?._id,
+              });
+            }),
+            ...checklist.flatMap(({ name, position, checkItem }) => {
+              // 複製待辦清單
+              const cloneChecklist = new ChecklistModel({
+                name,
+                position,
+                cardId: cloneCard.id,
+              });
+
+              return [
+                cloneChecklist,
+                ...checkItem.flatMap(({ name, position }) => {
+                  // 複製代辦事項
+                  return new CheckItemModel({
+                    name,
+                    position,
+                    checklistId: cloneChecklist.id,
+                  });
+                }),
+              ];
+            }),
+          ];
+        }
+      ),
+    ];
+  });
+
+  // 等待所有 model 存入資料庫
+  await Promise.all(
+    [cloneBoard, ...cloneLabels, ...cloneTotal].map((model) => model.save())
+  );
+
+  // 最終結果用查的，方便前端接
+  const result = await BoardsModel.findById(cloneBoard._id);
+
+  res.send({ status: "success", result });
 };

@@ -1,6 +1,6 @@
 import { Schema, model, type Document } from "mongoose";
 
-interface ICheckItem extends Document {
+export interface ICheckItem extends Document {
   name: string;
   completed: Boolean;
   position: number;
