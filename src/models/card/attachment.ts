@@ -1,6 +1,6 @@
 import { Schema, model, type Document } from "mongoose";
 
-interface IAttachment extends Document {
+export interface IAttachment extends Document {
   dirname: string;
   filename: string;
 

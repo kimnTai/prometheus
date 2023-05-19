@@ -1,11 +1,13 @@
 import { Schema, model, type Document } from "mongoose";
+import { ICheckItem } from "./checkItem";
 
-interface IChecklist extends Document {
+export interface IChecklist extends Document {
   name: string;
   completed: Boolean;
   position: number;
 
   cardId: Schema.Types.ObjectId;
+  checkItem: ICheckItem[];
 }
 
 const checklistSchema = new Schema<IChecklist>(

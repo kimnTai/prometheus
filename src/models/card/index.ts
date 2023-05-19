@@ -1,7 +1,10 @@
 import { Schema, model, type Document } from "mongoose";
 import { IMember } from "@/models/user";
+import { IChecklist } from "./checklist";
+import { ILabel } from "../label";
+import { IAttachment } from "./attachment";
 
-interface ICard extends Document {
+export interface ICard extends Document {
   name: string;
   description: string;
   closed: boolean;
@@ -11,7 +14,9 @@ interface ICard extends Document {
   boardId: Schema.Types.ObjectId;
   listId: Schema.Types.ObjectId;
   member: IMember[];
-  label: Schema.Types.ObjectId[];
+  label: ILabel[];
+  checklist: IChecklist[];
+  attachment: IAttachment[];
 }
 
 const cardSchema = new Schema<ICard>(

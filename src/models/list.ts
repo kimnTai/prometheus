@@ -1,11 +1,13 @@
 import { Schema, model, type Document } from "mongoose";
+import { ICard } from "./card";
 
-interface IList extends Document {
+export interface IList extends Document {
   name: string;
   closed: boolean;
   position: number;
 
   boardId: Schema.Types.ObjectId;
+  card: ICard[];
 }
 
 const listSchema = new Schema<IList>(
