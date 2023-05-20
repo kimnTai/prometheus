@@ -166,6 +166,7 @@ export const updateOrganizationMember: RequestHandler = async (req, res) => {
 
   const result = await OrganizationModel.findOneAndUpdate(
     {
+      _id: req.params.organizationId,
       "member.userId": req.params.memberId,
     },
     {

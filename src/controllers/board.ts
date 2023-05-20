@@ -240,6 +240,7 @@ export const updateBoardMember: RequestHandler = async (req, res) => {
 
   const result = await BoardsModel.findOneAndUpdate(
     {
+      _id: req.params.boardId,
       "member.userId": req.params.memberId,
     },
     {
