@@ -113,7 +113,6 @@ cardSchema.pre(/^find/, function (next) {
   });
   this.populate({
     path: "comment",
-    select: "comment userId",
   });
   this.populate({
     path: "checklist",
