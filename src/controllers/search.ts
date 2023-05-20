@@ -16,7 +16,7 @@ export const searchMember: RequestHandler = async (req, res) => {
 
   const excludedIds = (
     await OrganizationModel.findById(organizationId)
-  )?.member.map(({ _id }) => _id);
+  )?.member.map(({ userId }) => userId._id);
 
   const key = validator.isEmail(`${query}`) ? "email" : "name";
 
