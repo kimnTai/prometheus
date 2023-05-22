@@ -27,13 +27,19 @@ export const createBoard: RequestHandler = async (req, res) => {
    */
   const { name, organizationId, permission } = req.body;
 
-  const result = await BoardsModel.create({
+  const _result = await BoardsModel.create({
     name,
     organizationId,
     permission,
     // 把當前使用者設為管理員
     member: [{ userId: req.user?._id, role: "manager" }],
   });
+
+  const result = {
+    ..._result.toObject(),
+    list: [],
+    label: [],
+  };
 
   res.send({ status: "success", result });
 };

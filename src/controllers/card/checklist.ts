@@ -9,11 +9,16 @@ export const createChecklist: RequestHandler = async (req, res) => {
    */
   const { name, position } = req.body;
 
-  const result = await ChecklistModel.create({
+  const _result = await ChecklistModel.create({
     name,
     position,
     cardId: req.params.cardId,
   });
+
+  const result = {
+    ..._result.toObject(),
+    checkItem: [],
+  };
 
   res.send({ status: "success", result });
 };

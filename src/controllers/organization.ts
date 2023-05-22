@@ -26,7 +26,7 @@ export const createOrganization: RequestHandler = async (req, res) => {
    */
   const { name, permission } = req.body;
 
-  const result = await OrganizationModel.create({
+  const _result = await OrganizationModel.create({
     name,
     permission,
     // 把當前使用者設為管理員
@@ -37,6 +37,11 @@ export const createOrganization: RequestHandler = async (req, res) => {
       },
     ],
   });
+
+  const result = {
+    ..._result.toObject(),
+    board: [],
+  };
 
   res.send({ success: true, result });
 };

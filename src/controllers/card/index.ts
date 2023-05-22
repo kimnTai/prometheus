@@ -1,5 +1,4 @@
 import CardModel from "@/models/card";
-import ListModel from "@/models/list";
 
 import type { RequestHandler } from "express";
 
@@ -10,16 +9,22 @@ export const createCard: RequestHandler = async (req, res) => {
    */
   const { name, listId, position, boardId } = req.body;
 
-  const result = await CardModel.create({
+  const _result = await CardModel.create({
     name,
     position,
     listId,
     boardId,
   });
 
-  const _boardId = (await ListModel.findById(listId))?.boardId;
+  const result = {
+    ..._result.toObject(),
+    checklist: [],
+    comment: [],
+    attachment: [],
+    date: null,
+  };
 
-  res.app.emit(`boardId:${_boardId}`, result);
+  res.app.emit(`boardId:${result.boardId}`, result);
   res.send({ status: "success", result });
 };
 
@@ -46,9 +51,7 @@ export const updateCard: RequestHandler = async (req, res) => {
     throw new Error("無此卡片 id");
   }
 
-  const boardId = (await ListModel.findById(listId))?.boardId;
-
-  res.app.emit(`boardId:${boardId}`, result);
+  res.app.emit(`boardId:${result.boardId}`, result);
   res.send({ status: "success", result });
 };
 
@@ -79,9 +82,7 @@ export const deleteCard: RequestHandler = async (req, res) => {
     throw new Error("無此卡片 id");
   }
 
-  const boardId = (await ListModel.findById(result.listId))?.boardId;
-
-  res.app.emit(`boardId:${boardId}`, result);
+  res.app.emit(`boardId:${result.boardId}`, result);
   res.send({ status: "success", result: result });
 };
 
@@ -102,9 +103,7 @@ export const addCardMember: RequestHandler = async (req, res) => {
     { new: true }
   );
 
-  const boardId = (await ListModel.findById(result?.listId))?.boardId;
-
-  res.app.emit(`boardId:${boardId}`, result);
+  res.app.emit(`boardId:${result?.boardId}`, result);
   res.send({ status: "success", result });
 };
 
@@ -125,9 +124,7 @@ export const deleteCardMember: RequestHandler = async (req, res) => {
     { new: true }
   );
 
-  const boardId = (await ListModel.findById(result?.listId))?.boardId;
-
-  res.app.emit(`boardId:${boardId}`, result);
+  res.app.emit(`boardId:${result?.boardId}`, result);
   res.send({ status: "success", result });
 };
 
@@ -146,9 +143,7 @@ export const addCardLabel: RequestHandler = async (req, res) => {
     { new: true }
   );
 
-  const boardId = (await ListModel.findById(result?.listId))?.boardId;
-
-  res.app.emit(`boardId:${boardId}`, result);
+  res.app.emit(`boardId:${result?.boardId}`, result);
   res.send({ status: "success", result });
 };
 
@@ -167,9 +162,7 @@ export const deleteCardLabel: RequestHandler = async (req, res) => {
     { new: true }
   );
 
-  const boardId = (await ListModel.findById(result?.listId))?.boardId;
-
-  res.app.emit(`boardId:${boardId}`, result);
+  res.app.emit(`boardId:${result?.boardId}`, result);
   res.send({ status: "success", result });
 };
 
@@ -190,8 +183,6 @@ export const closeCard: RequestHandler = async (req, res) => {
     throw new Error("無此卡片 id");
   }
 
-  const boardId = (await ListModel.findById(result?.listId))?.boardId;
-
-  res.app.emit(`boardId:${boardId}`, result);
+  res.app.emit(`boardId:${result.boardId}`, result);
   res.send({ status: "success", result });
 };
