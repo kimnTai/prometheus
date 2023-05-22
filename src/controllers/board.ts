@@ -202,7 +202,7 @@ export const getBoardMembers: RequestHandler = async (req, res) => {
 export const addBoardMember: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "新增看板成員"
+   * #swagger.description  = "新增多位看板成員"
    */
   const result = await BoardsModel.findOneAndUpdate(
     {
@@ -211,7 +211,7 @@ export const addBoardMember: RequestHandler = async (req, res) => {
     {
       $addToSet: {
         member: {
-          userId: req.body.userId,
+          $each: req.body.userIdList.map((userId: string) => ({ userId })),
         },
       },
     },

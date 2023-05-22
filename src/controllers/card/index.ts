@@ -88,14 +88,14 @@ export const deleteCard: RequestHandler = async (req, res) => {
 export const addCardMember: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Cards - 卡片"]
-   * #swagger.description  = "新增卡片成員"
+   * #swagger.description  = "新增多位卡片成員"
    */
   const result = await CardModel.findByIdAndUpdate(
     req.params.cardId,
     {
       $addToSet: {
         member: {
-          userId: req.body.userId,
+          $each: req.body.userIdList.map((userId: string) => ({ userId })),
         },
       },
     },

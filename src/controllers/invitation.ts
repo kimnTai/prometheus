@@ -45,6 +45,9 @@ export const addOrganizationMember: RequestHandler = async (req, res) => {
           userId: req.user?._id,
         },
       },
+    },
+    {
+      new: true,
     }
   );
 

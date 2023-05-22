@@ -72,6 +72,9 @@ export const archiveAllCards: RequestHandler = async (req, res) => {
     },
     {
       closed: true,
+    },
+    {
+      new: true,
     }
   );
 

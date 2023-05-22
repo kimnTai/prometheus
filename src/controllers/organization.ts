@@ -107,7 +107,7 @@ export const createInviteOrganizationUrl: RequestHandler = async (req, res) => {
 export const addOrganizationMember: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Organization - 組織"]
-   * #swagger.description  = "新增組織成員"
+   * #swagger.description  = "新增多位組織成員"
    */
   const result = await OrganizationModel.findOneAndUpdate(
     {
@@ -116,10 +116,11 @@ export const addOrganizationMember: RequestHandler = async (req, res) => {
     {
       $addToSet: {
         member: {
-          userId: req.body.userId,
+          $each: req.body.userIdList.map((userId: string) => ({ userId })),
         },
       },
-    }
+    },
+    { new: true }
   );
 
   res.send({ status: "success", result });

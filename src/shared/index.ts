@@ -99,6 +99,11 @@ export function checkValidator(param: {
           throw new Error("position 必須大於 0");
         }
         break;
+      case "userIdList":
+        if (!Array.isArray(value) && value.length) {
+          throw new Error("userIdList 必須為陣列且長度大於 1");
+        }
+        break;
       default:
         break;
     }
