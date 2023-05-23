@@ -23,7 +23,7 @@ export const updateCheckItem: RequestHandler = async (req, res) => {
    * #swagger.tags = ["Cards - 卡片待辦"]
    * #swagger.description  = "修改待辦事項"
    */
-  const { name, position, completed } = req.body;
+  const { name, position, completed, checklistId } = req.body;
 
   const result = await CheckItemModel.findByIdAndUpdate(
     req.params.checkItemId,
@@ -31,6 +31,7 @@ export const updateCheckItem: RequestHandler = async (req, res) => {
       name,
       position,
       completed,
+      checklistId,
     },
     { new: true, runValidators: true }
   );
