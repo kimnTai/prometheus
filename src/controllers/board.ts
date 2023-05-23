@@ -39,6 +39,17 @@ export const createBoard: RequestHandler = async (req, res) => {
     ..._result.toObject(),
     list: [],
     label: [],
+    member: [
+      {
+        userId: {
+          _id: req.user?._id,
+          name: req.user?.name,
+          email: req.user?.email,
+          avatar: req.user?.avatar,
+        },
+        role: "manager",
+      },
+    ],
   };
 
   res.send({ status: "success", result });

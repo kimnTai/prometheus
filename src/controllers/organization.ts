@@ -41,6 +41,17 @@ export const createOrganization: RequestHandler = async (req, res) => {
   const result = {
     ..._result.toObject(),
     board: [],
+    member: [
+      {
+        userId: {
+          _id: req.user?._id,
+          name: req.user?.name,
+          email: req.user?.email,
+          avatar: req.user?.avatar,
+        },
+        role: "manager",
+      },
+    ],
   };
 
   res.send({ success: true, result });
