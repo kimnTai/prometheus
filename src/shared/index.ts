@@ -86,6 +86,11 @@ export function checkValidator(param: {
           throw new Error("avatar 格式不正確");
         }
         break;
+      case "dirname":
+        if (!validator.isURL(value, { protocols: ["https"] })) {
+          throw new Error("dirname 格式不正確");
+        }
+        break;
       case "color":
         if (!validator.isHexColor(value)) {
           throw new Error("color 必須為十六進制顏色");

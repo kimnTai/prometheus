@@ -537,6 +537,9 @@
                 },
                 "permission": {
                   "example": "any"
+                },
+                "image": {
+                  "example": "any"
                 }
               }
             }
@@ -607,6 +610,9 @@
                   "example": "any"
                 },
                 "closed": {
+                  "example": "any"
+                },
+                "image": {
                   "example": "any"
                 }
               }

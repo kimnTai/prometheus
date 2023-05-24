@@ -25,14 +25,20 @@ export const createBoard: RequestHandler = async (req, res) => {
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "建立看板"
    */
-  const { name, organizationId, permission } = req.body;
+  const { name, organizationId, permission, image } = req.body;
 
   const _result = await BoardsModel.create({
     name,
     organizationId,
     permission,
+    image,
     // 把當前使用者設為管理員
-    member: [{ userId: req.user?._id, role: "manager" }],
+    member: [
+      {
+        userId: req.user?._id,
+        role: "manager",
+      },
+    ],
   });
 
   const result = {
@@ -74,13 +80,14 @@ export const updateBoard: RequestHandler = async (req, res) => {
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "修改看板"
    */
-  const { name, organizationId, permission, closed } = req.body;
+  const { name, organizationId, permission, closed, image } = req.body;
 
   const result = await BoardsModel.findByIdAndUpdate(req.params.boardId, {
     name,
     organizationId,
     permission,
     closed,
+    image,
   });
 
   if (!result) {
