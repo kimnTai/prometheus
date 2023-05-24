@@ -225,6 +225,9 @@
                 },
                 "permission": {
                   "example": "any"
+                },
+                "userIdList": {
+                  "example": "any"
                 }
               }
             }
@@ -1359,9 +1362,11 @@
             "schema": {
               "type": "object",
               "properties": {
-                "example": [
-                  "646ae3305a055110bd4493c0"
-                ]
+                "userIdList": {
+                  "example": [
+                    "646ae3305a055110bd4493c0"
+                  ]
+                }
               }
             }
           }

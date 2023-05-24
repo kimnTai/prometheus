@@ -24,35 +24,24 @@ export const createOrganization: RequestHandler = async (req, res) => {
    * #swagger.tags = ["Organization - 組織"]
    * #swagger.description  = "新增組織"
    */
-  const { name, permission } = req.body;
+  const { name, permission, userIdList } = req.body;
 
   const _result = await OrganizationModel.create({
     name,
     permission,
-    // 把當前使用者設為管理員
     member: [
+      // 把當前使用者設為管理員
       {
         userId: req.user?._id,
         role: "manager",
       },
+      // 邀請加入的成員
+      ...userIdList.map((userId: string) => ({ userId })),
     ],
   });
 
-  const result = {
-    ..._result.toObject(),
-    board: [],
-    member: [
-      {
-        userId: {
-          _id: req.user?._id,
-          name: req.user?.name,
-          email: req.user?.email,
-          avatar: req.user?.avatar,
-        },
-        role: "manager",
-      },
-    ],
-  };
+  // 需要成員資料，所以 result 用查的
+  const result = await OrganizationModel.findById(_result.id);
 
   res.send({ success: true, result });
 };
