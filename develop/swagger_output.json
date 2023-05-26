@@ -399,9 +399,7 @@
               "type": "object",
               "properties": {
                 "userIdList": {
-                  "example": [
-                    "646ae3305a055110bd4493c0"
-                  ]
+                  "example": "any"
                 }
               }
             }
@@ -891,9 +889,7 @@
               "type": "object",
               "properties": {
                 "userIdList": {
-                  "example": [
-                    "646ae3305a055110bd4493c0"
-                  ]
+                  "example": "any"
                 }
               }
             }
@@ -1369,9 +1365,7 @@
               "type": "object",
               "properties": {
                 "userIdList": {
-                  "example": [
-                    "646ae3305a055110bd4493c0"
-                  ]
+                  "example": "any"
                 }
               }
             }
@@ -1477,6 +1471,50 @@
             "in": "path",
             "required": true,
             "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/cards/cloneById": {
+      "post": {
+        "tags": [
+          "Cards - 卡片"
+        ],
+        "description": "複製卡片",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "sourceCardId": {
+                  "example": "any"
+                },
+                "name": {
+                  "example": "any"
+                },
+                "boardId": {
+                  "example": "any"
+                },
+                "listId": {
+                  "example": "any"
+                },
+                "position": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {

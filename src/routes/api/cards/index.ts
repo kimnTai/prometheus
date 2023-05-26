@@ -39,3 +39,5 @@ router.use(checklist);
 router.use(comments);
 
 router.use(date);
+
+router.post("/cloneById", CardController.cloneCardById);

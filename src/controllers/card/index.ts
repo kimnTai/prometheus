@@ -1,4 +1,8 @@
 import CardModel from "@/models/card";
+import AttachmentModel from "@/models/card/attachment";
+import ChecklistModel from "@/models/card/checklist";
+import CheckItemModel from "@/models/card/checkItem";
+import LabelsModel from "@/models/label";
 
 import type { RequestHandler } from "express";
 
@@ -184,5 +188,85 @@ export const closeCard: RequestHandler = async (req, res) => {
   }
 
   res.app.emit(`boardId:${result.boardId}`, result);
+  res.send({ status: "success", result });
+};
+
+export const cloneCardById: RequestHandler = async (req, res) => {
+  /**
+   * #swagger.tags = ["Cards - 卡片"]
+   * #swagger.description  = "複製卡片"
+   */
+  const _result = await CardModel.findById(req.body.sourceCardId);
+
+  if (!_result) {
+    throw new Error("無此卡片 id");
+  }
+
+  // 複製標籤
+  const cloneLabels = _result.label.map(({ name, color }) => {
+    return new LabelsModel({ name, color, boardId: _result.boardId });
+  });
+
+  // 標籤映射表
+  const labelsMap = _result.label.reduce<{ [key in string]: string }>(
+    (pre, { id }, i) => ({ ...pre, [id]: cloneLabels[i].id }),
+    {}
+  );
+
+  // 從映射表映射標籤
+  const _label = _result.label.map((item) => labelsMap[item._id]);
+
+  // 複製卡片
+  const cloneCard = new CardModel({
+    name: req.body.name,
+    boardId: req.body.boardId,
+    listId: req.body.listId,
+    position: req.body.position,
+    description: _result.description,
+    label: _label,
+  });
+
+  // 複製附件
+  const attachment = _result.attachment.flatMap(({ dirname, filename }) => {
+    return new AttachmentModel({
+      dirname,
+      filename,
+      cardId: cloneCard.id,
+      userId: req.user?._id,
+    });
+  });
+
+  // 複製待辦清單
+  const checklist = _result.checklist.flatMap(
+    ({ name, position, checkItem }) => {
+      const cloneChecklist = new ChecklistModel({
+        name,
+        position,
+        cardId: cloneCard.id,
+      });
+
+      return [
+        cloneChecklist,
+        ...checkItem.flatMap(({ name, position }) => {
+          // 複製代辦事項
+          return new CheckItemModel({
+            name,
+            position,
+            checklistId: cloneChecklist.id,
+          });
+        }),
+      ];
+    }
+  );
+
+  await Promise.all(
+    [...cloneLabels, cloneCard, ...attachment, ...checklist].map((model) =>
+      model.save()
+    )
+  );
+
+  const result = await CardModel.findById(cloneCard._id);
+
+  res.app.emit(`boardId:${result?.boardId}`, result);
   res.send({ status: "success", result });
 };
