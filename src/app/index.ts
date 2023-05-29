@@ -2,9 +2,9 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import "@/app/env";
-import "@/connection";
+import "@/app/connection";
 import Routes from "@/routes";
-import * as Exception from "@/exception";
+import * as Exception from "@/app/exception";
 import Socket from "@/websocket";
 
 export const app = express();
