@@ -1,4 +1,5 @@
 import OrganizationModel from "@/models/organization";
+import { generateNotification } from "@/service/notification";
 import { generateToken } from "@/shared";
 
 import type { RequestHandler } from "express";
@@ -46,6 +47,25 @@ export const createOrganization: RequestHandler = async (req, res) => {
   const result = await OrganizationModel.findById(_result.id).populate({
     path: "board",
   });
+
+  if (result) {
+    // 產生通知
+    userIdList
+      .filter((userId: string) => userId !== req.user?.id)
+      .forEach((userId: string) => {
+        generateNotification({
+          userId,
+          type: "ADD_MEMBER",
+          data: {
+            organization: {
+              id: result.id,
+              name: result.name,
+            },
+          },
+          sourceUserId: req.user?.id,
+        });
+      });
+  }
 
   res.send({ success: true, result });
 };
@@ -142,6 +162,23 @@ export const addOrganizationMember: RequestHandler = async (req, res) => {
     path: "board",
   });
 
+  if (result) {
+    // 產生通知
+    req.body.userIdList.forEach((userId: string) => {
+      generateNotification({
+        userId,
+        type: "ADD_MEMBER",
+        data: {
+          organization: {
+            id: result.id,
+            name: result.name,
+          },
+        },
+        sourceUserId: req.user?.id,
+      });
+    });
+  }
+
   res.send({ status: "success", result });
 };
 
@@ -165,6 +202,21 @@ export const deleteOrganizationMember: RequestHandler = async (req, res) => {
   ).populate({
     path: "board",
   });
+
+  if (result) {
+    // 產生通知
+    generateNotification({
+      userId: req.params.memberId,
+      type: "REMOVE_MEMBER",
+      data: {
+        organization: {
+          id: result.id,
+          name: result.name,
+        },
+      },
+      sourceUserId: req.user?.id,
+    });
+  }
 
   res.send({ status: "success", result });
 };
@@ -207,6 +259,20 @@ export const updateOrganizationMember: RequestHandler = async (req, res) => {
   if (!result) {
     throw new Error("無此成員!");
   }
+
+  // 產生通知
+  generateNotification({
+    userId: req.params.memberId,
+    type: "UPDATE_ROLE",
+    data: {
+      organization: {
+        id: result.id,
+        name: result.name,
+        role: req.body.role,
+      },
+    },
+    sourceUserId: req.user?.id,
+  });
 
   res.send({ status: "success", result });
 };

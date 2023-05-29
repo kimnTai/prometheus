@@ -1,22 +1,43 @@
 import { Schema, model, type Document } from "mongoose";
 
-interface INotification extends Document {
-  text: string;
-  isRead: boolean;
+export interface INotification extends Document {
+  isRead?: boolean;
+  type: "ADD_MEMBER" | "REMOVE_MEMBER" | "UPDATE_ROLE";
+  data: {
+    organization?: {
+      id: string;
+      name: string;
+      role: string;
+    };
+    board?: {
+      id: string;
+      name: string;
+      role: string;
+    };
+    card?: {
+      id: string;
+      name: string;
+    };
+  };
 
   userId: Schema.Types.ObjectId;
-  actionId: Schema.Types.ObjectId;
+  sourceUserId: Schema.Types.ObjectId;
 }
 
 const notificationSchema = new Schema<INotification>(
   {
-    text: {
-      type: String,
-      required: [true, "event 未填寫"],
-    },
     isRead: {
       type: Boolean,
       default: false,
+    },
+    type: {
+      type: String,
+      required: [true, "type 未填寫"],
+      enum: ["ADD_MEMBER", "REMOVE_MEMBER", "UPDATE_ROLE"],
+    },
+    data: {
+      type: Object,
+      required: [true, "data 未填寫"],
     },
 
     userId: {
@@ -24,10 +45,10 @@ const notificationSchema = new Schema<INotification>(
       ref: "user",
       required: [true, "userId 未填寫"],
     },
-    actionId: {
+    sourceUserId: {
       type: Schema.Types.ObjectId,
-      ref: "action",
-      required: [true, "actionId 未填寫"],
+      ref: "user",
+      required: [true, "sourceUserId 未填寫"],
     },
   },
   {
@@ -35,5 +56,12 @@ const notificationSchema = new Schema<INotification>(
     timestamps: true,
   }
 );
+
+notificationSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "user",
+  });
+  next();
+});
 
 export default model("notification", notificationSchema);

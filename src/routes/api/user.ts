@@ -50,3 +50,17 @@ router.get(
 );
 
 router.get("/verifyJwt", isAuth, UserController.verifyJwt);
+
+router.get("/notification", isAuth, UserController.getNotification);
+
+router.put(
+  "/notification/:notificationId",
+  isAuth,
+  UserController.updateNotification
+);
+
+router.delete(
+  "/notification/:notificationId",
+  isAuth,
+  UserController.deleteNotification
+);

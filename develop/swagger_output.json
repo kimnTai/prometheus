@@ -161,20 +161,64 @@
         "responses": {}
       }
     },
-    "/api/user/google/verifyToken": {
-      "post": {
+    "/api/user/verifyJwt": {
+      "get": {
         "tags": [
-          "Auth"
+          "Users - 使用者"
         ],
-        "description": "Verify the JWT token sent from the client",
+        "description": "驗證登入",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/user/notification": {
+      "get": {
+        "tags": [
+          "Users - 使用者"
+        ],
+        "description": "取得使用者通知",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/user/notification/{notificationId}": {
+      "put": {
+        "tags": [
+          "Users - 使用者"
+        ],
+        "description": "修改使用者通知",
         "parameters": [
+          {
+            "name": "notificationId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "body",
             "in": "body",
             "schema": {
               "type": "object",
               "properties": {
-                "token": {
+                "isRead": {
                   "example": "any"
                 }
               }
@@ -185,16 +229,26 @@
           "200": {
             "description": "OK"
           }
-        }
-      }
-    },
-    "/api/user/verifyJwt": {
-      "get": {
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
         "tags": [
           "Users - 使用者"
         ],
-        "description": "驗證登入",
-        "parameters": [],
+        "description": "刪除使用者通知",
+        "parameters": [
+          {
+            "name": "notificationId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"

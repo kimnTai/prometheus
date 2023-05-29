@@ -7,6 +7,7 @@ import CardModel from "@/models/card";
 import ChecklistModel from "@/models/card/checklist";
 import CheckItemModel from "@/models/card/checkItem";
 import AttachmentModel from "@/models/card/attachment";
+import { generateNotification } from "@/service/notification";
 
 import type { RequestHandler } from "express";
 
@@ -242,6 +243,25 @@ export const addBoardMember: RequestHandler = async (req, res) => {
     { new: true }
   );
 
+  if (result) {
+    // 產生通知
+    req.body.userIdList
+      .filter((userId: string) => userId !== req.user?.id)
+      .forEach((userId: string) => {
+        generateNotification({
+          userId,
+          type: "ADD_MEMBER",
+          data: {
+            board: {
+              id: result.id,
+              name: result.name,
+            },
+          },
+          sourceUserId: req.user?.id,
+        });
+      });
+  }
+
   res.send({ status: "success", result });
 };
 
@@ -282,6 +302,20 @@ export const updateBoardMember: RequestHandler = async (req, res) => {
     throw new Error("無此成員!");
   }
 
+  // 產生通知
+  generateNotification({
+    userId: req.params.memberId,
+    type: "UPDATE_ROLE",
+    data: {
+      board: {
+        id: result.id,
+        name: result.name,
+        role: req.body.role,
+      },
+    },
+    sourceUserId: req.user?.id,
+  });
+
   res.send({ status: "success", result });
 };
 
@@ -301,6 +335,21 @@ export const deleteBoardMember: RequestHandler = async (req, res) => {
     },
     { new: true }
   );
+
+  if (result && req.params.memberId !== req.user?.id) {
+    // 產生通知
+    generateNotification({
+      userId: req.params.memberId,
+      type: "REMOVE_MEMBER",
+      data: {
+        board: {
+          id: result.id,
+          name: result.name,
+        },
+      },
+      sourceUserId: req.user?.id,
+    });
+  }
 
   res.send({ status: "success", result });
 };

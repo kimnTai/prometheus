@@ -3,6 +3,7 @@ import AttachmentModel from "@/models/card/attachment";
 import ChecklistModel from "@/models/card/checklist";
 import CheckItemModel from "@/models/card/checkItem";
 import LabelsModel from "@/models/label";
+import { generateNotification } from "@/service/notification";
 
 import type { RequestHandler } from "express";
 
@@ -107,6 +108,25 @@ export const addCardMember: RequestHandler = async (req, res) => {
     { new: true }
   );
 
+  if (result) {
+    // 產生通知
+    req.body.userIdList
+      .filter((userId: string) => userId !== req.user?.id)
+      .forEach((userId: string) => {
+        generateNotification({
+          userId,
+          type: "ADD_MEMBER",
+          data: {
+            card: {
+              id: result.id,
+              name: result.name,
+            },
+          },
+          sourceUserId: req.user?.id,
+        });
+      });
+  }
+
   res.app.emit(`boardId:${result?.boardId}`, result);
   res.send({ status: "success", result });
 };
@@ -127,6 +147,21 @@ export const deleteCardMember: RequestHandler = async (req, res) => {
     },
     { new: true }
   );
+
+  if (result && req.params.memberId !== req.user?.id) {
+    // 產生通知
+    generateNotification({
+      userId: req.params.memberId,
+      type: "REMOVE_MEMBER",
+      data: {
+        card: {
+          id: result.id,
+          name: result.name,
+        },
+      },
+      sourceUserId: req.user?.id,
+    });
+  }
 
   res.app.emit(`boardId:${result?.boardId}`, result);
   res.send({ status: "success", result });

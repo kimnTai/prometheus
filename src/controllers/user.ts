@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import { generateToken, getWebsocketUrl } from "@/shared";
 import UsersModel from "@/models/user";
+import * as NotificationService from "@/service/notification";
 
 import type { RequestHandler } from "express";
 
@@ -92,4 +93,41 @@ export const verifyJwt: RequestHandler = async (req, res) => {
     websocketUrl: getWebsocketUrl(req),
     result: req.user,
   });
+};
+
+export const getNotification: RequestHandler = async (req, res) => {
+  /**
+   * #swagger.tags = ["Users - 使用者"]
+   * #swagger.description  = "取得使用者通知"
+   */
+  const result = await NotificationService.getUserNotification({
+    userId: req.user?.id,
+  });
+
+  res.send({ status: "success", result });
+};
+
+export const updateNotification: RequestHandler = async (req, res) => {
+  /**
+   * #swagger.tags = ["Users - 使用者"]
+   * #swagger.description  = "修改使用者通知"
+   */
+  const result = await NotificationService.updateOneNotification({
+    notificationId: req.params.notificationId,
+    isRead: req.body.isRead,
+  });
+
+  res.send({ status: "success", result });
+};
+
+export const deleteNotification: RequestHandler = async (req, res) => {
+  /**
+   * #swagger.tags = ["Users - 使用者"]
+   * #swagger.description  = "刪除使用者通知"
+   */
+  const result = await NotificationService.deleteOneNotification({
+    notificationId: req.params.notificationId,
+  });
+
+  res.send({ status: "success", result });
 };
