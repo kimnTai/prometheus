@@ -1,8 +1,8 @@
 import OrganizationModel from "@/models/organization";
 import BoardsModel from "@/models/board";
+import { verifyToken } from "@/shared";
 
 import type { RequestHandler } from "express";
-import { verifyToken } from "@/shared";
 
 export const addBoardMember: RequestHandler = async (req, res) => {
   /**

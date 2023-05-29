@@ -309,8 +309,6 @@ export const getClosedCardsAndList: RequestHandler = async (req, res) => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "取得已封存列表/卡片"
-   *
-   * TODO:查了三次組資料，待優化
    */
   const [closedList, closedCard] = await Promise.all([
     ListModel.find({
@@ -318,11 +316,7 @@ export const getClosedCardsAndList: RequestHandler = async (req, res) => {
       closed: true,
     }),
     CardModel.find({
-      listId: {
-        $in: await ListModel.find({
-          boardId: req.params.boardId,
-        }),
-      },
+      boardId: req.params.boardId,
       closed: true,
     }),
   ]);
