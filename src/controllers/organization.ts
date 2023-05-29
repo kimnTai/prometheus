@@ -14,6 +14,8 @@ export const getUserOrganization: RequestHandler = async (req, res) => {
         userId: req.user?._id,
       },
     },
+  }).populate({
+    path: "board",
   });
 
   res.send({ status: "success", result });
@@ -41,7 +43,9 @@ export const createOrganization: RequestHandler = async (req, res) => {
   });
 
   // 需要成員資料，所以 result 用查的
-  const result = await OrganizationModel.findById(_result.id);
+  const result = await OrganizationModel.findById(_result.id).populate({
+    path: "board",
+  });
 
   res.send({ success: true, result });
 };
@@ -51,7 +55,11 @@ export const getOneOrganizationById: RequestHandler = async (req, res) => {
    * #swagger.tags = ["Organization - 組織"]
    * #swagger.description  = "取得單一組織"
    */
-  const result = await OrganizationModel.findById(req.params.organizationId);
+  const result = await OrganizationModel.findById(
+    req.params.organizationId
+  ).populate({
+    path: "board",
+  });
 
   res.send({ status: "success", result });
 };
@@ -67,7 +75,9 @@ export const updateOrganization: RequestHandler = async (req, res) => {
     req.params.organizationId,
     { name, permission },
     { new: true }
-  );
+  ).populate({
+    path: "board",
+  });
 
   res.send({ status: "success", result });
 };
@@ -104,7 +114,9 @@ export const createInviteOrganizationUrl: RequestHandler = async (req, res) => {
       inviteLink: `${process.env.CLIENT_URL}/invitation/organizations/${token}`,
     },
     { new: true }
-  );
+  ).populate({
+    path: "board",
+  });
 
   res.send({ status: "success", result });
 };
@@ -126,7 +138,9 @@ export const addOrganizationMember: RequestHandler = async (req, res) => {
       },
     },
     { new: true }
-  );
+  ).populate({
+    path: "board",
+  });
 
   res.send({ status: "success", result });
 };
@@ -148,7 +162,9 @@ export const deleteOrganizationMember: RequestHandler = async (req, res) => {
       },
     },
     { new: true }
-  );
+  ).populate({
+    path: "board",
+  });
 
   res.send({ status: "success", result });
 };
@@ -184,7 +200,9 @@ export const updateOrganizationMember: RequestHandler = async (req, res) => {
       new: true,
       runValidators: true,
     }
-  );
+  ).populate({
+    path: "board",
+  });
 
   if (!result) {
     throw new Error("無此成員!");
