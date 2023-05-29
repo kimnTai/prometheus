@@ -2,7 +2,6 @@ import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { Strategy as GitHubStrategy } from "passport-github2";
 import passport from "passport";
 import bcrypt from "bcryptjs";
-import { OAuth2Client } from "google-auth-library";
 import { generateToken } from "@/shared";
 import UsersModel from "@/models/user";
 
@@ -105,45 +104,4 @@ export const authorizationCallback: RequestHandler = async (req, res) => {
   });
 
   res.redirect(`${process.env.CLIENT_URL}/login/callback?${params}`);
-};
-
-export const verifyToken: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Auth"]
-   * #swagger.description  = "Verify the JWT token sent from the client"
-   */
-  const CLIENT_ID_GOOGLE = process.env.GOOGLE_CLIENT_ID;
-  const client = new OAuth2Client(CLIENT_ID_GOOGLE);
-  const ticket = await client.verifyIdToken({
-    idToken: req.body.token,
-    audience: CLIENT_ID_GOOGLE,
-  });
-  const tokenPayload = ticket.getPayload();
-
-  if (!tokenPayload) {
-    throw new Error("tokenPayload 錯誤");
-  }
-
-  const result = await UsersModel.findOneAndUpdate(
-    { googleId: tokenPayload.sub },
-    {
-      $setOnInsert: {
-        name: tokenPayload.name,
-        email: tokenPayload.email,
-        password: await bcrypt.hash(tokenPayload.sub, 6),
-        googleId: tokenPayload.sub,
-        avatar: tokenPayload.picture,
-      },
-    },
-    {
-      upsert: true,
-      new: true,
-    }
-  );
-
-  res.send({
-    status: "success",
-    token: generateToken({ userId: result._id }),
-    result,
-  });
 };

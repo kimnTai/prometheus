@@ -1,7 +1,7 @@
 import passport from "passport";
 import { createRouter } from "@/shared";
 import * as UserController from "@/controllers/user";
-import { authorizationCallback, verifyToken } from "@/controllers/auth";
+import { authorizationCallback } from "@/controllers/auth";
 import { isAuth, checkRequestBodyValidator } from "@/middlewares";
 import * as EmailController from "@/controllers/email";
 
@@ -48,7 +48,5 @@ router.get(
   passport.authenticate("github", { session: false }),
   authorizationCallback
 );
-
-router.post("/google/verifyToken", verifyToken);
 
 router.get("/verifyJwt", isAuth, UserController.verifyJwt);
