@@ -135,7 +135,7 @@ export const createInvitationUrl: RequestHandler = async (req, res) => {
   const result = await BoardsModel.findByIdAndUpdate(
     req.params.boardId,
     {
-      inviteLink: `https://feijai.github.io/Lunar/#/invitation/boards/${token}`,
+      inviteLink: `${process.env.CLIENT_URL}/invitation/boards/${token}`,
     },
     { new: true }
   );

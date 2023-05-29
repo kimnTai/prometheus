@@ -30,7 +30,7 @@ declare global {
       MAILER_ACCOUNT: string;
       MAILER_PASSWORD: string;
 
-      CLIENT_LOGIN_CALLBACK_URL: string;
+      CLIENT_URL: string;
     }
   }
 

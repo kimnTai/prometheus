@@ -101,7 +101,7 @@ export const createInviteOrganizationUrl: RequestHandler = async (req, res) => {
   const result = await OrganizationModel.findByIdAndUpdate(
     req.params.organizationId,
     {
-      inviteLink: `https://feijai.github.io/Lunar/#/invitation/organizations/${token}`,
+      inviteLink: `${process.env.CLIENT_URL}/invitation/organizations/${token}`,
     },
     { new: true }
   );

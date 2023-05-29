@@ -104,7 +104,7 @@ export const authorizationCallback: RequestHandler = async (req, res) => {
     avatar: req.user.avatar,
   });
 
-  res.redirect(`${process.env.CLIENT_LOGIN_CALLBACK_URL}?${params}`);
+  res.redirect(`${process.env.CLIENT_URL}/login/callback?${params}`);
 };
 
 export const verifyToken: RequestHandler = async (req, res) => {

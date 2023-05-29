@@ -9,7 +9,6 @@ export interface ICard extends Document {
   description: string;
   closed: boolean;
   position: number;
-  color: string;
 
   boardId: Schema.Types.ObjectId;
   listId: Schema.Types.ObjectId;

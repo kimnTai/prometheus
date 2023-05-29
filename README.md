@@ -71,7 +71,7 @@ GITHUB_LOGIN_CALL_BACK_URL =
 MAILER_ACCOUNT = 寄信帳號
 MAILER_PASSWORD = 寄信密碼
 
-CLIENT_LOGIN_CALLBACK_URL = 第三方登入導轉前端連結
+CLIENT_URL = 前端連結
 ```
 
 ## Swagger
