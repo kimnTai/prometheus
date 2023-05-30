@@ -59,7 +59,10 @@ const notificationSchema = new Schema<INotification>(
 
 notificationSchema.pre(/^find/, function (next) {
   this.populate({
-    path: "user",
+    path: "userId",
+  });
+  this.populate({
+    path: "sourceUserId",
   });
   next();
 });
