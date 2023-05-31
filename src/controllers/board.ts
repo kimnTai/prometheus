@@ -17,7 +17,10 @@ export const getAllBoards: RequestHandler = async (req, res) => {
    * #swagger.description  = "取得所有看板"
    */
   const { organizationId } = req.query;
-  const result = await BoardsModel.find({ organizationId });
+  const result = await BoardsModel.find({ organizationId }).populate({
+    path: "list",
+    select: "-createdAt -updatedAt",
+  });
   res.send({ status: "success", result });
 };
 
@@ -67,7 +70,10 @@ export const getBoardById: RequestHandler = async (req, res) => {
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "取得單一看板"
    */
-  const result = await BoardsModel.findById(req.params.boardId);
+  const result = await BoardsModel.findById(req.params.boardId).populate({
+    path: "list",
+    select: "-createdAt -updatedAt",
+  });
 
   if (!result) {
     throw new Error("無此看板 id");
@@ -89,6 +95,9 @@ export const updateBoard: RequestHandler = async (req, res) => {
     permission,
     closed,
     image,
+  }).populate({
+    path: "list",
+    select: "-createdAt -updatedAt",
   });
 
   if (!result) {
@@ -109,6 +118,9 @@ export const deleteBoard: RequestHandler = async (req, res) => {
       { "member.userId": req.user?._id },
       { "member.role": "manager" },
     ],
+  }).populate({
+    path: "list",
+    select: "-createdAt -updatedAt",
   });
 
   if (!result) {
@@ -139,7 +151,10 @@ export const createInvitationUrl: RequestHandler = async (req, res) => {
       inviteLink: `${process.env.CLIENT_URL}/invitation/boards/${token}`,
     },
     { new: true }
-  );
+  ).populate({
+    path: "list",
+    select: "-createdAt -updatedAt",
+  });
   res.send({ status: "success", result: result });
 };
 
@@ -154,7 +169,10 @@ export const deleteInvitationUrl: RequestHandler = async (req, res) => {
       inviteLink: "",
     },
     { new: true }
-  );
+  ).populate({
+    path: "list",
+    select: "-createdAt -updatedAt",
+  });
   res.send({ status: "success", result });
 };
 
@@ -220,7 +238,10 @@ export const getBoardMembers: RequestHandler = async (req, res) => {
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "取得看板內所有成員"
    */
-  const boardUsers = await BoardsModel.findById(req.params.boardId);
+  const boardUsers = await BoardsModel.findById(req.params.boardId).populate({
+    path: "list",
+    select: "-createdAt -updatedAt",
+  });
   res.send({ status: "success", result: boardUsers?.member });
 };
 
@@ -241,7 +262,10 @@ export const addBoardMember: RequestHandler = async (req, res) => {
       },
     },
     { new: true }
-  );
+  ).populate({
+    path: "list",
+    select: "-createdAt -updatedAt",
+  });
 
   if (result) {
     // 產生通知
@@ -296,7 +320,10 @@ export const updateBoardMember: RequestHandler = async (req, res) => {
       new: true,
       runValidators: true,
     }
-  );
+  ).populate({
+    path: "list",
+    select: "-createdAt -updatedAt",
+  });
 
   if (!result) {
     throw new Error("無此成員!");
@@ -334,7 +361,10 @@ export const deleteBoardMember: RequestHandler = async (req, res) => {
       },
     },
     { new: true }
-  );
+  ).populate({
+    path: "list",
+    select: "-createdAt -updatedAt",
+  });
 
   if (result && req.params.memberId !== req.user?.id) {
     // 產生通知
@@ -380,7 +410,10 @@ export const cloneBoardById: RequestHandler = async (req, res) => {
    */
 
   const [originBoard, organization] = await Promise.all([
-    BoardsModel.findById(req.body.sourceBoardId),
+    BoardsModel.findById(req.body.sourceBoardId).populate({
+      path: "list",
+      select: "-createdAt -updatedAt",
+    }),
     OrganizationModel.findById(req.body.organizationId),
   ]);
 

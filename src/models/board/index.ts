@@ -85,10 +85,6 @@ boardSchema.pre(/^find/, function (next) {
     select: "name avatar email",
   });
   this.populate({
-    path: "list",
-    select: "-createdAt -updatedAt",
-  });
-  this.populate({
     path: "label",
     select: "-createdAt -updatedAt",
   });
