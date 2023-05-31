@@ -34,9 +34,13 @@ export const updateOneNotification = async (data: {
   notificationId: string;
   isRead: boolean;
 }) => {
-  return await NotificationModel.findByIdAndUpdate(data.notificationId, {
-    isRead: data.isRead,
-  });
+  return await NotificationModel.findByIdAndUpdate(
+    data.notificationId,
+    {
+      isRead: data.isRead,
+    },
+    { new: true, runValidators: true }
+  );
 };
 
 export const deleteOneNotification = async (data: {
