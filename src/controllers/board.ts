@@ -89,13 +89,17 @@ export const updateBoard: RequestHandler = async (req, res) => {
    */
   const { name, organizationId, permission, closed, image } = req.body;
 
-  const result = await BoardsModel.findByIdAndUpdate(req.params.boardId, {
-    name,
-    organizationId,
-    permission,
-    closed,
-    image,
-  }).populate({
+  const result = await BoardsModel.findByIdAndUpdate(
+    req.params.boardId,
+    {
+      name,
+      organizationId,
+      permission,
+      closed,
+      image,
+    },
+    { new: true }
+  ).populate({
     path: "list",
     select: "-createdAt -updatedAt",
   });
