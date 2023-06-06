@@ -47,6 +47,9 @@ listSchema.virtual("card", {
 listSchema.pre(/^find/, function (next) {
   this.populate({
     path: "card",
+    match: {
+      closed: false,
+    },
   });
   next();
 });

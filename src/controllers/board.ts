@@ -20,6 +20,9 @@ export const getAllBoards: RequestHandler = async (req, res) => {
   const result = await BoardsModel.find({ organizationId }).populate({
     path: "list",
     select: "-createdAt -updatedAt",
+    match: {
+      closed: false,
+    },
   });
   res.send({ status: "success", result });
 };
@@ -73,6 +76,9 @@ export const getBoardById: RequestHandler = async (req, res) => {
   const result = await BoardsModel.findById(req.params.boardId).populate({
     path: "list",
     select: "-createdAt -updatedAt",
+    match: {
+      closed: false,
+    },
   });
 
   if (!result) {
@@ -102,6 +108,9 @@ export const updateBoard: RequestHandler = async (req, res) => {
   ).populate({
     path: "list",
     select: "-createdAt -updatedAt",
+    match: {
+      closed: false,
+    },
   });
 
   if (!result) {
@@ -122,9 +131,6 @@ export const deleteBoard: RequestHandler = async (req, res) => {
       { "member.userId": req.user?._id },
       { "member.role": "manager" },
     ],
-  }).populate({
-    path: "list",
-    select: "-createdAt -updatedAt",
   });
 
   if (!result) {
@@ -158,6 +164,9 @@ export const createInvitationUrl: RequestHandler = async (req, res) => {
   ).populate({
     path: "list",
     select: "-createdAt -updatedAt",
+    match: {
+      closed: false,
+    },
   });
   res.send({ status: "success", result: result });
 };
@@ -176,6 +185,9 @@ export const deleteInvitationUrl: RequestHandler = async (req, res) => {
   ).populate({
     path: "list",
     select: "-createdAt -updatedAt",
+    match: {
+      closed: false,
+    },
   });
   res.send({ status: "success", result });
 };
@@ -245,6 +257,9 @@ export const getBoardMembers: RequestHandler = async (req, res) => {
   const boardUsers = await BoardsModel.findById(req.params.boardId).populate({
     path: "list",
     select: "-createdAt -updatedAt",
+    match: {
+      closed: false,
+    },
   });
   res.send({ status: "success", result: boardUsers?.member });
 };
@@ -269,6 +284,9 @@ export const addBoardMember: RequestHandler = async (req, res) => {
   ).populate({
     path: "list",
     select: "-createdAt -updatedAt",
+    match: {
+      closed: false,
+    },
   });
 
   if (result) {
@@ -327,6 +345,9 @@ export const updateBoardMember: RequestHandler = async (req, res) => {
   ).populate({
     path: "list",
     select: "-createdAt -updatedAt",
+    match: {
+      closed: false,
+    },
   });
 
   if (!result) {
@@ -368,6 +389,9 @@ export const deleteBoardMember: RequestHandler = async (req, res) => {
   ).populate({
     path: "list",
     select: "-createdAt -updatedAt",
+    match: {
+      closed: false,
+    },
   });
 
   if (result && req.params.memberId !== req.user?.id) {
@@ -417,6 +441,9 @@ export const cloneBoardById: RequestHandler = async (req, res) => {
     BoardsModel.findById(req.body.sourceBoardId).populate({
       path: "list",
       select: "-createdAt -updatedAt",
+      match: {
+        closed: false,
+      },
     }),
     OrganizationModel.findById(req.body.organizationId),
   ]);
