@@ -1,4 +1,5 @@
 import AttachmentModel from "@/models/card/attachment";
+import CardModel from "@/models/card";
 
 import type { RequestHandler } from "express";
 
@@ -16,6 +17,10 @@ export const createAttachment: RequestHandler = async (req, res) => {
     userId: req.user?._id,
   });
 
+  const cardResult = await CardModel.findById(result?.cardId);
+  if (cardResult) {
+    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
+  }
   res.send({ status: "success", result });
 };
 
@@ -35,6 +40,10 @@ export const updateAttachment: RequestHandler = async (req, res) => {
     { new: true, runValidators: true }
   );
 
+  const cardResult = await CardModel.findById(result?.cardId);
+  if (cardResult) {
+    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
+  }
   res.send({ status: "success", result });
 };
 
@@ -45,5 +54,9 @@ export const deleteAttachment: RequestHandler = async (req, res) => {
    */
   const result = await AttachmentModel.findByIdAndDelete(req.params.attId);
 
+  const cardResult = await CardModel.findById(result?.cardId);
+  if (cardResult) {
+    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
+  }
   res.send({ status: "success", result });
 };

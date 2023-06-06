@@ -1,4 +1,5 @@
 import DateModel from "@/models/card/date";
+import CardModel from "@/models/card";
 
 import type { RequestHandler } from "express";
 
@@ -27,6 +28,10 @@ export const createDate: RequestHandler = async (req, res) => {
     }
   );
 
+  const cardResult = await CardModel.findById(result?.cardId);
+  if (cardResult) {
+    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
+  }
   res.send({ status: "success", result });
 };
 
@@ -53,6 +58,10 @@ export const updateDate: RequestHandler = async (req, res) => {
     }
   );
 
+  const cardResult = await CardModel.findById(result?.cardId);
+  if (cardResult) {
+    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
+  }
   res.send({ status: "success", result });
 };
 
@@ -65,5 +74,9 @@ export const deleteDate: RequestHandler = async (req, res) => {
     cardId: req.params.cardId,
   });
 
+  const cardResult = await CardModel.findById(result?.cardId);
+  if (cardResult) {
+    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
+  }
   res.send({ status: "success", result });
 };

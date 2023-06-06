@@ -1,4 +1,5 @@
 import CommentModel from "@/models/card/comment";
+import CardModel from "@/models/card";
 
 import type { RequestHandler } from "express";
 
@@ -13,6 +14,10 @@ export const createComment: RequestHandler = async (req, res) => {
     userId: req.user?._id,
   });
 
+  const cardResult = await CardModel.findById(req.params.cardId);
+  if (cardResult) {
+    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
+  }
   res.send({ status: "success", result });
 };
 
@@ -29,6 +34,10 @@ export const updateComment: RequestHandler = async (req, res) => {
     { new: true, runValidators: true }
   );
 
+  const cardResult = await CardModel.findById(result?.cardId);
+  if (cardResult) {
+    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
+  }
   res.send({ status: "success", result });
 };
 
@@ -39,5 +48,9 @@ export const deleteComment: RequestHandler = async (req, res) => {
    */
   const result = await CommentModel.findByIdAndDelete(req.params.commentId);
 
+  const cardResult = await CardModel.findById(result?.cardId);
+  if (cardResult) {
+    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
+  }
   res.send({ status: "success", result });
 };

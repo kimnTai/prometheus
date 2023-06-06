@@ -1,4 +1,5 @@
 import ChecklistModel from "@/models/card/checklist";
+import CardModel from "@/models/card";
 
 import type { RequestHandler } from "express";
 
@@ -20,6 +21,10 @@ export const createChecklist: RequestHandler = async (req, res) => {
     checkItem: [],
   };
 
+  const cardResult = await CardModel.findById(result?.cardId);
+  if (cardResult) {
+    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
+  }
   res.send({ status: "success", result });
 };
 
@@ -39,6 +44,10 @@ export const updateChecklist: RequestHandler = async (req, res) => {
     { new: true, runValidators: true }
   );
 
+  const cardResult = await CardModel.findById(result?.cardId);
+  if (cardResult) {
+    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
+  }
   res.send({ status: "success", result });
 };
 
@@ -49,5 +58,9 @@ export const deleteChecklist: RequestHandler = async (req, res) => {
    */
   const result = await ChecklistModel.findByIdAndDelete(req.params.checklistId);
 
+  const cardResult = await CardModel.findById(result?.cardId);
+  if (cardResult) {
+    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
+  }
   res.send({ status: "success", result });
 };
