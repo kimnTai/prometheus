@@ -9,11 +9,16 @@ export const createList: RequestHandler = async (req, res) => {
    */
   const { name, boardId, position } = req.body;
 
-  const result = await ListModel.create({
+  const _result = await ListModel.create({
     name,
     boardId,
     position,
   });
+
+  const result = {
+    ..._result.toObject(),
+    card: [],
+  };
 
   res.app.emit(`boardId:${result.boardId}`, result);
   res.send({ status: "success", result });
