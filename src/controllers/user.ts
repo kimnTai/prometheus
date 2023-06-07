@@ -5,11 +5,6 @@ import * as NotificationService from "@/service/notification";
 
 import type { RequestHandler } from "express";
 
-export const getAllUsers: RequestHandler = async (_req, res) => {
-  const users = await UsersModel.find();
-  res.send({ status: "success", result: users });
-};
-
 export const register: RequestHandler = async (req, res, next) => {
   const { name, email, password } = req.body;
 
@@ -58,7 +53,10 @@ export const login: RequestHandler = async (req, res) => {
 
 export const resetPassword: RequestHandler = async (req, res) => {
   const password = await bcrypt.hash(req.body.password, 6);
-  if (!(await UsersModel.findByIdAndUpdate(req.body.userId, { password }))) {
+  const result = await UsersModel.findByIdAndUpdate(req.body.userId, {
+    password,
+  });
+  if (!result) {
     throw new Error("此 id 不存在");
   }
   res.send({ status: "success", message: "密碼重設成功" });
@@ -72,6 +70,24 @@ export const verifyJwt: RequestHandler = async (req, res) => {
     websocketUrl: getWebsocketUrl(req),
     result: req.user,
   });
+};
+
+export const updateProfile: RequestHandler = async (req, res) => {
+  const result = await UsersModel.findByIdAndUpdate(
+    req.body.userId,
+    {
+      name: req.body.name,
+      avatar: req.body.avatar,
+    },
+    {
+      new: true,
+    }
+  );
+  if (!result) {
+    throw new Error("此 id 不存在");
+  }
+
+  res.send({ status: "success", result });
 };
 
 export const getNotification: RequestHandler = async (req, res) => {

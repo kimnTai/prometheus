@@ -141,6 +141,44 @@
         ]
       }
     },
+    "/api/user/updateProfile": {
+      "put": {
+        "tags": [
+          "Users - 使用者"
+        ],
+        "description": "更新使用者資訊",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "example": "any"
+                },
+                "name": {
+                  "example": "any"
+                },
+                "avatar": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/api/user/google": {
       "get": {
         "tags": [

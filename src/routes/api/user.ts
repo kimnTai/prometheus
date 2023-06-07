@@ -11,14 +11,6 @@ export default router;
 
 router.use(checkRequestBodyValidator);
 
-router.get("/", isAuth, UserController.getAllUsers, () => {
-  /**
-   * #swagger.tags = ["Users - 使用者"]
-   * #swagger.description  = "取得所有使用者"
-   * #swagger.ignore = true
-   */
-});
-
 router.post(
   "/register",
   UserController.register,
@@ -42,6 +34,13 @@ router.post("/resetPassword", isAuth, UserController.resetPassword, () => {
   /**
    * #swagger.tags = ["Users - 使用者"]
    * #swagger.description  = "重設密碼"
+   */
+});
+
+router.put("/updateProfile", isAuth, UserController.updateProfile, () => {
+  /**
+   * #swagger.tags = ["Users - 使用者"]
+   * #swagger.description  = "更新使用者資訊"
    */
 });
 
