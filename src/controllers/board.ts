@@ -8,6 +8,7 @@ import ChecklistModel from "@/models/card/checklist";
 import CheckItemModel from "@/models/card/checkItem";
 import AttachmentModel from "@/models/card/attachment";
 import { generateNotification } from "@/service/notification";
+import { generateRecentBoards } from "@/service/recentBoards";
 
 import type { RequestHandler } from "express";
 
@@ -73,6 +74,11 @@ export const getBoardById: RequestHandler = async (req, res) => {
   if (!result) {
     throw new Error("無此看板 id");
   }
+
+  generateRecentBoards({
+    userId: req.user?._id,
+    boardId: req.params.boardId,
+  });
 
   res.send({ status: "success", result });
 };

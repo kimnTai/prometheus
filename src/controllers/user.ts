@@ -1,9 +1,11 @@
 import bcrypt from "bcryptjs";
 import { generateToken, getWebsocketUrl } from "@/shared";
 import UsersModel from "@/models/user";
+import BoardsModel from "@/models/board";
 import * as NotificationService from "@/service/notification";
 
 import type { RequestHandler } from "express";
+import { getRecentBoardsItems } from "@/service/recentBoards";
 
 export const register: RequestHandler = async (req, res, next) => {
   const { name, email, password } = req.body;
@@ -111,6 +113,14 @@ export const deleteNotification: RequestHandler = async (req, res) => {
   const result = await NotificationService.deleteOneNotification({
     notificationId: req.params.notificationId,
   });
+
+  res.send({ status: "success", result });
+};
+
+export const getUserRecentBoards: RequestHandler = async (req, res) => {
+  const boardList = await getRecentBoardsItems({ userId: req.user?._id });
+
+  const result = await BoardsModel.find({ _id: { $in: boardList } });
 
   res.send({ status: "success", result });
 };

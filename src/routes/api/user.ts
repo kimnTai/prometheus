@@ -123,3 +123,10 @@ router.delete(
      */
   }
 );
+
+router.get("/recentBoards", isAuth, UserController.getUserRecentBoards, () => {
+  /**
+   * #swagger.tags = ["Users - 使用者"]
+   * #swagger.description  = "查詢使用者最近瀏覽看板"
+   */
+});

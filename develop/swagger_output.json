@@ -299,6 +299,25 @@
         ]
       }
     },
+    "/api/user/recentBoards": {
+      "get": {
+        "tags": [
+          "Users - 使用者"
+        ],
+        "description": "查詢使用者最近瀏覽看板",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/api/organizations/": {
       "post": {
         "tags": [
