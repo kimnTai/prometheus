@@ -31,6 +31,8 @@ declare global {
       MAILER_PASSWORD: string;
 
       CLIENT_URL: string;
+
+      REDIS_URL: string;
     }
   }
 

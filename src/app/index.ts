@@ -5,7 +5,8 @@ import "@/app/env";
 import "@/app/connection";
 import Routes from "@/routes";
 import * as Exception from "@/app/exception";
-import Socket from "@/websocket";
+import Socket from "@/app/websocket";
+import Redis from "./redis";
 
 export const app = express();
 
@@ -22,6 +23,8 @@ app.use(Routes);
 
 app.use(Exception.sendNotFoundError);
 app.use(Exception.catchCustomError);
+
+Redis.build();
 
 let server = undefined;
 
