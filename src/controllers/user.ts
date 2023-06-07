@@ -120,7 +120,7 @@ export const deleteNotification: RequestHandler = async (req, res) => {
 export const getUserRecentBoards: RequestHandler = async (req, res) => {
   const boardList = await getRecentBoardsItems({ userId: req.user?._id });
 
-  const result = await BoardsModel.find({ _id: { $in: boardList } });
+  const result = await BoardsModel.find({ _id: { $in: boardList.reverse() } });
 
   res.send({ status: "success", result });
 };
