@@ -18,13 +18,15 @@ export const generateRecentBoards = async (data: {
 
   const item = await getRecentBoardsItems({ userId: data.userId });
 
+  const result = item.filter((id) => id !== data.boardId);
+
   const MAX_LENGTH = 8;
 
-  if (item.length > MAX_LENGTH) {
-    item.shift();
+  if (result.length > MAX_LENGTH) {
+    result.shift();
   }
 
-  item.push(data.boardId);
+  result.push(data.boardId);
 
-  await Redis.set(key, JSON.stringify(item));
+  await Redis.set(key, JSON.stringify(result));
 };
