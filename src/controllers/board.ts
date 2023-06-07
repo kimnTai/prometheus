@@ -12,12 +12,9 @@ import { generateNotification } from "@/service/notification";
 import type { RequestHandler } from "express";
 
 export const getAllBoards: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "取得所有看板"
-   */
-  const { organizationId } = req.query;
-  const result = await BoardsModel.find({ organizationId }).populate({
+  const result = await BoardsModel.find({
+    organizationId: req.query.organizationId,
+  }).populate({
     path: "list",
     select: "-createdAt -updatedAt",
     match: {
@@ -28,10 +25,6 @@ export const getAllBoards: RequestHandler = async (req, res) => {
 };
 
 export const createBoard: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "建立看板"
-   */
   const { name, organizationId, permission, image } = req.body;
 
   const _result = await BoardsModel.create({
@@ -69,10 +62,6 @@ export const createBoard: RequestHandler = async (req, res) => {
 };
 
 export const getBoardById: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "取得單一看板"
-   */
   const result = await BoardsModel.findById(req.params.boardId).populate({
     path: "list",
     select: "-createdAt -updatedAt",
@@ -89,10 +78,6 @@ export const getBoardById: RequestHandler = async (req, res) => {
 };
 
 export const updateBoard: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "修改看板"
-   */
   const { name, organizationId, permission, closed, image } = req.body;
 
   const result = await BoardsModel.findByIdAndUpdate(
@@ -121,10 +106,6 @@ export const updateBoard: RequestHandler = async (req, res) => {
 };
 
 export const deleteBoard: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "刪除看板"
-   */
   const result = await BoardsModel.findOneAndDelete({
     $and: [
       { _id: req.params.boardId },
@@ -141,19 +122,11 @@ export const deleteBoard: RequestHandler = async (req, res) => {
 };
 
 export const getInvitationUrl: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "取得看板邀請連結"
-   */
   const result = await BoardsModel.findById(req.params.boardId);
   res.send({ status: "success", result: result?.inviteLink });
 };
 
 export const createInvitationUrl: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "建立看板邀請連結"
-   */
   const token = generateToken({ boardId: req.params.boardId });
   const result = await BoardsModel.findByIdAndUpdate(
     req.params.boardId,
@@ -172,10 +145,6 @@ export const createInvitationUrl: RequestHandler = async (req, res) => {
 };
 
 export const deleteInvitationUrl: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "移除看板邀請連結"
-   */
   const result = await BoardsModel.findByIdAndUpdate(
     req.params.boardId,
     {
@@ -193,19 +162,11 @@ export const deleteInvitationUrl: RequestHandler = async (req, res) => {
 };
 
 export const getBoardLabels: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "取得標籤"
-   */
   const result = await LabelsModel.find({ boardId: req.params.boardId });
   res.send({ status: "success", result });
 };
 
 export const createLabel: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "新增標籤"
-   */
   const result = await LabelsModel.create({
     name: req.body.name,
     color: req.body.color,
@@ -216,10 +177,6 @@ export const createLabel: RequestHandler = async (req, res) => {
 };
 
 export const updateLabel: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "修改標籤"
-   */
   const result = await LabelsModel.findByIdAndUpdate(
     req.params.labelId,
     {
@@ -237,10 +194,6 @@ export const updateLabel: RequestHandler = async (req, res) => {
 };
 
 export const deleteLabel: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "刪除標籤"
-   */
   const result = await LabelsModel.findByIdAndDelete(req.params.labelId);
   if (!result) {
     throw new Error("此標籤不存在");
@@ -265,10 +218,6 @@ export const getBoardMembers: RequestHandler = async (req, res) => {
 };
 
 export const addBoardMember: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "新增多位看板成員"
-   */
   const result = await BoardsModel.findOneAndUpdate(
     {
       _id: req.params.boardId,
@@ -312,10 +261,6 @@ export const addBoardMember: RequestHandler = async (req, res) => {
 };
 
 export const updateBoardMember: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "修改看板成員權限"
-   */
   const board = await BoardsModel.findOne({
     $and: [
       { _id: req.params.boardId },
@@ -372,10 +317,6 @@ export const updateBoardMember: RequestHandler = async (req, res) => {
 };
 
 export const deleteBoardMember: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "移除/退出看板"
-   */
   const result = await BoardsModel.findByIdAndUpdate(
     req.params.boardId,
     {
@@ -413,10 +354,6 @@ export const deleteBoardMember: RequestHandler = async (req, res) => {
 };
 
 export const getClosedCardsAndList: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "取得已封存列表/卡片"
-   */
   const [closedList, closedCard] = await Promise.all([
     ListModel.find({
       boardId: req.params.boardId,
@@ -432,11 +369,6 @@ export const getClosedCardsAndList: RequestHandler = async (req, res) => {
 };
 
 export const cloneBoardById: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "複製單一看板"
-   */
-
   const [originBoard, organization] = await Promise.all([
     BoardsModel.findById(req.body.sourceBoardId).populate({
       path: "list",

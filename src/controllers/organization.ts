@@ -5,10 +5,6 @@ import { generateToken } from "@/shared";
 import type { RequestHandler } from "express";
 
 export const getUserOrganization: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Organization - 組織"]
-   * #swagger.description  = "取得會員所有組織"
-   */
   const result = await OrganizationModel.find({
     member: {
       $elemMatch: {
@@ -23,10 +19,6 @@ export const getUserOrganization: RequestHandler = async (req, res) => {
 };
 
 export const createOrganization: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Organization - 組織"]
-   * #swagger.description  = "新增組織"
-   */
   const { name, permission, userIdList } = req.body;
 
   const _result = await OrganizationModel.create({
@@ -71,10 +63,6 @@ export const createOrganization: RequestHandler = async (req, res) => {
 };
 
 export const getOneOrganizationById: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Organization - 組織"]
-   * #swagger.description  = "取得單一組織"
-   */
   const result = await OrganizationModel.findById(
     req.params.organizationId
   ).populate({
@@ -85,10 +73,6 @@ export const getOneOrganizationById: RequestHandler = async (req, res) => {
 };
 
 export const updateOrganization: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Organization - 組織"]
-   * #swagger.description  = "修改組織"
-   */
   const { name, permission } = req.body;
 
   const result = await OrganizationModel.findByIdAndUpdate(
@@ -103,10 +87,6 @@ export const updateOrganization: RequestHandler = async (req, res) => {
 };
 
 export const deleteOrganization: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Organization - 組織"]
-   * #swagger.description  = "刪除組織"
-   */
   const result = await OrganizationModel.findOneAndDelete({
     $and: [
       { _id: req.params.organizationId },
@@ -123,10 +103,6 @@ export const deleteOrganization: RequestHandler = async (req, res) => {
 };
 
 export const createInviteOrganizationUrl: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Organization - 組織"]
-   * #swagger.description  = "建立組織邀請連結"
-   */
   const token = generateToken({ organizationId: req.params.organizationId });
   const result = await OrganizationModel.findByIdAndUpdate(
     req.params.organizationId,
@@ -142,10 +118,6 @@ export const createInviteOrganizationUrl: RequestHandler = async (req, res) => {
 };
 
 export const addOrganizationMember: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Organization - 組織"]
-   * #swagger.description  = "新增多位組織成員"
-   */
   const result = await OrganizationModel.findOneAndUpdate(
     {
       _id: req.params.organizationId,
@@ -183,10 +155,6 @@ export const addOrganizationMember: RequestHandler = async (req, res) => {
 };
 
 export const deleteOrganizationMember: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Organization - 組織"]
-   * #swagger.description  = "移除組織成員"
-   */
   const result = await OrganizationModel.findOneAndUpdate(
     {
       _id: req.params.organizationId,
@@ -222,10 +190,6 @@ export const deleteOrganizationMember: RequestHandler = async (req, res) => {
 };
 
 export const updateOrganizationMember: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Organization - 組織"]
-   * #swagger.description  = "修改成員權限"
-   */
   const organization = await OrganizationModel.findOne({
     $and: [
       { _id: req.params.organizationId },

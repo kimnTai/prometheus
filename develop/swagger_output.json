@@ -550,7 +550,7 @@
         "tags": [
           "Boards - 看板"
         ],
-        "description": "取得所有看板",
+        "description": "取得組織所有看板",
         "parameters": [
           {
             "name": "organizationId",
@@ -1008,7 +1008,7 @@
         "tags": [
           "Boards - 看板"
         ],
-        "description": "移除/退出看板",
+        "description": "成員移除/退出看板",
         "parameters": [
           {
             "name": "boardId",
@@ -1104,7 +1104,7 @@
         "tags": [
           "List - 列表"
         ],
-        "description": "",
+        "description": "新增單一列表",
         "parameters": [
           {
             "name": "body",
@@ -1142,7 +1142,7 @@
         "tags": [
           "List - 列表"
         ],
-        "description": "",
+        "description": "修改單一列表",
         "parameters": [
           {
             "name": "listId",
@@ -1187,7 +1187,7 @@
         "tags": [
           "List - 列表"
         ],
-        "description": "",
+        "description": "刪除單一列表",
         "parameters": [
           {
             "name": "listId",
@@ -1213,7 +1213,7 @@
         "tags": [
           "List - 列表"
         ],
-        "description": "",
+        "description": "封存列表所有卡片",
         "parameters": [
           {
             "name": "listId",

@@ -4,9 +4,6 @@ import CardModel from "@/models/card";
 import type { RequestHandler } from "express";
 
 export const createList: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["List - 列表"]
-   */
   const { name, boardId, position } = req.body;
 
   const _result = await ListModel.create({
@@ -25,9 +22,6 @@ export const createList: RequestHandler = async (req, res) => {
 };
 
 export const updateList: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["List - 列表"]
-   */
   const { name, boardId, position, closed } = req.body;
 
   const result = await ListModel.findOneAndUpdate(
@@ -45,9 +39,6 @@ export const updateList: RequestHandler = async (req, res) => {
 };
 
 export const deleteList: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["List - 列表"]
-   */
   const result = await ListModel.findByIdAndDelete(req.params.listId);
 
   const cardResult = await CardModel.updateMany(
@@ -68,9 +59,6 @@ export const deleteList: RequestHandler = async (req, res) => {
 };
 
 export const archiveAllCards: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["List - 列表"]
-   */
   const result = await CardModel.updateMany(
     {
       listId: req.params.listId,

@@ -4,10 +4,6 @@ import CardModel from "@/models/card";
 import type { RequestHandler } from "express";
 
 export const createAttachment: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片附件"]
-   * #swagger.description  = "創建卡片附件"
-   */
   const { dirname, filename } = req.body;
 
   const result = await AttachmentModel.create({
@@ -25,10 +21,6 @@ export const createAttachment: RequestHandler = async (req, res) => {
 };
 
 export const updateAttachment: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片附件"]
-   * #swagger.description  = "修改卡片附件"
-   */
   const { dirname, filename } = req.body;
 
   const result = await AttachmentModel.findByIdAndUpdate(
@@ -48,10 +40,6 @@ export const updateAttachment: RequestHandler = async (req, res) => {
 };
 
 export const deleteAttachment: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片附件"]
-   * #swagger.description  = "刪除卡片附件"
-   */
   const result = await AttachmentModel.findByIdAndDelete(req.params.attId);
 
   const cardResult = await CardModel.findById(result?.cardId);

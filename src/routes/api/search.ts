@@ -5,4 +5,8 @@ const router = createRouter();
 
 export default router;
 
-router.get("/members", searchMember);
+router.get("/members", searchMember, () => {
+  /**
+   * #swagger.tags = ["Other - 其它"]
+   */
+});

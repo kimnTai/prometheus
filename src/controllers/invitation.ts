@@ -5,10 +5,6 @@ import { verifyToken } from "@/shared";
 import type { RequestHandler } from "express";
 
 export const addBoardMember: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Other - 其它"]
-   * #swagger.description  = "透過邀請連結新增 - 看板成員"
-   */
   const { boardId } = verifyToken(req.params.invitationToken);
 
   const result = await BoardsModel.findOneAndUpdate(
@@ -29,10 +25,6 @@ export const addBoardMember: RequestHandler = async (req, res) => {
 };
 
 export const addOrganizationMember: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Other - 其它"]
-   * #swagger.description  = "透過邀請連結新增 - 組織成員"
-   */
   const { organizationId } = verifyToken(req.params.invitationToken);
 
   const result = await OrganizationModel.findOneAndUpdate(

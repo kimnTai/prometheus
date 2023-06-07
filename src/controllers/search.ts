@@ -5,9 +5,6 @@ import OrganizationModel from "@/models/organization";
 import type { RequestHandler } from "express";
 
 export const searchMember: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Other - 其它"]
-   */
   const { query, organizationId } = req.query;
 
   if (!query) {

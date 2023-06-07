@@ -11,56 +11,116 @@ export default router;
 
 router.use(checkRequestBodyValidator);
 
-router.get("/", isAuth, UserController.getAllUsers);
+router.get("/", isAuth, UserController.getAllUsers, () => {
+  /**
+   * #swagger.tags = ["Users - 使用者"]
+   * #swagger.description  = "取得所有使用者"
+   * #swagger.ignore = true
+   */
+});
 
 router.post(
   "/register",
   UserController.register,
-  EmailController.sendEmailVerification
+  EmailController.sendEmailVerification,
+  () => {
+    /**
+     * #swagger.tags = ["Users - 使用者"]
+     * #swagger.description  = "帳號註冊"
+     */
+  }
 );
 
-router.post("/login", UserController.login);
-
-router.post("/resetPassword", isAuth, UserController.resetPassword);
-
-router.get("/google", (...arg) => {
+router.post("/login", UserController.login, () => {
   /**
-   * #swagger.tags = ["Auth"]
+   * #swagger.tags = ["Users - 使用者"]
+   * #swagger.description  = "登入"
    */
-  passport.authenticate("google", { scope: ["email", "profile"] })(...arg);
 });
+
+router.post("/resetPassword", isAuth, UserController.resetPassword, () => {
+  /**
+   * #swagger.tags = ["Users - 使用者"]
+   * #swagger.description  = "重設密碼"
+   */
+});
+
+router.get(
+  "/google",
+  passport.authenticate("google", { scope: ["email", "profile"] }),
+  () => {
+    /**
+     * #swagger.tags = ["Auth"]
+     */
+  }
+);
 
 router.get(
   "/google/callback",
   passport.authenticate("google", { session: false }),
-  authorizationCallback
+  authorizationCallback,
+  () => {
+    /**
+     * #swagger.ignore = true
+     */
+  }
 );
 
-router.get("/github", (...arg) => {
-  /**
-   * #swagger.tags = ["Auth"]
-   */
-  passport.authenticate("github", { scope: ["email", "profile"] })(...arg);
-});
+router.get(
+  "/github",
+  passport.authenticate("github", { scope: ["email", "profile"] }),
+  () => {
+    /**
+     * #swagger.tags = ["Auth"]
+     */
+  }
+);
 
 router.get(
   "/github/callback",
   passport.authenticate("github", { session: false }),
-  authorizationCallback
+  authorizationCallback,
+  () => {
+    /**
+     * #swagger.ignore = true
+     */
+  }
 );
 
-router.get("/verifyJwt", isAuth, UserController.verifyJwt);
+router.get("/verifyJwt", isAuth, UserController.verifyJwt, () => {
+  /**
+   * #swagger.tags = ["Users - 使用者"]
+   * #swagger.description  = "驗證登入"
+   */
+});
 
-router.get("/notification", isAuth, UserController.getNotification);
+router.get("/notification", isAuth, UserController.getNotification, () => {
+  /**
+   * #swagger.tags = ["Users - 使用者"]
+   * #swagger.description  = "取得使用者通知"
+   */
+});
 
 router.put(
   "/notification/:notificationId",
   isAuth,
-  UserController.updateNotification
+  UserController.updateNotification,
+  () => {
+    /**
+     * #swagger.tags = ["Users - 使用者"]
+     * #swagger.description  = "修改使用者通知"
+     */
+  }
 );
 
 router.delete(
   "/notification/:notificationId",
   isAuth,
-  UserController.deleteNotification
+  UserController.deleteNotification,
+  () => {
+    /**
+     * #swagger.tags = ["Users - 使用者"]
+     * #swagger.description  = "刪除使用者通知"
+     */
+  }
 );

@@ -88,9 +88,6 @@ import type { RequestHandler } from "express";
 })();
 
 export const authorizationCallback: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.ignore = true
-   */
   if (!req.user) {
     throw new Error("loginCallback 錯誤!");
   }

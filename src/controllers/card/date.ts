@@ -4,10 +4,6 @@ import CardModel from "@/models/card";
 import type { RequestHandler } from "express";
 
 export const createDate: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片日期"]
-   * #swagger.description  = "創建卡片日期"
-   */
   const { startDate, dueDate, dueReminder } = req.body;
 
   const result = await DateModel.findOneAndUpdate(
@@ -36,10 +32,6 @@ export const createDate: RequestHandler = async (req, res) => {
 };
 
 export const updateDate: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片日期"]
-   * #swagger.description  = "修改卡片日期"
-   */
   const { startDate, dueDate, dueComplete, dueReminder } = req.body;
 
   const result = await DateModel.findOneAndUpdate(
@@ -66,10 +58,6 @@ export const updateDate: RequestHandler = async (req, res) => {
 };
 
 export const deleteDate: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片日期"]
-   * #swagger.description  = "刪除卡片日期"
-   */
   const result = await DateModel.findOneAndDelete({
     cardId: req.params.cardId,
   });

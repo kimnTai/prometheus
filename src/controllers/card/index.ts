@@ -8,10 +8,6 @@ import { generateNotification } from "@/service/notification";
 import type { RequestHandler } from "express";
 
 export const createCard: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片"]
-   * #swagger.description  = "創建卡片"
-   */
   const { name, listId, position, boardId } = req.body;
 
   const _result = await CardModel.create({
@@ -34,10 +30,6 @@ export const createCard: RequestHandler = async (req, res) => {
 };
 
 export const updateCard: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片"]
-   * #swagger.description  = "修改卡片"
-   */
   const { name, listId, position, closed, description } = req.body;
 
   const result = await CardModel.findByIdAndUpdate(
@@ -61,10 +53,6 @@ export const updateCard: RequestHandler = async (req, res) => {
 };
 
 export const getCardById: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片"]
-   * #swagger.description  = "取得單一卡片"
-   */
   const result = await CardModel.findById(req.params.cardId);
 
   if (!result) {
@@ -75,10 +63,6 @@ export const getCardById: RequestHandler = async (req, res) => {
 };
 
 export const deleteCard: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片"]
-   * #swagger.description  = "刪除卡片"
-   */
   const result = await CardModel.findByIdAndDelete(req.params.cardId);
 
   // TODO:關聯卡片的修改
@@ -92,10 +76,6 @@ export const deleteCard: RequestHandler = async (req, res) => {
 };
 
 export const addCardMember: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片"]
-   * #swagger.description  = "新增多位卡片成員"
-   */
   const result = await CardModel.findByIdAndUpdate(
     req.params.cardId,
     {
@@ -132,10 +112,6 @@ export const addCardMember: RequestHandler = async (req, res) => {
 };
 
 export const deleteCardMember: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片"]
-   * #swagger.description  = "移除卡片成員"
-   */
   const result = await CardModel.findByIdAndUpdate(
     req.params.cardId,
     {
@@ -168,10 +144,6 @@ export const deleteCardMember: RequestHandler = async (req, res) => {
 };
 
 export const addCardLabel: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片"]
-   * #swagger.description  = "增加卡片標籤"
-   */
   const result = await CardModel.findByIdAndUpdate(
     req.params.cardId,
     {
@@ -187,10 +159,6 @@ export const addCardLabel: RequestHandler = async (req, res) => {
 };
 
 export const deleteCardLabel: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片"]
-   * #swagger.description  = "移除卡片標籤"
-   */
   const result = await CardModel.findByIdAndUpdate(
     req.params.cardId,
     {
@@ -206,10 +174,6 @@ export const deleteCardLabel: RequestHandler = async (req, res) => {
 };
 
 export const closeCard: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片"]
-   * #swagger.description  = "封存卡片"
-   */
   const result = await CardModel.findByIdAndUpdate(
     req.params.cardId,
     {
@@ -227,10 +191,6 @@ export const closeCard: RequestHandler = async (req, res) => {
 };
 
 export const cloneCardById: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片"]
-   * #swagger.description  = "複製卡片"
-   */
   const _result = await CardModel.findById(req.body.sourceCardId);
 
   if (!_result) {

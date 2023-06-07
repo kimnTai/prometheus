@@ -4,10 +4,6 @@ import CardModel from "@/models/card";
 import type { RequestHandler } from "express";
 
 export const createChecklist: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片待辦"]
-   * #swagger.description  = "創建待辦清單"
-   */
   const { name, position } = req.body;
 
   const _result = await ChecklistModel.create({
@@ -29,10 +25,6 @@ export const createChecklist: RequestHandler = async (req, res) => {
 };
 
 export const updateChecklist: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片待辦"]
-   * #swagger.description  = "修改待辦清單"
-   */
   const { name, position } = req.body;
 
   const result = await ChecklistModel.findByIdAndUpdate(
@@ -52,10 +44,6 @@ export const updateChecklist: RequestHandler = async (req, res) => {
 };
 
 export const deleteChecklist: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片待辦"]
-   * #swagger.description  = "刪除待辦清單"
-   */
   const result = await ChecklistModel.findByIdAndDelete(req.params.checklistId);
 
   const cardResult = await CardModel.findById(result?.cardId);

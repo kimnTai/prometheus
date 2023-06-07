@@ -10,10 +10,30 @@ router.use(isAuth);
 
 router.use(checkRequestBodyValidator);
 
-router.post("/", ListController.createList);
+router.post("/", ListController.createList, () => {
+  /**
+   * #swagger.tags = ["List - 列表"]
+   * #swagger.description  = "新增單一列表"
+   */
+});
 
-router.put("/:listId", ListController.updateList);
+router.put("/:listId", ListController.updateList, () => {
+  /**
+   * #swagger.tags = ["List - 列表"]
+   * #swagger.description  = "修改單一列表"
+   */
+});
 
-router.delete("/:listId", ListController.deleteList);
+router.delete("/:listId", ListController.deleteList, () => {
+  /**
+   * #swagger.tags = ["List - 列表"]
+   * #swagger.description  = "刪除單一列表"
+   */
+});
 
-router.put("/:listId/archiveAllCards", ListController.archiveAllCards);
+router.put("/:listId/archiveAllCards", ListController.archiveAllCards, () => {
+  /**
+   * #swagger.tags = ["List - 列表"]
+   * #swagger.description  = "封存列表所有卡片"
+   */
+});

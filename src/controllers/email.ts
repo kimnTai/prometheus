@@ -16,10 +16,6 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendResetPasswordEmail: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Email"]
-   * #swagger.description  = "重設密碼"
-   */
   const email = req.body.email;
 
   const newPassword = Date.now();
@@ -68,10 +64,6 @@ export const sendEmailVerification: RequestHandler = async (req) => {
 };
 
 export const emailVerification: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Email"]
-   * #swagger.description  = "email 驗證連結"
-   */
   const result = verifyToken(req.params.token);
 
   if (!result.email) {
@@ -87,10 +79,6 @@ export const emailVerification: RequestHandler = async (req, res) => {
 };
 
 export const resendEmailVerification: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Email"]
-   * #swagger.description  = "重新發送 email 驗證"
-   */
   const result = await UsersModel.findById(req.params.userId);
 
   if (!result) {

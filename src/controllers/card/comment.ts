@@ -4,10 +4,6 @@ import CardModel from "@/models/card";
 import type { RequestHandler } from "express";
 
 export const createComment: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片留言"]
-   * #swagger.description  = "創建卡片留言"
-   */
   const result = await CommentModel.create({
     comment: req.body.comment,
     cardId: req.params.cardId,
@@ -22,10 +18,6 @@ export const createComment: RequestHandler = async (req, res) => {
 };
 
 export const updateComment: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片留言"]
-   * #swagger.description  = "修改卡片留言"
-   */
   const result = await CommentModel.findByIdAndUpdate(
     req.params.commentId,
     {
@@ -42,10 +34,6 @@ export const updateComment: RequestHandler = async (req, res) => {
 };
 
 export const deleteComment: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Cards - 卡片留言"]
-   * #swagger.description  = "刪除卡片留言"
-   */
   const result = await CommentModel.findByIdAndDelete(req.params.commentId);
 
   const cardResult = await CardModel.findById(result?.cardId);
