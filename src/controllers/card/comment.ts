@@ -4,11 +4,13 @@ import CardModel from "@/models/card";
 import type { RequestHandler } from "express";
 
 export const createComment: RequestHandler = async (req, res) => {
-  const result = await CommentModel.create({
+  const _result = await CommentModel.create({
     comment: req.body.comment,
     cardId: req.params.cardId,
     userId: req.user?._id,
   });
+
+  const result = await CommentModel.findById(_result._id);
 
   const cardResult = await CardModel.findById(req.params.cardId);
   if (cardResult) {
