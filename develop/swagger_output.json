@@ -1389,6 +1389,9 @@
                 },
                 "description": {
                   "example": "any"
+                },
+                "boardId": {
+                  "example": "any"
                 }
               }
             }

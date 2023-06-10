@@ -30,7 +30,7 @@ export const createCard: RequestHandler = async (req, res) => {
 };
 
 export const updateCard: RequestHandler = async (req, res) => {
-  const { name, listId, position, closed, description } = req.body;
+  const { name, listId, position, closed, description, boardId } = req.body;
 
   const result = await CardModel.findByIdAndUpdate(
     req.params.cardId,
@@ -40,6 +40,7 @@ export const updateCard: RequestHandler = async (req, res) => {
       position,
       closed,
       description,
+      boardId,
     },
     { new: true, runValidators: true }
   );
