@@ -1434,7 +1434,7 @@
       }
     },
     "/api/cards/{cardId}/closed": {
-      "post": {
+      "put": {
         "tags": [
           "Cards - 卡片"
         ],

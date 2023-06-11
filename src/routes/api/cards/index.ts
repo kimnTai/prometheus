@@ -42,7 +42,7 @@ router.delete("/:cardId", CardController.deleteCard, () => {
    */
 });
 
-router.post("/:cardId/closed", CardController.closeCard, () => {
+router.put("/:cardId/closed", CardController.closeCard, () => {
   /**
    * #swagger.tags = ["Cards - 卡片"]
    * #swagger.description  = "封存卡片"
