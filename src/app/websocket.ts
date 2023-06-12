@@ -77,6 +77,12 @@ export default class Socket extends WebSocketServer {
       client.send(JSON.stringify({ type: "success" }));
     }
 
+    if (message.type === "unsubscribe" && message.boardId) {
+      const eventName = `boardId:${message.boardId}`;
+      client.removeAllListeners(eventName);
+      client.send(JSON.stringify({ type: "success" }));
+    }
+
     if (message.type === "ping") {
       client.send(JSON.stringify({ type: "ping" }));
     }
