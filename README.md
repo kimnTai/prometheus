@@ -4,7 +4,11 @@
 
 ## 功能
 
+- Lunar 專案管理工具 Server
+
 ## 畫面
+
+![](https://hackmd.io/_uploads/SyIIokIw2.png)
 
 ## 安裝
 
@@ -92,12 +96,14 @@ http://localhost:3005/swagger
 
 ## 專案技術
 
-- node.js v18.12.0
-- vite v4.3.1
+- node.js v18.16.0
+- vite v4.3.9
 - express v4.18.2
 - mongoose v7.0.4
 - jsonwebtoken v9.0.0
-- nodemailer v6.9.1
+- nodemailer v6.9.3
+- ws v8.13.0
+- redis v4.6.7
 
 # Docker
 
