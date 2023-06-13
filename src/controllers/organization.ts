@@ -117,6 +117,20 @@ export const createInviteOrganizationUrl: RequestHandler = async (req, res) => {
   res.send({ status: "success", result });
 };
 
+export const deleteInviteOrganizationUrl: RequestHandler = async (req, res) => {
+  const result = await OrganizationModel.findByIdAndUpdate(
+    req.params.organizationId,
+    {
+      inviteLink: ``,
+    },
+    { new: true }
+  ).populate({
+    path: "board",
+  });
+
+  res.send({ status: "success", result });
+};
+
 export const addOrganizationMember: RequestHandler = async (req, res) => {
   const result = await OrganizationModel.findOneAndUpdate(
     {

@@ -68,6 +68,17 @@ router.post(
   }
 );
 
+router.delete(
+  "/:organizationId/invitationSecret",
+  OrganizationController.deleteInviteOrganizationUrl,
+  () => {
+    /**
+     * #swagger.tags = ["Organization - 組織"]
+     * #swagger.description  = "移除組織邀請連結"
+     */
+  }
+);
+
 router.post(
   "/:organizationId/members",
   OrganizationController.addOrganizationMember,
