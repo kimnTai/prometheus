@@ -84,10 +84,6 @@ boardSchema.pre(/^find/, function (next) {
     path: "member.userId",
     select: "name avatar email",
   });
-  this.populate({
-    path: "label",
-    select: "-createdAt -updatedAt",
-  });
 
   next();
 });
