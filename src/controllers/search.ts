@@ -1,4 +1,5 @@
 import validator from "validator";
+import BoardsModel from "@/models/board";
 import CardModel from "@/models/card";
 import OrganizationModel from "@/models/organization";
 import UsersModel from "@/models/user";
@@ -45,13 +46,23 @@ export const searchCards: RequestHandler = async (req, res) => {
     path: "board",
   });
 
-  const result = await CardModel.find({
+  const cardList = await CardModel.find({
     name: new RegExp(`${query}`),
     boardId: {
       $in: userOrganization.flatMap(({ board }) => board).map(({ _id }) => _id),
     },
     closed: false,
   });
+
+  const result = await Promise.all(
+    cardList.map(async (card) => {
+      const board = await BoardsModel.findById(card.boardId);
+      return {
+        board,
+        card,
+      };
+    })
+  );
 
   return res.send({ status: "success", result });
 };
