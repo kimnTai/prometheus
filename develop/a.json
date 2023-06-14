@@ -1,0 +1,150 @@
+{
+  "id": "6465eecf3f4db6f88634f7da",
+  "name": "Project Management",
+  "desc": "**Manage Projects To Perfection**\n\nBig dreams turn into bigger results with a killer project plan. Use this basic structure to build your team's ideal workflow, for projects big or small.\n\nHere's what's included, and how to get this project management party started:\n\n1. **Resources (Start Here!):**\nThis list is perfect for you and your team to have all those documents, specs, designs, or anything you tend to reference all the time. Meeting schedules and answers to common questions are also recommended to pop into this list so that your team is informed at all times. 📚\n\n2. **Questions For Next Meeting:**\nNever again forget that important question you thought of in the shower this morning! Slide your Q's into this handy list so your team keeps on flowing. 🌊\n\n3. **To Do:**\nThe mother of all lists—the good ol' To Do. This is where assigned tasks live so that your team can see who's working on what and when it's due. Crystal clear all day, week, and month. 🔮\n\n4. **Pending:**\nWe all have those in-between tasks that are technically done but also awkwardly waiting for another step. That's where the Pending list comes into play, use this list to share what those next mini-steps are with your team. 💬\n\n5. **Blocked:**\nWith any successful project comes at least one inevitable blocker. Splash those red-tape, blocking issues that are slowing your team down so you can tackle it in the best way; together. 🚷\n\n6. **Done:**\nOur favorite list, the Done list. Stop, drag, and drop! For all your finished tasks that your team has hustled on and feels proud of. ✨",
+  "descData": null,
+  "closed": false,
+  "idOrganization": "64585d6f5c7daa2c9b82bce4",
+  "idEnterprise": null,
+  "pinned": false,
+  "url": "https://trello.com/b/rzZPxeZ4/project-management",
+  "shortUrl": "https://trello.com/b/rzZPxeZ4",
+  "prefs": {
+    "permissionLevel": "org",
+    "hideVotes": false,
+    "voting": "disabled",
+    "comments": "members",
+    "invitations": "members",
+    "selfJoin": true,
+    "cardCovers": true,
+    "isTemplate": false,
+    "cardAging": "regular",
+    "calendarFeedEnabled": false,
+    "hiddenPluginBoardButtons": [],
+    "switcherViews": [
+      {
+        "viewType": "Board",
+        "enabled": true,
+        "_id": "6465eecf3f4db6f88634f87a"
+      },
+      {
+        "viewType": "Table",
+        "enabled": true,
+        "_id": "6465eecf3f4db6f88634f87b"
+      },
+      {
+        "viewType": "Calendar",
+        "enabled": false,
+        "_id": "6465eecf3f4db6f88634f87c"
+      },
+      {
+        "viewType": "Dashboard",
+        "enabled": false,
+        "_id": "6465eecf3f4db6f88634f87d"
+      },
+      {
+        "viewType": "Timeline",
+        "enabled": false,
+        "_id": "6465eecf3f4db6f88634f87e"
+      },
+      { "viewType": "Map", "enabled": false, "_id": "6465eecf3f4db6f88634f87f" }
+    ],
+    "background": "5cd970f5caac7789cddf154d",
+    "backgroundColor": null,
+    "backgroundImage": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2560x1792/a8862beec5de129bafebd731db9e1275/photo-1557682250-33bd709cbe85",
+    "backgroundImageScaled": [
+      {
+        "width": 140,
+        "height": 98,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/140x98/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 256,
+        "height": 179,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/256x179/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 480,
+        "height": 336,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x336/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 960,
+        "height": 672,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/960x672/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 1024,
+        "height": 717,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1024x717/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 1280,
+        "height": 896,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1280x896/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 1920,
+        "height": 1344,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1920x1344/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 2048,
+        "height": 1434,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1434/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 2286,
+        "height": 1600,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2286x1600/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 2560,
+        "height": 1792,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2560x1792/a8862beec5de129bafebd731db9e1275/photo-1557682250-33bd709cbe85"
+      }
+    ],
+    "backgroundTile": false,
+    "backgroundBrightness": "dark",
+    "backgroundBottomColor": "#8737a3",
+    "backgroundTopColor": "#4126ab",
+    "canBePublic": true,
+    "canBeEnterprise": true,
+    "canBeOrg": true,
+    "canBePrivate": true,
+    "canInvite": true
+  },
+  "labelNames": {
+    "green": "",
+    "yellow": "Copy Request",
+    "orange": "One more step",
+    "red": "Priority",
+    "purple": "Design Team",
+    "blue": "Product Marketing",
+    "sky": "Trello Tip",
+    "lime": "Halp",
+    "pink": "",
+    "black": "",
+    "green_dark": "",
+    "yellow_dark": "",
+    "orange_dark": "",
+    "red_dark": "",
+    "purple_dark": "",
+    "blue_dark": "",
+    "sky_dark": "",
+    "lime_dark": "",
+    "pink_dark": "",
+    "black_dark": "",
+    "green_light": "",
+    "yellow_light": "",
+    "orange_light": "",
+    "red_light": "",
+    "purple_light": "",
+    "blue_light": "",
+    "sky_light": "",
+    "lime_light": "",
+    "pink_light": "",
+    "black_light": ""
+  },
+  "limits": {}
+}

@@ -1,0 +1,2231 @@
+{
+  "id": "6465eecf3f4db6f88634f7da",
+  "name": "Project Management",
+  "closed": false,
+  "dateLastActivity": "2023-05-18T09:24:32.793Z",
+  "dateLastView": null,
+  "datePluginDisable": null,
+  "enterpriseOwned": false,
+  "idMemberCreator": "643e586a41751a29d5a5ee56",
+  "idOrganization": "64585d6f5c7daa2c9b82bce4",
+  "prefs": {
+    "permissionLevel": "org",
+    "hideVotes": false,
+    "voting": "disabled",
+    "comments": "members",
+    "invitations": "members",
+    "selfJoin": true,
+    "cardCovers": true,
+    "isTemplate": false,
+    "cardAging": "regular",
+    "calendarFeedEnabled": false,
+    "hiddenPluginBoardButtons": [],
+    "switcherViews": [
+      {
+        "viewType": "Board",
+        "enabled": true,
+        "_id": "6465eecf3f4db6f88634f87a"
+      },
+      {
+        "viewType": "Table",
+        "enabled": true,
+        "_id": "6465eecf3f4db6f88634f87b"
+      },
+      {
+        "viewType": "Calendar",
+        "enabled": false,
+        "_id": "6465eecf3f4db6f88634f87c"
+      },
+      {
+        "viewType": "Dashboard",
+        "enabled": false,
+        "_id": "6465eecf3f4db6f88634f87d"
+      },
+      {
+        "viewType": "Timeline",
+        "enabled": false,
+        "_id": "6465eecf3f4db6f88634f87e"
+      },
+      { "viewType": "Map", "enabled": false, "_id": "6465eecf3f4db6f88634f87f" }
+    ],
+    "background": "5cd970f5caac7789cddf154d",
+    "backgroundColor": null,
+    "backgroundImage": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2560x1792/a8862beec5de129bafebd731db9e1275/photo-1557682250-33bd709cbe85",
+    "backgroundImageScaled": [
+      {
+        "width": 140,
+        "height": 98,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/140x98/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 256,
+        "height": 179,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/256x179/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 480,
+        "height": 336,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x336/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 960,
+        "height": 672,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/960x672/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 1024,
+        "height": 717,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1024x717/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 1280,
+        "height": 896,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1280x896/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 1920,
+        "height": 1344,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1920x1344/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 2048,
+        "height": 1434,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1434/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 2286,
+        "height": 1600,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2286x1600/24baa6609b89fb8eb0cc0aceb70eaf36/photo-1557682250-33bd709cbe85.jpg"
+      },
+      {
+        "width": 2560,
+        "height": 1792,
+        "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2560x1792/a8862beec5de129bafebd731db9e1275/photo-1557682250-33bd709cbe85"
+      }
+    ],
+    "backgroundTile": false,
+    "backgroundBrightness": "dark",
+    "backgroundBottomColor": "#8737a3",
+    "backgroundTopColor": "#4126ab",
+    "canBePublic": true,
+    "canBeEnterprise": true,
+    "canBeOrg": true,
+    "canBePrivate": true,
+    "canInvite": true
+  },
+  "premiumFeatures": [
+    "additionalBoardBackgrounds",
+    "additionalStickers",
+    "customBoardBackgrounds",
+    "customEmoji",
+    "customStickers",
+    "plugins"
+  ],
+  "shortLink": "rzZPxeZ4",
+  "shortUrl": "https://trello.com/b/rzZPxeZ4",
+  "url": "https://trello.com/b/rzZPxeZ4/project-management",
+  "creationMethod": null,
+  "idEnterprise": null,
+  "desc": "**Manage Projects To Perfection**\n\nBig dreams turn into bigger results with a killer project plan. Use this basic structure to build your team's ideal workflow, for projects big or small.\n\nHere's what's included, and how to get this project management party started:\n\n1. **Resources (Start Here!):**\nThis list is perfect for you and your team to have all those documents, specs, designs, or anything you tend to reference all the time. Meeting schedules and answers to common questions are also recommended to pop into this list so that your team is informed at all times. 📚\n\n2. **Questions For Next Meeting:**\nNever again forget that important question you thought of in the shower this morning! Slide your Q's into this handy list so your team keeps on flowing. 🌊\n\n3. **To Do:**\nThe mother of all lists—the good ol' To Do. This is where assigned tasks live so that your team can see who's working on what and when it's due. Crystal clear all day, week, and month. 🔮\n\n4. **Pending:**\nWe all have those in-between tasks that are technically done but also awkwardly waiting for another step. That's where the Pending list comes into play, use this list to share what those next mini-steps are with your team. 💬\n\n5. **Blocked:**\nWith any successful project comes at least one inevitable blocker. Splash those red-tape, blocking issues that are slowing your team down so you can tackle it in the best way; together. 🚷\n\n6. **Done:**\nOur favorite list, the Done list. Stop, drag, and drop! For all your finished tasks that your team has hustled on and feels proud of. ✨",
+  "descData": null,
+  "idTags": [],
+  "labelNames": {
+    "green": "",
+    "yellow": "Copy Request",
+    "orange": "One more step",
+    "red": "Priority",
+    "purple": "Design Team",
+    "blue": "Product Marketing",
+    "sky": "Trello Tip",
+    "lime": "Halp",
+    "pink": "",
+    "black": "",
+    "green_dark": "",
+    "yellow_dark": "",
+    "orange_dark": "",
+    "red_dark": "",
+    "purple_dark": "",
+    "blue_dark": "",
+    "sky_dark": "",
+    "lime_dark": "",
+    "pink_dark": "",
+    "black_dark": "",
+    "green_light": "",
+    "yellow_light": "",
+    "orange_light": "",
+    "red_light": "",
+    "purple_light": "",
+    "blue_light": "",
+    "sky_light": "",
+    "lime_light": "",
+    "pink_light": "",
+    "black_light": ""
+  },
+  "limits": {
+    "attachments": {
+      "perBoard": { "status": "ok", "disableAt": 36000, "warnAt": 28800 },
+      "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+    },
+    "boards": {
+      "totalMembersPerBoard": {
+        "status": "ok",
+        "disableAt": 1600,
+        "warnAt": 1280
+      },
+      "totalAccessRequestsPerBoard": {
+        "status": "ok",
+        "disableAt": 4000,
+        "warnAt": 3200
+      }
+    },
+    "cards": {
+      "openPerBoard": { "status": "ok", "disableAt": 5000, "warnAt": 4000 },
+      "openPerList": { "status": "ok", "disableAt": 5000, "warnAt": 4000 },
+      "totalPerBoard": {
+        "status": "ok",
+        "disableAt": 2000000,
+        "warnAt": 1600000
+      },
+      "totalPerList": { "status": "ok", "disableAt": 1000000, "warnAt": 800000 }
+    },
+    "checklists": {
+      "perBoard": { "status": "ok", "disableAt": 1800000, "warnAt": 1440000 },
+      "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+    },
+    "checkItems": {
+      "perChecklist": { "status": "ok", "disableAt": 200, "warnAt": 160 }
+    },
+    "customFields": {
+      "perBoard": { "status": "ok", "disableAt": 50, "warnAt": 40 }
+    },
+    "customFieldOptions": {
+      "perField": { "status": "ok", "disableAt": 50, "warnAt": 40 }
+    },
+    "labels": {
+      "perBoard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+    },
+    "lists": {
+      "openPerBoard": { "status": "ok", "disableAt": 500, "warnAt": 400 },
+      "totalPerBoard": { "status": "ok", "disableAt": 3000, "warnAt": 2400 }
+    },
+    "stickers": {
+      "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+    },
+    "reactions": {
+      "perAction": { "status": "ok", "disableAt": 900, "warnAt": 720 },
+      "uniquePerAction": { "status": "ok", "disableAt": 17, "warnAt": 14 }
+    }
+  },
+  "powerUps": [],
+  "subscribed": false,
+  "templateGallery": null,
+  "boardPlugins": [
+    {
+      "id": "6465eed03f4db6f88634fa04",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idPlugin": "55a5d917446f517774210011",
+      "promotional": false
+    },
+    {
+      "id": "6465eecf3f4db6f88634f7da",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idPlugin": "5935cab6b26816f9d49fd814",
+      "promotional": true
+    }
+  ],
+  "cards": [
+    {
+      "id": "6465eecf3f4db6f88634f854",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": true,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2020-08-27T18:05:50.213Z",
+      "desc": "##Add labels by clicking the \"Labels\" button on the right -->##\n\n##What are labels?##\n\nLabels are great ways to differentiate the type of tasks your team has.\n\nFor example: \n\n(yellow) **Copy Request:** Any doc, task, or page that needs a grammatical overview or general words in order for it to be done.\n\n(red) **Priority:** This task needs to be finished first before anything else gets done. Communicate the urgency with this handy label.\n\n(purple) **Design Team:** Use this label to indicate that the design team is involved in some capacity so there's never any confusion.\n\n(green) **Halp:** A hilarious plea? Yes. A useful indication? Definitely. Labels can be used for anything, including an indication that someone needs assistance with a task.\n\n**Bonus**\nNotice the patterns on the labels: designed for those that may not be able to see colors properly. \n ",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e1",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 19,
+      "idLabels": [
+        "6465eecf3f4db6f88634f86d",
+        "6465eecf3f4db6f88634f864",
+        "6465eecf3f4db6f88634f86a",
+        "6465eecf3f4db6f88634f870",
+        "6465eecf3f4db6f88634f861"
+      ],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Trello Tip: Card labels! What do they mean? (Click for more info)",
+      "pos": 15360,
+      "shortUrl": "https://trello.com/c/7dYFRuuM",
+      "shortLink": "7dYFRuuM",
+      "subscribed": false,
+      "url": "https://trello.com/c/7dYFRuuM/19-trello-tip-card-labels-what-do-they-mean-click-for-more-info",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "light",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [
+        {
+          "id": "6465eecf3f4db6f88634f86d",
+          "idBoard": "6465eecf3f4db6f88634f7da",
+          "name": "Priority",
+          "color": "red"
+        },
+        {
+          "id": "6465eecf3f4db6f88634f864",
+          "idBoard": "6465eecf3f4db6f88634f7da",
+          "name": "Design Team",
+          "color": "purple"
+        },
+        {
+          "id": "6465eecf3f4db6f88634f86a",
+          "idBoard": "6465eecf3f4db6f88634f7da",
+          "name": "Copy Request",
+          "color": "yellow"
+        },
+        {
+          "id": "6465eecf3f4db6f88634f870",
+          "idBoard": "6465eecf3f4db6f88634f7da",
+          "name": "Halp",
+          "color": "lime"
+        },
+        {
+          "id": "6465eecf3f4db6f88634f861",
+          "idBoard": "6465eecf3f4db6f88634f7da",
+          "name": "Trello Tip",
+          "color": "sky"
+        }
+      ],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f82d",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 6,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": true,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2019-10-17T14:29:46.551Z",
+      "desc": "Whoa! Look! It's a checklist—you can create tasks, tag your teammates, and check-off tasks as you go and achieve milestones.",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e1",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 1,
+      "idLabels": [],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Project \"Teamwork Dream Work\" Launch Timeline",
+      "pos": 24576,
+      "shortUrl": "https://trello.com/c/ueoM6MBH",
+      "shortLink": "ueoM6MBH",
+      "subscribed": false,
+      "url": "https://trello.com/c/ueoM6MBH/1-project-teamwork-dream-work-launch-timeline",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "light",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [
+        {
+          "id": "6465eecf3f4db6f88634f82f",
+          "idBoard": "6465eecf3f4db6f88634f7da",
+          "idCard": "6465eecf3f4db6f88634f82d",
+          "name": "Checklist",
+          "pos": 16384
+        }
+      ],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f858",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2019-03-28T05:57:13.181Z",
+      "desc": "",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e1",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 21,
+      "idLabels": [],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Stakeholders",
+      "pos": 90112,
+      "shortUrl": "https://trello.com/c/8lKAbeyl",
+      "shortLink": "8lKAbeyl",
+      "subscribed": false,
+      "url": "https://trello.com/c/8lKAbeyl/21-stakeholders",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "light",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f85a",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2019-04-17T11:42:14.860Z",
+      "desc": "",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e1",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 22,
+      "idLabels": [],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Weekly Updates",
+      "pos": 155648,
+      "shortUrl": "https://trello.com/c/yPIwA32E",
+      "shortLink": "yPIwA32E",
+      "subscribed": false,
+      "url": "https://trello.com/c/yPIwA32E/22-weekly-updates",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "light",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f84e",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2019-04-20T05:37:05.419Z",
+      "desc": "",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e2",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 16,
+      "idLabels": ["6465eecf3f4db6f88634f861"],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Trello Tip: 🌊Slide your Q's into this handy list so your team keeps on flowing.",
+      "pos": 16383.75,
+      "shortUrl": "https://trello.com/c/rAQs6A1q",
+      "shortLink": "rAQs6A1q",
+      "subscribed": false,
+      "url": "https://trello.com/c/rAQs6A1q/16-trello-tip-%F0%9F%8C%8Aslide-your-qs-into-this-handy-list-so-your-team-keeps-on-flowing",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "dark",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [
+        {
+          "id": "6465eecf3f4db6f88634f861",
+          "idBoard": "6465eecf3f4db6f88634f7da",
+          "name": "Trello Tip",
+          "color": "sky"
+        }
+      ],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f842",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": true,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2019-10-11T16:06:08.430Z",
+      "desc": "For some reason, I can't make all the text aligned on the landing page. Can someone look over the code to see what I'm missing?\n\n\nPerson 1: @name I'll take a look.\n\nPerson 2: Thanks @person1, let me know if you need anything.\n\nPerson1: @otherperson, hmm looks like something a bit more complicated, let's talk it over at the team meeting.",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e2",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 10,
+      "idLabels": [],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Who's the best person to fix my HTML snag?",
+      "pos": 65535,
+      "shortUrl": "https://trello.com/c/rZrbIOJ9",
+      "shortLink": "rZrbIOJ9",
+      "subscribed": false,
+      "url": "https://trello.com/c/rZrbIOJ9/10-whos-the-best-person-to-fix-my-html-snag",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "light",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f856",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2019-08-20T13:47:15.377Z",
+      "desc": "",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e2",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 20,
+      "idLabels": [],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "How can I get access to the super secret document?",
+      "pos": 131071,
+      "shortUrl": "https://trello.com/c/kQ0K3a7B",
+      "shortLink": "kQ0K3a7B",
+      "subscribed": false,
+      "url": "https://trello.com/c/kQ0K3a7B/20-how-can-i-get-access-to-the-super-secret-document",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "dark",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f850",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2019-04-12T01:43:23.728Z",
+      "desc": "",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e3",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 17,
+      "idLabels": ["6465eecf3f4db6f88634f861"],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Trello Tip: This is where assigned tasks live so that your team can see who's working on what and when it's due.",
+      "pos": 16383.75,
+      "shortUrl": "https://trello.com/c/bZCrhGNa",
+      "shortLink": "bZCrhGNa",
+      "subscribed": false,
+      "url": "https://trello.com/c/bZCrhGNa/17-trello-tip-this-is-where-assigned-tasks-live-so-that-your-team-can-see-whos-working-on-what-and-when-its-due",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "light",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [
+        {
+          "id": "6465eecf3f4db6f88634f861",
+          "idBoard": "6465eecf3f4db6f88634f7da",
+          "name": "Trello Tip",
+          "color": "sky"
+        }
+      ],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f834",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2020-01-30T22:33:32.290Z",
+      "desc": "",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e3",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 3,
+      "idLabels": ["6465eecf3f4db6f88634f864"],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Sketch site banner",
+      "pos": 32767.5,
+      "shortUrl": "https://trello.com/c/gUgDGxTK",
+      "shortLink": "gUgDGxTK",
+      "subscribed": false,
+      "url": "https://trello.com/c/gUgDGxTK/3-sketch-site-banner",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "light",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [
+        {
+          "id": "6465eecf3f4db6f88634f864",
+          "idBoard": "6465eecf3f4db6f88634f7da",
+          "name": "Design Team",
+          "color": "purple"
+        }
+      ],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f832",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2020-01-30T22:33:35.442Z",
+      "desc": "",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e3",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 2,
+      "idLabels": [],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Edit email drafts",
+      "pos": 65535,
+      "shortUrl": "https://trello.com/c/vdCha8cZ",
+      "shortLink": "vdCha8cZ",
+      "subscribed": false,
+      "url": "https://trello.com/c/vdCha8cZ/2-edit-email-drafts",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "light",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f836",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2020-01-30T22:33:39.049Z",
+      "desc": "",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e3",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 4,
+      "idLabels": ["6465eecf3f4db6f88634f85e"],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Curate customer list",
+      "pos": 131071,
+      "shortUrl": "https://trello.com/c/blNrqjcU",
+      "shortLink": "blNrqjcU",
+      "subscribed": false,
+      "url": "https://trello.com/c/blNrqjcU/4-curate-customer-list",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "light",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [
+        {
+          "id": "6465eecf3f4db6f88634f85e",
+          "idBoard": "6465eecf3f4db6f88634f7da",
+          "name": "One more step",
+          "color": "orange"
+        }
+      ],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f84c",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2019-06-04T19:40:37.113Z",
+      "desc": "",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e3",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 15,
+      "idLabels": [],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Sketch the \"Teamy Dreamy\" Font",
+      "pos": 196607,
+      "shortUrl": "https://trello.com/c/C69ZqZdm",
+      "shortLink": "C69ZqZdm",
+      "subscribed": false,
+      "url": "https://trello.com/c/C69ZqZdm/15-sketch-the-teamy-dreamy-font",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "light",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f852",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2019-02-26T03:55:53.186Z",
+      "desc": "",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e4",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 18,
+      "idLabels": ["6465eecf3f4db6f88634f861"],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Trello Tip: 💬For those in-between tasks that are almost done but also awaiting one last step.",
+      "pos": 49151.5,
+      "shortUrl": "https://trello.com/c/JQG1lMZF",
+      "shortLink": "JQG1lMZF",
+      "subscribed": false,
+      "url": "https://trello.com/c/JQG1lMZF/18-trello-tip-%F0%9F%92%ACfor-those-in-between-tasks-that-are-almost-done-but-also-awaiting-one-last-step",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "light",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [
+        {
+          "id": "6465eecf3f4db6f88634f861",
+          "idBoard": "6465eecf3f4db6f88634f7da",
+          "name": "Trello Tip",
+          "color": "sky"
+        }
+      ],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f838",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2020-01-30T22:33:47.622Z",
+      "desc": "",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e4",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 5,
+      "idLabels": [],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Legal review",
+      "pos": 98303,
+      "shortUrl": "https://trello.com/c/RWhkowsH",
+      "shortLink": "RWhkowsH",
+      "subscribed": false,
+      "url": "https://trello.com/c/RWhkowsH/5-legal-review",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "light",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f83c",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": true,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2019-06-07T14:54:29.814Z",
+      "desc": "person1: \"The twitter banner looks great, can we get another version in red? 💃🏻\"\n\nperson2: \"Sure thing, just attached!\"\n\nperson3: \"Nice, I don't know if that's an approved design yet. Let me confirm and I'll update you here once it's 💯\"\n\n\n",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e4",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 7,
+      "idLabels": ["6465eecf3f4db6f88634f864"],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Social media assets",
+      "pos": 131071,
+      "shortUrl": "https://trello.com/c/SJO1EafV",
+      "shortLink": "SJO1EafV",
+      "subscribed": false,
+      "url": "https://trello.com/c/SJO1EafV/7-social-media-assets",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "dark",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [
+        {
+          "id": "6465eecf3f4db6f88634f864",
+          "idBoard": "6465eecf3f4db6f88634f7da",
+          "name": "Design Team",
+          "color": "purple"
+        }
+      ],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f844",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 1,
+        "description": false,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2023-05-18T09:24:32.728Z",
+      "desc": "",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": "6465eed03f4db6f88634f9c2",
+      "idList": "6465eecf3f4db6f88634f7e5",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 11,
+      "idLabels": ["6465eecf3f4db6f88634f861"],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Trello Tip: Splash those redtape-heavy issues that are slowing your team down here.",
+      "pos": 32767.5,
+      "shortUrl": "https://trello.com/c/NZsMCsAl",
+      "shortLink": "NZsMCsAl",
+      "subscribed": false,
+      "url": "https://trello.com/c/NZsMCsAl/11-trello-tip-splash-those-redtape-heavy-issues-that-are-slowing-your-team-down-here",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": "6465eed03f4db6f88634f9c2",
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "dark",
+        "scaled": [
+          {
+            "_id": "6465eed03f4db6f88634f9c3",
+            "id": "6465eed03f4db6f88634f9c3",
+            "scaled": true,
+            "url": "https://trello.com/1/cards/6465eecf3f4db6f88634f844/attachments/6465eed03f4db6f88634f9c2/previews/6465eed03f4db6f88634f9c3/download/giphy.gif",
+            "bytes": 995620,
+            "height": 206,
+            "width": 350
+          }
+        ],
+        "edgeColor": null,
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [
+        {
+          "id": "6465eecf3f4db6f88634f861",
+          "idBoard": "6465eecf3f4db6f88634f7da",
+          "name": "Trello Tip",
+          "color": "sky"
+        }
+      ],
+      "stickers": [],
+      "attachments": [
+        {
+          "bytes": 995620,
+          "date": "2018-11-15T23:06:56.746Z",
+          "edgeColor": null,
+          "fileName": "giphy.gif",
+          "idMember": "6465eed03f4db6f88634f9c1",
+          "isUpload": true,
+          "mimeType": null,
+          "name": "giphy.gif",
+          "pos": 16384,
+          "url": "https://trello.com/1/cards/6465eecf3f4db6f88634f844/attachments/6465eed03f4db6f88634f9c2/download/giphy.gif",
+          "id": "6465eed03f4db6f88634f9c2"
+        }
+      ],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f846",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2019-01-17T23:49:59.271Z",
+      "desc": "",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e5",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 12,
+      "idLabels": ["6465eecf3f4db6f88634f85e"],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Freelancer contracts",
+      "pos": 49151.25,
+      "shortUrl": "https://trello.com/c/aGkAsmZn",
+      "shortLink": "aGkAsmZn",
+      "subscribed": false,
+      "url": "https://trello.com/c/aGkAsmZn/12-freelancer-contracts",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "dark",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [
+        {
+          "id": "6465eecf3f4db6f88634f85e",
+          "idBoard": "6465eecf3f4db6f88634f7da",
+          "name": "One more step",
+          "color": "orange"
+        }
+      ],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f83a",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2020-01-30T22:33:59.543Z",
+      "desc": "",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e5",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 6,
+      "idLabels": [],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Budget approval",
+      "pos": 65535,
+      "shortUrl": "https://trello.com/c/OL87YE4l",
+      "shortLink": "OL87YE4l",
+      "subscribed": false,
+      "url": "https://trello.com/c/OL87YE4l/6-budget-approval",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "light",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f848",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": null,
+        "dueComplete": false,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2019-04-09T05:55:02.548Z",
+      "desc": "",
+      "descData": null,
+      "due": null,
+      "dueComplete": false,
+      "dueReminder": null,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e6",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 13,
+      "idLabels": ["6465eecf3f4db6f88634f861"],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Trello Tip: ✨ Be proud! You're done! For all your finished tasks that your team has hustled on.",
+      "pos": 32767.5,
+      "shortUrl": "https://trello.com/c/82zEmOsK",
+      "shortLink": "82zEmOsK",
+      "subscribed": false,
+      "url": "https://trello.com/c/82zEmOsK/13-trello-tip-%E2%9C%A8-be-proud-youre-done-for-all-your-finished-tasks-that-your-team-has-hustled-on",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "dark",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [
+        {
+          "id": "6465eecf3f4db6f88634f861",
+          "idBoard": "6465eecf3f4db6f88634f7da",
+          "name": "Trello Tip",
+          "color": "sky"
+        }
+      ],
+      "stickers": [
+        {
+          "id": "6465eed03f4db6f88634f964",
+          "top": 0,
+          "left": 36.417322834645674,
+          "zIndex": 1,
+          "rotate": 0,
+          "image": "star",
+          "imageUrl": "https://d2k1ftgv7pobq7.cloudfront.net/images/stickers/star.png",
+          "imageScaled": [
+            {
+              "_id": null,
+              "id": null,
+              "scaled": false,
+              "url": "https://d2k1ftgv7pobq7.cloudfront.net/images/stickers/star.png",
+              "bytes": null,
+              "height": 80,
+              "width": 80
+            },
+            {
+              "_id": null,
+              "id": null,
+              "scaled": false,
+              "url": "https://d2k1ftgv7pobq7.cloudfront.net/images/stickers/star@2x.png",
+              "bytes": null,
+              "height": 160,
+              "width": 160
+            }
+          ]
+        }
+      ],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f84a",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": "2020-01-09T22:33:00.000Z",
+        "dueComplete": true,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2020-01-30T22:34:06.658Z",
+      "desc": "",
+      "descData": null,
+      "due": "2020-01-09T22:33:00.000Z",
+      "dueComplete": true,
+      "dueReminder": 60,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e6",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 14,
+      "idLabels": [],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Finalize Campaign Name: Teamwork Dream Work ✨",
+      "pos": 49151.25,
+      "shortUrl": "https://trello.com/c/wCKc3y2B",
+      "shortLink": "wCKc3y2B",
+      "subscribed": false,
+      "url": "https://trello.com/c/wCKc3y2B/14-finalize-campaign-name-teamwork-dream-work-%E2%9C%A8",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "light",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f83e",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": "2019-12-17T22:33:00.000Z",
+        "dueComplete": true,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2020-01-30T22:34:30.553Z",
+      "desc": "",
+      "descData": null,
+      "due": "2019-12-17T22:33:00.000Z",
+      "dueComplete": true,
+      "dueReminder": 60,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e6",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 8,
+      "idLabels": [],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Submit Q1 report",
+      "pos": 65535,
+      "shortUrl": "https://trello.com/c/oLZdWY2p",
+      "shortLink": "oLZdWY2p",
+      "subscribed": false,
+      "url": "https://trello.com/c/oLZdWY2p/8-submit-q1-report",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "light",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    },
+    {
+      "id": "6465eecf3f4db6f88634f840",
+      "badges": {
+        "attachmentsByType": { "trello": { "board": 0, "card": 0 } },
+        "location": false,
+        "votes": 0,
+        "viewingMemberVoted": false,
+        "subscribed": false,
+        "fogbugz": "",
+        "checkItems": 0,
+        "checkItemsChecked": 0,
+        "checkItemsEarliestDue": null,
+        "comments": 0,
+        "attachments": 0,
+        "description": false,
+        "due": "2020-01-31T22:33:00.000Z",
+        "dueComplete": true,
+        "start": null
+      },
+      "cardRole": null,
+      "closed": false,
+      "dateLastActivity": "2020-01-30T22:33:55.609Z",
+      "desc": "",
+      "descData": null,
+      "due": "2020-01-31T22:33:00.000Z",
+      "dueComplete": true,
+      "dueReminder": 60,
+      "idAttachmentCover": null,
+      "idList": "6465eecf3f4db6f88634f7e6",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "idMembers": [],
+      "idShort": 9,
+      "idLabels": [],
+      "limits": {
+        "attachments": {
+          "perCard": { "status": "ok", "disableAt": 1000, "warnAt": 800 }
+        },
+        "checklists": {
+          "perCard": { "status": "ok", "disableAt": 500, "warnAt": 400 }
+        },
+        "stickers": {
+          "perCard": { "status": "ok", "disableAt": 70, "warnAt": 56 }
+        }
+      },
+      "name": "Campaign Proposal",
+      "pos": 131071,
+      "shortUrl": "https://trello.com/c/iLLJAX9T",
+      "shortLink": "iLLJAX9T",
+      "subscribed": false,
+      "url": "https://trello.com/c/iLLJAX9T/9-campaign-proposal",
+      "locationName": null,
+      "address": null,
+      "coordinates": null,
+      "cover": {
+        "idAttachment": null,
+        "color": null,
+        "idUploadedBackground": null,
+        "size": "normal",
+        "brightness": "light",
+        "idPlugin": null
+      },
+      "isTemplate": false,
+      "start": null,
+      "labels": [],
+      "stickers": [],
+      "attachments": [],
+      "checklists": [],
+      "pluginData": [],
+      "customFieldItems": []
+    }
+  ],
+  "enterprise": {},
+  "labels": [
+    {
+      "id": "6465eecf3f4db6f88634f861",
+      "name": "Trello Tip",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "color": "sky"
+    },
+    {
+      "id": "6465eecf3f4db6f88634f864",
+      "name": "Design Team",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "color": "purple"
+    },
+    {
+      "id": "6465eecf3f4db6f88634f85e",
+      "name": "One more step",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "color": "orange"
+    },
+    {
+      "id": "6465eecf3f4db6f88634f870",
+      "name": "Halp",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "color": "lime"
+    },
+    {
+      "id": "6465eecf3f4db6f88634f86d",
+      "name": "Priority",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "color": "red"
+    },
+    {
+      "id": "6465eecf3f4db6f88634f86a",
+      "name": "Copy Request",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "color": "yellow"
+    },
+    {
+      "id": "6465eecf3f4db6f88634f867",
+      "name": "Product Marketing",
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "color": "blue"
+    }
+  ],
+  "lists": [
+    {
+      "id": "6465eecf3f4db6f88634f7e1",
+      "name": "Project Resources",
+      "closed": false,
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "pos": 34815.65625,
+      "status": null,
+      "subscribed": false,
+      "limits": {
+        "cards": {
+          "openPerList": { "status": "ok", "disableAt": 5000, "warnAt": 4000 },
+          "totalPerList": {
+            "status": "ok",
+            "disableAt": 1000000,
+            "warnAt": 800000
+          }
+        }
+      },
+      "creationMethod": null,
+      "softLimit": null
+    },
+    {
+      "id": "6465eecf3f4db6f88634f7e2",
+      "name": "Questions For Next Meeting",
+      "closed": false,
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "pos": 53247.5625,
+      "status": null,
+      "subscribed": false,
+      "limits": {
+        "cards": {
+          "openPerList": { "status": "ok", "disableAt": 5000, "warnAt": 4000 },
+          "totalPerList": {
+            "status": "ok",
+            "disableAt": 1000000,
+            "warnAt": 800000
+          }
+        }
+      },
+      "creationMethod": null,
+      "softLimit": null
+    },
+    {
+      "id": "6465eecf3f4db6f88634f7e3",
+      "name": "To Do",
+      "closed": false,
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "pos": 90111.375,
+      "status": null,
+      "subscribed": false,
+      "limits": {
+        "cards": {
+          "openPerList": { "status": "ok", "disableAt": 5000, "warnAt": 4000 },
+          "totalPerList": {
+            "status": "ok",
+            "disableAt": 1000000,
+            "warnAt": 800000
+          }
+        }
+      },
+      "creationMethod": null,
+      "softLimit": null
+    },
+    {
+      "id": "6465eecf3f4db6f88634f7e4",
+      "name": "Pending",
+      "closed": false,
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "pos": 96255.34375,
+      "status": null,
+      "subscribed": false,
+      "limits": {
+        "cards": {
+          "openPerList": { "status": "ok", "disableAt": 5000, "warnAt": 4000 },
+          "totalPerList": {
+            "status": "ok",
+            "disableAt": 1000000,
+            "warnAt": 800000
+          }
+        }
+      },
+      "creationMethod": null,
+      "softLimit": null
+    },
+    {
+      "id": "6465eecf3f4db6f88634f7e5",
+      "name": "Blocked",
+      "closed": false,
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "pos": 102399.3125,
+      "status": null,
+      "subscribed": false,
+      "limits": {
+        "cards": {
+          "openPerList": { "status": "ok", "disableAt": 5000, "warnAt": 4000 },
+          "totalPerList": {
+            "status": "ok",
+            "disableAt": 1000000,
+            "warnAt": 800000
+          }
+        }
+      },
+      "creationMethod": null,
+      "softLimit": null
+    },
+    {
+      "id": "6465eecf3f4db6f88634f7e6",
+      "name": "Done",
+      "closed": false,
+      "idBoard": "6465eecf3f4db6f88634f7da",
+      "pos": 245759.25,
+      "status": null,
+      "subscribed": false,
+      "limits": {
+        "cards": {
+          "openPerList": { "status": "ok", "disableAt": 5000, "warnAt": 4000 },
+          "totalPerList": {
+            "status": "ok",
+            "disableAt": 1000000,
+            "warnAt": 800000
+          }
+        }
+      },
+      "creationMethod": null,
+      "softLimit": null
+    }
+  ],
+  "members": [
+    {
+      "id": "643e586a41751a29d5a5ee56",
+      "activityBlocked": false,
+      "avatarUrl": "https://trello-members.s3.amazonaws.com/643e586a41751a29d5a5ee56/a519454046fc03d073579cd933263df0",
+      "bio": "",
+      "bioData": null,
+      "confirmed": true,
+      "fullName": "ting-xuan GT5-",
+      "idEnterprise": null,
+      "idMemberReferrer": null,
+      "idPremOrgsAdmin": [],
+      "initials": "TG",
+      "memberType": "normal",
+      "nonPublicAvailable": true,
+      "nonPublic": {
+        "fullName": "ting-xuan GT5-",
+        "initials": "TG",
+        "avatarHash": null
+      },
+      "products": [],
+      "url": "https://trello.com/tingxuangt5",
+      "username": "tingxuangt5"
+    }
+  ],
+  "customFields": [],
+  "memberships": [
+    {
+      "idMember": "643e586a41751a29d5a5ee56",
+      "memberType": "admin",
+      "unconfirmed": false,
+      "deactivated": false,
+      "id": "6465eecf3f4db6f88634f88b",
+      "orgMemberType": "admin"
+    }
+  ],
+  "myPrefs": {
+    "showSidebar": false,
+    "showSidebarMembers": true,
+    "showSidebarBoardActions": true,
+    "showSidebarActivity": true,
+    "showListGuide": false,
+    "emailKey": null,
+    "idEmailList": null,
+    "emailPosition": "bottom"
+  },
+  "pluginData": [],
+  "organization": {
+    "id": "64585d6f5c7daa2c9b82bce4",
+    "name": "test68538404",
+    "displayName": "test",
+    "desc": "",
+    "descData": { "emoji": {} },
+    "url": "https://trello.com/w/test68538404",
+    "website": null,
+    "prefs": {
+      "permissionLevel": "private",
+      "orgInviteRestrict": [],
+      "boardInviteRestrict": "any",
+      "externalMembersDisabled": false,
+      "associatedDomain": null,
+      "googleAppsVersion": 1,
+      "boardVisibilityRestrict": {
+        "private": "org",
+        "org": "org",
+        "enterprise": "org",
+        "public": "org"
+      },
+      "boardDeleteRestrict": {
+        "private": "org",
+        "org": "org",
+        "enterprise": "org",
+        "public": "org"
+      },
+      "attachmentRestrictions": null,
+      "newLicenseInviteRestrict": null
+    },
+    "memberships": [
+      {
+        "idMember": "643e586a41751a29d5a5ee56",
+        "memberType": "admin",
+        "unconfirmed": false,
+        "deactivated": false,
+        "id": "64585d6f5c7daa2c9b82bce6"
+      }
+    ],
+    "logoHash": null,
+    "products": [],
+    "limits": {
+      "orgs": {
+        "totalMembersPerOrg": {
+          "status": "ok",
+          "disableAt": 4000,
+          "warnAt": 3200
+        },
+        "freeBoardsPerOrg": {
+          "status": "warn",
+          "disableAt": 10,
+          "warnAt": 3,
+          "count": 4
+        }
+      }
+    },
+    "idEnterprise": null,
+    "premiumFeatures": [
+      "additionalBoardBackgrounds",
+      "additionalStickers",
+      "customBoardBackgrounds",
+      "customEmoji",
+      "customStickers",
+      "plugins"
+    ],
+    "enterprise": {},
+    "pluginData": [],
+    "tags": []
+  }
+}
