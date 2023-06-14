@@ -2373,7 +2373,7 @@
         "tags": [
           "Other - 其它"
         ],
-        "description": "",
+        "description": "搜尋成員",
         "parameters": [
           {
             "name": "query",
@@ -2391,6 +2391,31 @@
             "description": "OK"
           }
         }
+      }
+    },
+    "/api/search/cards": {
+      "get": {
+        "tags": [
+          "Other - 其它"
+        ],
+        "description": "搜尋使用者卡片標題",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/api/invitation/boards/{invitationToken}": {

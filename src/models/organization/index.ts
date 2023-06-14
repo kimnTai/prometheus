@@ -1,5 +1,6 @@
 import { Schema, model, type Document } from "mongoose";
 import { IMember } from "@/models/user";
+import { IBoard } from "../board";
 
 interface IOrganization extends Document {
   name: string;
@@ -7,6 +8,7 @@ interface IOrganization extends Document {
   inviteLink: string;
 
   member: IMember[];
+  board: IBoard[];
 }
 
 const organizationSchema = new Schema<IOrganization>(

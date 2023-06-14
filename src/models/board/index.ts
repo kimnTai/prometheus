@@ -3,7 +3,7 @@ import { IMember } from "@/models/user";
 import { IList } from "../list";
 import { ILabel } from "../label";
 
-interface IBoard extends Document {
+export interface IBoard extends Document {
   name: string;
   permission: "private" | "public";
   closed: boolean;

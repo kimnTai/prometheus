@@ -1,6 +1,7 @@
 import validator from "validator";
-import UsersModel from "@/models/user";
+import CardModel from "@/models/card";
 import OrganizationModel from "@/models/organization";
+import UsersModel from "@/models/user";
 
 import type { RequestHandler } from "express";
 
@@ -22,6 +23,34 @@ export const searchMember: RequestHandler = async (req, res) => {
     _id: {
       $nin: excludedIds,
     },
+  });
+
+  return res.send({ status: "success", result });
+};
+
+export const searchCards: RequestHandler = async (req, res) => {
+  const { query } = req.query;
+
+  if (!query) {
+    throw new Error("query 錯誤!");
+  }
+
+  const userOrganization = await OrganizationModel.find({
+    member: {
+      $elemMatch: {
+        userId: req.user?._id,
+      },
+    },
+  }).populate({
+    path: "board",
+  });
+
+  const result = await CardModel.find({
+    name: new RegExp(`${query}`),
+    boardId: {
+      $in: userOrganization.flatMap(({ board }) => board).map(({ _id }) => _id),
+    },
+    closed: false,
   });
 
   return res.send({ status: "success", result });
