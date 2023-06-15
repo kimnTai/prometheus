@@ -102,6 +102,12 @@ cardSchema.virtual("date", {
 
 // 前置查詢
 cardSchema.pre(/^find/, function (next) {
+  const shouldPopulate = this.getOptions().shouldPopulate ?? true;
+  if (!shouldPopulate) {
+    next();
+    return;
+  }
+
   this.populate({
     path: "label",
     select: "name color",

@@ -73,7 +73,7 @@ export const deleteCard: RequestHandler = async (req, res) => {
   }
 
   res.app.emit(`boardId:${result.boardId}`, result);
-  res.send({ status: "success", result: result });
+  res.send({ status: "success", result });
 };
 
 export const addCardMember: RequestHandler = async (req, res) => {

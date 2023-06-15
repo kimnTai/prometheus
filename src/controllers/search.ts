@@ -46,13 +46,21 @@ export const searchCards: RequestHandler = async (req, res) => {
     path: "board",
   });
 
-  const cardList = await CardModel.find({
-    name: new RegExp(`${query}`),
-    boardId: {
-      $in: userOrganization.flatMap(({ board }) => board).map(({ _id }) => _id),
+  const cardList = await CardModel.find(
+    {
+      name: new RegExp(`${query}`),
+      boardId: {
+        $in: userOrganization
+          .flatMap(({ board }) => board)
+          .map(({ _id }) => _id),
+      },
+      closed: false,
     },
-    closed: false,
-  });
+    {},
+    {
+      shouldPopulate: false,
+    }
+  );
 
   const result = await Promise.all(
     cardList.map(async (card) => {
