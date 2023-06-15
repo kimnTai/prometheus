@@ -12,10 +12,9 @@ export const createComment: RequestHandler = async (req, res) => {
 
   const result = await CommentModel.findById(_result._id);
 
-  const cardResult = await CardModel.findById(req.params.cardId);
-  if (cardResult) {
-    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
-  }
+  CardModel.findById(result?.cardId).then((cardResult) => {
+    res.app.emit(`boardId:${cardResult?.boardId}`, cardResult);
+  });
   res.send({ status: "success", result });
 };
 
@@ -28,19 +27,17 @@ export const updateComment: RequestHandler = async (req, res) => {
     { new: true, runValidators: true }
   );
 
-  const cardResult = await CardModel.findById(result?.cardId);
-  if (cardResult) {
-    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
-  }
+  CardModel.findById(result?.cardId).then((cardResult) => {
+    res.app.emit(`boardId:${cardResult?.boardId}`, cardResult);
+  });
   res.send({ status: "success", result });
 };
 
 export const deleteComment: RequestHandler = async (req, res) => {
   const result = await CommentModel.findByIdAndDelete(req.params.commentId);
 
-  const cardResult = await CardModel.findById(result?.cardId);
-  if (cardResult) {
-    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
-  }
+  CardModel.findById(result?.cardId).then((cardResult) => {
+    res.app.emit(`boardId:${cardResult?.boardId}`, cardResult);
+  });
   res.send({ status: "success", result });
 };

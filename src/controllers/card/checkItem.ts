@@ -12,10 +12,9 @@ export const createCheckItem: RequestHandler = async (req, res) => {
     checklistId: req.params.checklistId,
   });
 
-  const cardResult = await CardModel.findById(req.params.cardId);
-  if (cardResult) {
-    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
-  }
+  CardModel.findById(req.params.cardId).then((cardResult) => {
+    res.app.emit(`boardId:${cardResult?.boardId}`, cardResult);
+  });
   res.send({ status: "success", result });
 };
 
@@ -33,19 +32,17 @@ export const updateCheckItem: RequestHandler = async (req, res) => {
     { new: true, runValidators: true }
   );
 
-  const cardResult = await CardModel.findById(req.params.cardId);
-  if (cardResult) {
-    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
-  }
+  CardModel.findById(req.params.cardId).then((cardResult) => {
+    res.app.emit(`boardId:${cardResult?.boardId}`, cardResult);
+  });
   res.send({ status: "success", result });
 };
 
 export const deleteCheckItem: RequestHandler = async (req, res) => {
   const result = await CheckItemModel.findByIdAndDelete(req.params.checkItemId);
 
-  const cardResult = await CardModel.findById(req.params.cardId);
-  if (cardResult) {
-    res.app.emit(`boardId:${cardResult.boardId}`, cardResult);
-  }
+  CardModel.findById(req.params.cardId).then((cardResult) => {
+    res.app.emit(`boardId:${cardResult?.boardId}`, cardResult);
+  });
   res.send({ status: "success", result });
 };
