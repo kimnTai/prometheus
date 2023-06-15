@@ -200,7 +200,7 @@ export const cloneCardById: RequestHandler = async (req, res) => {
 
   // 複製標籤
   const cloneLabels = _result.label.map(({ name, color }) => {
-    return new LabelsModel({ name, color, boardId: _result.boardId });
+    return new LabelsModel({ name, color, boardId: req.body.boardId });
   });
 
   // 標籤映射表
