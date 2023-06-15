@@ -1,5 +1,4 @@
 import validator from "validator";
-import BoardsModel from "@/models/board";
 import CardModel from "@/models/card";
 import OrganizationModel from "@/models/organization";
 import UsersModel from "@/models/user";
@@ -46,7 +45,7 @@ export const searchCards: RequestHandler = async (req, res) => {
     path: "board",
   });
 
-  const cardList = await CardModel.find(
+  const result = await CardModel.find(
     {
       name: new RegExp(`${query}`),
       boardId: {
@@ -60,17 +59,13 @@ export const searchCards: RequestHandler = async (req, res) => {
     {
       shouldPopulate: false,
     }
-  );
-
-  const result = await Promise.all(
-    cardList.map(async (card) => {
-      const board = await BoardsModel.findById(card.boardId);
-      return {
-        board,
-        card,
-      };
-    })
-  );
+  ).populate({
+    path: "boardId",
+    select: "name",
+    options: {
+      shouldPopulate: false,
+    },
+  });
 
   return res.send({ status: "success", result });
 };

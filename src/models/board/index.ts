@@ -80,6 +80,12 @@ boardSchema.virtual("label", {
 });
 
 boardSchema.pre(/^find/, function (next) {
+  const shouldPopulate = this.getOptions().shouldPopulate ?? true;
+  if (!shouldPopulate) {
+    next();
+    return;
+  }
+
   this.populate({
     path: "member.userId",
     select: "name avatar email",
