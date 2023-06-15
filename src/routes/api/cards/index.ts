@@ -99,3 +99,10 @@ router.post("/cloneById", CardController.cloneCardById, () => {
    * #swagger.description  = "複製卡片"
    */
 });
+
+router.put("/:cardId/move", CardController.moveCard, () => {
+  /**
+   * #swagger.tags = ["Cards - 卡片"]
+   * #swagger.description  = "移動卡片"
+   */
+});

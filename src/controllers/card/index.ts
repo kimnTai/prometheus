@@ -266,3 +266,47 @@ export const cloneCardById: RequestHandler = async (req, res) => {
   res.app.emit(`boardId:${result?.boardId}`, result);
   res.send({ status: "success", result });
 };
+
+export const moveCard: RequestHandler = async (req, res, next) => {
+  const { listId, position, closed, boardId, sourceBoardId } = req.body;
+
+  if (boardId && sourceBoardId && boardId !== sourceBoardId) {
+    const _result = await CardModel.findByIdAndUpdate(
+      req.params.cardId,
+      {
+        listId,
+        position,
+        closed,
+        boardId,
+      },
+      { new: true, runValidators: true, shouldPopulate: false }
+    ).populate("label");
+
+    if (!_result) {
+      throw new Error("無此卡片 id");
+    }
+
+    // 複製標籤
+    const cloneLabels = _result.label.map(({ name, color }) => {
+      return new LabelsModel({ name, color, boardId: req.body.boardId });
+    });
+    cloneLabels.forEach((model) => model.save());
+
+    const result = await CardModel.findByIdAndUpdate(
+      req.params.cardId,
+      {
+        $set: {
+          label: cloneLabels.map(({ _id }) => _id),
+        },
+      },
+      { new: true, runValidators: true }
+    );
+
+    res.app.emit(`boardId:${result?.boardId}`, result);
+    res.send({ status: "success", result: result });
+
+    return;
+  }
+
+  updateCard(req, res, next);
+};
