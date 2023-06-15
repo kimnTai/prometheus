@@ -59,7 +59,7 @@ export const deleteList: RequestHandler = async (req, res) => {
 };
 
 export const archiveAllCards: RequestHandler = async (req, res) => {
-  const result = await CardModel.updateMany(
+  await CardModel.updateMany(
     {
       listId: req.params.listId,
     },
@@ -71,5 +71,8 @@ export const archiveAllCards: RequestHandler = async (req, res) => {
     }
   );
 
+  const result = await ListModel.findById(req.params.listId);
+
+  res.app.emit(`boardId:${result?.boardId}`, result);
   res.send({ status: "success", result });
 };
