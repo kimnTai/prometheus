@@ -1,6 +1,6 @@
-import { createRouter } from "@/shared";
 import * as BoardController from "@/controllers/board";
 import { checkRequestBodyValidator, isAuth } from "@/middlewares";
+import { createRouter } from "@/shared";
 
 const router = createRouter();
 
@@ -10,7 +10,7 @@ router.use(isAuth);
 
 router.use(checkRequestBodyValidator);
 
-router.get("/", BoardController.getAllBoards, () => {
+router.get("/", BoardController.getOrganizationBoards, () => {
   /**
    * #swagger.tags = ["Boards - 看板"]
    * #swagger.description  = "取得組織所有看板"

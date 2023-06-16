@@ -1,9 +1,7 @@
-import ListModel from "@/models/list";
-import CardModel from "@/models/card";
-import LabelsModel from "@/models/label";
-
 import type { RequestHandler } from "express";
-import { ILabel } from "@/models/label";
+import CardModel from "@/models/card";
+import LabelsModel, { ILabel } from "@/models/label";
+import ListModel from "@/models/list";
 
 export const createList: RequestHandler = async (req, res) => {
   const { name, boardId, position } = req.body;

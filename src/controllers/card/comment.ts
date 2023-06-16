@@ -1,7 +1,6 @@
-import CommentModel from "@/models/card/comment";
-import CardModel from "@/models/card";
-
 import type { RequestHandler } from "express";
+import CardModel from "@/models/card";
+import CommentModel from "@/models/card/comment";
 
 export const createComment: RequestHandler = async (req, res) => {
   const _result = await CommentModel.create({

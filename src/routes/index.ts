@@ -1,15 +1,15 @@
 import { createRouter } from "@/shared";
-import healthCheck from "./healthCheck";
-import swagger from "./swagger";
-import user from "./api/user";
-import organizations from "./api/organizations";
 import boards from "./api/boards";
-import lists from "./api/lists";
 import cards from "./api/cards";
 import email from "./api/email";
-import upload from "./api/upload";
-import search from "./api/search";
 import invitation from "./api/invitation";
+import lists from "./api/lists";
+import organizations from "./api/organizations";
+import search from "./api/search";
+import upload from "./api/upload";
+import user from "./api/user";
+import healthCheck from "./healthCheck";
+import swagger from "./swagger";
 
 const routes = createRouter();
 

@@ -1,7 +1,6 @@
-import AttachmentModel from "@/models/card/attachment";
-import CardModel from "@/models/card";
-
 import type { RequestHandler } from "express";
+import CardModel from "@/models/card";
+import AttachmentModel from "@/models/card/attachment";
 
 export const createAttachment: RequestHandler = async (req, res) => {
   const { dirname, filename } = req.body;

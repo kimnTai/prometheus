@@ -1,11 +1,10 @@
-import bcrypt from "bcryptjs";
-import { generateToken, getWebsocketUrl } from "@/shared";
-import UsersModel from "@/models/user";
-import BoardsModel from "@/models/board";
-import * as NotificationService from "@/service/notification";
-
 import type { RequestHandler } from "express";
+import bcrypt from "bcryptjs";
+import BoardsModel from "@/models/board";
+import UsersModel from "@/models/user";
+import * as NotificationService from "@/service/notification";
 import { getRecentBoardsItems } from "@/service/recentBoards";
+import { generateToken, getWebsocketUrl } from "@/shared";
 
 export const register: RequestHandler = async (req, res, next) => {
   const { name, email, password } = req.body;

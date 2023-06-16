@@ -1,18 +1,17 @@
-import { generateToken } from "@/shared";
-import OrganizationModel from "@/models/organization";
+import type { RequestHandler } from "express";
 import BoardsModel from "@/models/board";
+import CardModel from "@/models/card";
+import AttachmentModel from "@/models/card/attachment";
+import CheckItemModel from "@/models/card/checkItem";
+import ChecklistModel from "@/models/card/checklist";
 import LabelsModel from "@/models/label";
 import ListModel from "@/models/list";
-import CardModel from "@/models/card";
-import ChecklistModel from "@/models/card/checklist";
-import CheckItemModel from "@/models/card/checkItem";
-import AttachmentModel from "@/models/card/attachment";
+import OrganizationModel from "@/models/organization";
 import { generateNotification } from "@/service/notification";
 import { generateRecentBoards } from "@/service/recentBoards";
+import { generateToken } from "@/shared";
 
-import type { RequestHandler } from "express";
-
-export const getAllBoards: RequestHandler = async (req, res) => {
+export const getOrganizationBoards: RequestHandler = async (req, res) => {
   const result = await BoardsModel.find({
     organizationId: req.query.organizationId,
   })
@@ -231,26 +230,6 @@ export const deleteLabel: RequestHandler = async (req, res) => {
   }
 
   res.send({ status: "success", result });
-};
-
-export const getBoardMembers: RequestHandler = async (req, res) => {
-  /**
-   * #swagger.tags = ["Boards - 看板"]
-   * #swagger.description  = "取得看板內所有成員"
-   */
-  const boardUsers = await BoardsModel.findById(req.params.boardId)
-    .populate({
-      path: "list",
-      select: "-createdAt -updatedAt",
-      match: {
-        closed: false,
-      },
-    })
-    .populate({
-      path: "label",
-      select: "-createdAt -updatedAt",
-    });
-  res.send({ status: "success", result: boardUsers?.member });
 };
 
 export const addBoardMember: RequestHandler = async (req, res) => {

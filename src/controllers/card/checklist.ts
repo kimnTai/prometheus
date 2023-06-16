@@ -1,7 +1,6 @@
-import ChecklistModel from "@/models/card/checklist";
-import CardModel from "@/models/card";
-
 import type { RequestHandler } from "express";
+import CardModel from "@/models/card";
+import ChecklistModel from "@/models/card/checklist";
 
 export const createChecklist: RequestHandler = async (req, res) => {
   const { name, position } = req.body;

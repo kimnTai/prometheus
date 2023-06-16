@@ -1,6 +1,6 @@
-import { createRouter } from "@/shared";
 import * as EmailController from "@/controllers/email";
 import { checkRequestBodyValidator } from "@/middlewares";
+import { createRouter } from "@/shared";
 
 const router = createRouter();
 

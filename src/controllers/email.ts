@@ -1,10 +1,9 @@
-import nodemailer from "nodemailer";
+import type { RequestHandler } from "express";
 import bcrypt from "bcryptjs";
 import ejs from "ejs";
-import { generateToken, verifyToken } from "@/shared";
+import nodemailer from "nodemailer";
 import UsersModel from "@/models/user";
-
-import type { RequestHandler } from "express";
+import { generateToken, verifyToken } from "@/shared";
 
 const transporter = nodemailer.createTransport({
   host: "smtp.mailgun.org",

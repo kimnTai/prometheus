@@ -1,8 +1,7 @@
+import type { RequestHandler } from "express";
 import OrganizationModel from "@/models/organization";
 import { generateNotification } from "@/service/notification";
 import { generateToken } from "@/shared";
-
-import type { RequestHandler } from "express";
 
 export const getUserOrganization: RequestHandler = async (req, res) => {
   const result = await OrganizationModel.find({

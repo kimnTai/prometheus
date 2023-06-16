@@ -1,7 +1,6 @@
-import CheckItemModel from "@/models/card/checkItem";
-import CardModel from "@/models/card";
-
 import type { RequestHandler } from "express";
+import CardModel from "@/models/card";
+import CheckItemModel from "@/models/card/checkItem";
 
 export const createCheckItem: RequestHandler = async (req, res) => {
   const { name, position } = req.body;

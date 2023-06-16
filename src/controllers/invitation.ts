@@ -1,8 +1,7 @@
-import OrganizationModel from "@/models/organization";
-import BoardsModel from "@/models/board";
-import { verifyToken } from "@/shared";
-
 import type { RequestHandler } from "express";
+import BoardsModel from "@/models/board";
+import OrganizationModel from "@/models/organization";
+import { verifyToken } from "@/shared";
 
 export const addBoardMember: RequestHandler = async (req, res) => {
   const { boardId } = verifyToken(req.params.invitationToken);

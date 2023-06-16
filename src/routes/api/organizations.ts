@@ -1,6 +1,6 @@
-import { createRouter } from "@/shared";
 import * as OrganizationController from "@/controllers/organization";
 import { checkRequestBodyValidator, isAuth } from "@/middlewares";
+import { createRouter } from "@/shared";
 
 const router = createRouter();
 

@@ -1,11 +1,10 @@
-import { Strategy as GoogleStrategy } from "passport-google-oauth20";
-import { Strategy as GitHubStrategy } from "passport-github2";
-import passport from "passport";
-import bcrypt from "bcryptjs";
-import { generateToken } from "@/shared";
-import UsersModel from "@/models/user";
-
 import type { RequestHandler } from "express";
+import bcrypt from "bcryptjs";
+import passport from "passport";
+import { Strategy as GitHubStrategy } from "passport-github2";
+import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+import UsersModel from "@/models/user";
+import { generateToken } from "@/shared";
 
 (() => {
   if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {

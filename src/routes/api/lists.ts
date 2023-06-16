@@ -1,6 +1,6 @@
-import { createRouter } from "@/shared";
 import * as ListController from "@/controllers/list";
 import { checkRequestBodyValidator, isAuth } from "@/middlewares";
+import { createRouter } from "@/shared";
 
 const router = createRouter();
 

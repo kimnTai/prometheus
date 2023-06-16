@@ -1,5 +1,5 @@
-import { createRouter } from "@/shared";
 import * as CommentController from "@/controllers/card/comment";
+import { createRouter } from "@/shared";
 
 const router = createRouter();
 

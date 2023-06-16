@@ -1,6 +1,6 @@
-import { createRouter } from "@/shared";
 import * as InvitationController from "@/controllers/invitation";
 import { isAuth } from "@/middlewares";
+import { createRouter } from "@/shared";
 
 const router = createRouter();
 

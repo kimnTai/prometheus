@@ -1,5 +1,5 @@
-import { createRouter } from "@/shared";
 import * as AttachmentController from "@/controllers/card/attachment";
+import { createRouter } from "@/shared";
 
 const router = createRouter();
 

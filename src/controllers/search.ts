@@ -1,9 +1,8 @@
+import type { RequestHandler } from "express";
 import validator from "validator";
 import CardModel from "@/models/card";
 import OrganizationModel from "@/models/organization";
 import UsersModel from "@/models/user";
-
-import type { RequestHandler } from "express";
 
 export const searchMember: RequestHandler = async (req, res) => {
   const { query, organizationId } = req.query;

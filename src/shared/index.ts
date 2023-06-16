@@ -1,8 +1,6 @@
-import { Router } from "express";
-import validator from "validator";
+import { Router, type Request, type RequestHandler } from "express";
 import jsonWebToken, { type JwtPayload } from "jsonwebtoken";
-
-import type { Request, RequestHandler } from "express";
+import validator from "validator";
 
 function catchAsync(func: RequestHandler): RequestHandler {
   return (req, res, next) => {

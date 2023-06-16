@@ -1,11 +1,10 @@
+import type { RequestHandler } from "express";
 import CardModel from "@/models/card";
 import AttachmentModel from "@/models/card/attachment";
-import ChecklistModel from "@/models/card/checklist";
 import CheckItemModel from "@/models/card/checkItem";
+import ChecklistModel from "@/models/card/checklist";
 import LabelsModel from "@/models/label";
 import { generateNotification } from "@/service/notification";
-
-import type { RequestHandler } from "express";
 
 export const createCard: RequestHandler = async (req, res) => {
   const { name, listId, position, boardId } = req.body;

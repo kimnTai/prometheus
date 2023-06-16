@@ -1,9 +1,9 @@
 import passport from "passport";
-import { createRouter } from "@/shared";
-import * as UserController from "@/controllers/user";
 import { authorizationCallback } from "@/controllers/auth";
-import { isAuth, checkRequestBodyValidator } from "@/middlewares";
 import * as EmailController from "@/controllers/email";
+import * as UserController from "@/controllers/user";
+import { checkRequestBodyValidator, isAuth } from "@/middlewares";
+import { createRouter } from "@/shared";
 
 const router = createRouter();
 

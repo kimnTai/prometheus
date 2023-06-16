@@ -1,6 +1,6 @@
-import { createRouter } from "@/shared";
 import { searchCards, searchMember } from "@/controllers/search";
 import { isAuth } from "@/middlewares";
+import { createRouter } from "@/shared";
 
 const router = createRouter();
 

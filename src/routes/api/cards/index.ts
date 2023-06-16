@@ -1,10 +1,10 @@
-import { createRouter } from "@/shared";
-import { checkRequestBodyValidator, isAuth } from "@/middlewares";
 import * as CardController from "@/controllers/card";
+import { checkRequestBodyValidator, isAuth } from "@/middlewares";
+import { createRouter } from "@/shared";
+import attachment from "./attachment";
+import checklist from "./checklist";
 import comments from "./comments";
 import date from "./date";
-import checklist from "./checklist";
-import attachment from "./attachment";
 
 const router = createRouter();
 

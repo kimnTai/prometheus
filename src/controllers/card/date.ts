@@ -1,7 +1,6 @@
-import DateModel from "@/models/card/date";
-import CardModel from "@/models/card";
-
 import type { RequestHandler } from "express";
+import CardModel from "@/models/card";
+import DateModel from "@/models/card/date";
 
 export const createDate: RequestHandler = async (req, res) => {
   const { startDate, dueDate, dueReminder } = req.body;

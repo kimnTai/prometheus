@@ -1,6 +1,6 @@
-import { createRouter } from "@/shared";
 import { getImageUrl } from "@/controllers/upload";
 import { handleUploadFile, isAuth } from "@/middlewares";
+import { createRouter } from "@/shared";
 
 const router = createRouter();
 

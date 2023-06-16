@@ -1,11 +1,10 @@
+import type { Application, NextFunction, Request, Response } from "express";
 import {
   WebSocketServer,
-  type WebSocket,
-  type ServerOptions,
   type RawData,
+  type ServerOptions,
+  type WebSocket,
 } from "ws";
-
-import type { Request, Response, NextFunction, Application } from "express";
 
 export default class Socket extends WebSocketServer {
   static instance?: Socket;

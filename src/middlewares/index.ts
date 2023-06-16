@@ -1,8 +1,7 @@
+import type { RequestHandler } from "express";
 import multer from "multer";
 import UsersModel from "@/models/user";
 import { checkValidator, verifyToken } from "@/shared";
-
-import type { RequestHandler } from "express";
 
 // token 驗證
 export const isAuth: RequestHandler = async (req, _res, next) => {
