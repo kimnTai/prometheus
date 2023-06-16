@@ -1365,6 +1365,47 @@
         ]
       }
     },
+    "/api/lists/cloneById": {
+      "post": {
+        "tags": [
+          "List - 列表"
+        ],
+        "description": "複製列表",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "sourceListId": {
+                  "example": "any"
+                },
+                "boardId": {
+                  "example": "any"
+                },
+                "name": {
+                  "example": "any"
+                },
+                "position": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/api/cards/": {
       "post": {
         "tags": [

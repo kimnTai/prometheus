@@ -49,3 +49,10 @@ router.put(
      */
   }
 );
+
+router.post("/cloneById", ListController.cloneListById, () => {
+  /**
+   * #swagger.tags = ["List - 列表"]
+   * #swagger.description  = "複製列表"
+   */
+});

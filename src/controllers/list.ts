@@ -1,5 +1,8 @@
 import type { RequestHandler } from "express";
 import CardModel from "@/models/card";
+import AttachmentModel from "@/models/card/attachment";
+import CheckItemModel from "@/models/card/checkItem";
+import ChecklistModel from "@/models/card/checklist";
 import LabelsModel, { ILabel } from "@/models/label";
 import ListModel from "@/models/list";
 
@@ -106,9 +109,7 @@ export const moveList: RequestHandler = async (req, _res, next) => {
     // 修改列表所有卡片
     const updateCardList = result.map((card) => {
       const newLabel = card.label.map(
-        ({ _id }) =>
-          labelsList.find(({ originLabelId }) => originLabelId === _id)?.model
-            ._id
+        ({ _id }) => labelsList.find((v) => v.originLabelId === _id)?.model._id
       );
       return CardModel.findByIdAndUpdate(
         card._id,
@@ -129,4 +130,94 @@ export const moveList: RequestHandler = async (req, _res, next) => {
   }
 
   next();
+};
+
+export const cloneListById: RequestHandler = async (req, res) => {
+  const originList = await ListModel.findById(req.body.sourceListId);
+
+  if (!originList) {
+    throw new Error("無此列表 id");
+  }
+
+  // 複製標籤
+  const labelsList = originList.card
+    .flatMap(({ label }) => label)
+    .reduce<ILabel[]>((pre, value) => {
+      return pre.find(({ _id }) => _id === value._id) ? pre : [...pre, value];
+    }, [])
+    .map(({ _id, name, color }) => {
+      return {
+        originLabelId: _id,
+        model: new LabelsModel({ name, color, boardId: req.body.boardId }),
+      };
+    });
+
+  // 複製列表
+  const cloneLists = new ListModel({
+    boardId: req.body.boardId,
+    name: req.body.name,
+    position: req.body.position,
+  });
+
+  // 複製卡片
+  const cloneCards = originList.card.flatMap(
+    ({ name, position, description, checklist, label, attachment }) => {
+      const newLabel = label.map(
+        ({ _id }) => labelsList.find((v) => v.originLabelId === _id)?.model._id
+      );
+      // 複製卡片
+      const cloneCard = new CardModel({
+        listId: cloneLists.id,
+        boardId: req.body.boardId,
+        name,
+        position,
+        description,
+        label: newLabel,
+      });
+
+      return [
+        cloneCard,
+        ...attachment.flatMap(({ dirname, filename }) => {
+          // 複製附件
+          return new AttachmentModel({
+            dirname,
+            filename,
+            cardId: cloneCard.id,
+            userId: req.user?._id,
+          });
+        }),
+        ...checklist.flatMap(({ name, position, checkItem }) => {
+          // 複製待辦清單
+          const cloneChecklist = new ChecklistModel({
+            name,
+            position,
+            cardId: cloneCard.id,
+          });
+
+          return [
+            cloneChecklist,
+            ...checkItem.flatMap(({ name, position }) => {
+              // 複製代辦事項
+              return new CheckItemModel({
+                name,
+                position,
+                checklistId: cloneChecklist.id,
+              });
+            }),
+          ];
+        }),
+      ];
+    }
+  );
+
+  await Promise.all([
+    cloneLists.save(),
+    ...labelsList.map(({ model }) => model.save()),
+    ...cloneCards.map((model) => model.save()),
+  ]);
+
+  const result = await ListModel.findById(cloneLists._id);
+
+  res.app.emit(`boardId:${result?.boardId}`, result);
+  res.send({ status: "success", result: cloneCards });
 };
