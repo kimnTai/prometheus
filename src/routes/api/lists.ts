@@ -37,3 +37,15 @@ router.put("/:listId/archiveAllCards", ListController.archiveAllCards, () => {
    * #swagger.description  = "封存列表所有卡片"
    */
 });
+
+router.put(
+  "/:listId/move",
+  ListController.moveList,
+  ListController.updateList,
+  () => {
+    /**
+     * #swagger.tags = ["List - 列表"]
+     * #swagger.description  = "移動列表"
+     */
+  }
+);

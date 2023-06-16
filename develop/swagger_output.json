@@ -1315,6 +1315,56 @@
         ]
       }
     },
+    "/api/lists/{listId}/move": {
+      "put": {
+        "tags": [
+          "List - 列表"
+        ],
+        "description": "移動列表",
+        "parameters": [
+          {
+            "name": "listId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "boardId": {
+                  "example": "any"
+                },
+                "sourceBoardId": {
+                  "example": "any"
+                },
+                "name": {
+                  "example": "any"
+                },
+                "position": {
+                  "example": "any"
+                },
+                "closed": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/api/cards/": {
       "post": {
         "tags": [

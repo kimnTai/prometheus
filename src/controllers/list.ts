@@ -1,7 +1,9 @@
 import ListModel from "@/models/list";
 import CardModel from "@/models/card";
+import LabelsModel from "@/models/label";
 
 import type { RequestHandler } from "express";
+import { ILabel } from "@/models/label";
 
 export const createList: RequestHandler = async (req, res) => {
   const { name, boardId, position } = req.body;
@@ -75,4 +77,58 @@ export const archiveAllCards: RequestHandler = async (req, res) => {
 
   res.app.emit(`boardId:${result?.boardId}`, result);
   res.send({ status: "success", result });
+};
+
+export const moveList: RequestHandler = async (req, _res, next) => {
+  const { boardId, sourceBoardId } = req.body;
+
+  if (boardId && sourceBoardId && boardId !== sourceBoardId) {
+    // 查詢列表卡片
+    const result = await CardModel.find(
+      {
+        listId: req.params.listId,
+      },
+      {},
+      { new: true, runValidators: true, shouldPopulate: false }
+    ).populate("label");
+
+    // 複製標籤
+    const labelsList = result
+      .flatMap(({ label }) => label)
+      .reduce<ILabel[]>((pre, value) => {
+        return pre.find(({ _id }) => _id === value._id) ? pre : [...pre, value];
+      }, [])
+      .map(({ _id, name, color }) => {
+        return {
+          originLabelId: _id,
+          model: new LabelsModel({ name, color, boardId: boardId }),
+        };
+      });
+
+    // 修改列表所有卡片
+    const updateCardList = result.map((card) => {
+      const newLabel = card.label.map(
+        ({ _id }) =>
+          labelsList.find(({ originLabelId }) => originLabelId === _id)?.model
+            ._id
+      );
+      return CardModel.findByIdAndUpdate(
+        card._id,
+        {
+          boardId: boardId,
+          $set: {
+            label: newLabel,
+          },
+        },
+        { new: true, runValidators: true }
+      );
+    });
+
+    await Promise.all([
+      ...updateCardList,
+      ...labelsList.map(({ model }) => model.save()),
+    ]);
+  }
+
+  next();
 };
