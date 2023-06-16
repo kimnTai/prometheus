@@ -139,40 +139,25 @@ export const cloneListById: RequestHandler = async (req, res) => {
     throw new Error("無此列表 id");
   }
 
-  // 複製標籤
-  const labelsList = originList.card
-    .flatMap(({ label }) => label)
-    .reduce<ILabel[]>((pre, value) => {
-      return pre.find(({ _id }) => _id === value._id) ? pre : [...pre, value];
-    }, [])
-    .map(({ _id, name, color }) => {
-      return {
-        originLabelId: _id,
-        model: new LabelsModel({ name, color, boardId: req.body.boardId }),
-      };
-    });
-
   // 複製列表
   const cloneLists = new ListModel({
-    boardId: req.body.boardId,
+    boardId: originList.boardId,
     name: req.body.name,
     position: req.body.position,
   });
 
   // 複製卡片
   const cloneCards = originList.card.flatMap(
-    ({ name, position, description, checklist, label, attachment }) => {
-      const newLabel = label.map(
-        ({ _id }) => labelsList.find((v) => v.originLabelId === _id)?.model._id
-      );
+    ({ name, position, description, checklist, label, attachment, member }) => {
       // 複製卡片
       const cloneCard = new CardModel({
         listId: cloneLists.id,
-        boardId: req.body.boardId,
+        boardId: originList.boardId,
         name,
         position,
         description,
-        label: newLabel,
+        label: label.map(({ _id }) => _id),
+        member: member.map(({ _id }) => _id),
       });
 
       return [
@@ -212,7 +197,6 @@ export const cloneListById: RequestHandler = async (req, res) => {
 
   await Promise.all([
     cloneLists.save(),
-    ...labelsList.map(({ model }) => model.save()),
     ...cloneCards.map((model) => model.save()),
   ]);
 

@@ -1381,9 +1381,6 @@
                 "sourceListId": {
                   "example": "any"
                 },
-                "boardId": {
-                  "example": "any"
-                },
                 "name": {
                   "example": "any"
                 },
