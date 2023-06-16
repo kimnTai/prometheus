@@ -156,8 +156,8 @@ export const cloneListById: RequestHandler = async (req, res) => {
         name,
         position,
         description,
+        member,
         label: label.map(({ _id }) => _id),
-        member: member.map(({ _id }) => _id),
       });
 
       return [
