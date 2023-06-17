@@ -32,9 +32,9 @@ export const handleUploadFile: RequestHandler = (req, res, next) => {
       fileSize: 2 * 1024 * 1024,
     },
     fileFilter: (_req, file, callback) => {
-      // 只接受三種圖片格式
-      if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
-        callback(new Error("圖片格式只接受 jpg、jpeg、png"));
+      // 只接受四種圖片格式
+      if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+        callback(new Error("圖片格式只接受 jpg、jpeg、png、gif"));
         return;
       }
       callback(null, true);
