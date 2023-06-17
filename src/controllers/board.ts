@@ -433,6 +433,7 @@ export const cloneBoardById: RequestHandler = async (req, res) => {
     name: req.body.name,
     organizationId: req.body.organizationId,
     member: [{ userId: req.user?._id, role: "manager" }],
+    image: originBoard.image,
   });
 
   // 複製標籤
