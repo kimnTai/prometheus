@@ -40,7 +40,9 @@ export const addOrganizationMember: RequestHandler = async (req, res) => {
     {
       new: true,
     }
-  );
+  ).populate({
+    path: "board",
+  });
 
   res.send({ status: "success", result });
 };
