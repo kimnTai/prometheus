@@ -673,6 +673,9 @@
                 },
                 "image": {
                   "example": "any"
+                },
+                "sourceBoardId": {
+                  "example": "any"
                 }
               }
             }

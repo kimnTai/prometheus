@@ -29,8 +29,13 @@ export const getOrganizationBoards: RequestHandler = async (req, res) => {
   res.send({ status: "success", result });
 };
 
-export const createBoard: RequestHandler = async (req, res) => {
-  const { name, organizationId, permission, image } = req.body;
+export const createBoard: RequestHandler = async (req, res, next) => {
+  const { name, organizationId, permission, image, templateId } = req.body;
+  if (templateId) {
+    req.body.sourceBoardId = templateId;
+    cloneBoardById(req, res, next);
+    return;
+  }
 
   const _result = await BoardsModel.create({
     name,
