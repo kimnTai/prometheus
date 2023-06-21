@@ -27,7 +27,7 @@ export const generateNotification = async (data: {
 };
 
 export const getUserNotification = async (data: { userId: string }) => {
-  return await NotificationModel.find(data);
+  return await NotificationModel.find(data).sort({ createdAt: "desc" });
 };
 
 export const updateOneNotification = async (data: {
