@@ -58,6 +58,8 @@ PORT = 3005
 DATABASE =  DB連結
 DATABASE_PASSWORD = DB密碼
 
+REDIS_URL = redis 連結
+
 JWT_EXPIRES_DAY = token 到期日
 JWT_SECRET = Token密鑰
 
