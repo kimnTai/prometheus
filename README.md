@@ -96,6 +96,25 @@ http://localhost:3005/swagger
 
 ## 資料夾說明
 
+```
+prometheus
+├─ develop  // 開發工具腳本
+│  ├─ mock
+│  ├─ swagger.js
+│  └─ swagger_output.json
+├─ src
+│  ├─ app
+│  ├─ controllers
+│  ├─ middlewares
+│  ├─ models
+│  ├─ routes
+│  ├─ service
+│  ├─ shared
+│  ├─ views
+│  └─ vite-env.d.ts
+└─ vite.config.ts
+```
+
 ## 專案技術
 
 - node.js v18.16.0
