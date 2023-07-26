@@ -71,7 +71,7 @@ import { generateToken } from "@/shared";
           return done(new Error("此 Email 已被註冊!"));
         }
 
-        const password = await bcrypt.hash(githubId, 6);
+        const password = await bcrypt.hash(`${githubId}`, 6);
         const result = await UsersModel.create({
           name: login,
           email,
